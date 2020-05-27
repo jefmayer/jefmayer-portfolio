@@ -1,0 +1,11 @@
+{
+  "presets": ["env"],
+  "plugins": [
+    ["transform-regenerator", {
+      "asyncGenerators": true,
+      "generators": true,
+      "async": true
+    }],
+    "syntax-async-functions"
+  ]
+}
