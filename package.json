@@ -7,7 +7,7 @@
   "license": "MIT",
   "main": "gulpfile.js",
   "scripts": {
-    "start": "gulp",
+    "start": "gulp watch",
     "test": "mocha --require babel-register ./tests/setup.js ./tests/**/*.spec.js"
   },
   "repository": {
@@ -45,7 +45,6 @@
     "postcss": "^7.0.2",
     "postcss-reporter": "^5.0.0",
     "postcss-scss": "^1.0.6",
-    "react-test-renderer": "^16.4.2",
     "replace-in-file": "^3.4.2",
     "sinon": "^4.5.0",
     "stylelint": "^9.5.0",
@@ -55,16 +54,11 @@
     "webpack-sources": "1.1.0"
   },
   "dependencies": {
-    "@glidejs/glide": "^3.3.0",
     "babel-polyfill": "6.26.0",
     "feature-detect-es6": "^1.5.0",
-    "immutable": "^3.8.2",
-    "prop-types": "^15.6.2",
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2",
-    "react-redux": "^5.0.6",
-    "redux": "^3.7.2",
-    "underscore": "^1.9.1"
+    "gsap": "^3.3.0",
+    "scrollmagic": "^2.0.7",
+    "scrollmagic-plugin-gsap": "^1.0.4"
   },
   "browserslist": [
     "IE >= 11",

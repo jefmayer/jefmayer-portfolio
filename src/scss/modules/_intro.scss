@@ -1,0 +1,90 @@
+.site-section-intro {
+
+  .fixed-bg {
+    background: $body-background-color;
+  }
+
+  // Animation triggers
+  .at-1 {
+    margin-top: 10rem;
+  }
+
+  .content-wrapper {
+    height: 54rem;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 54rem;
+  }
+
+  .content-border {
+    height: 0;
+    left: 0;
+    overflow: hidden;
+    padding-top: 100%;
+    position: absolute;
+    transform: rotate(106deg);
+    transform-origin: center;
+    width: 100%;
+    will-change: transform;
+    z-index: 2;
+
+    .content-border-bottom {
+      background: $dark;
+      border-bottom: .1rem solid $primary-color;
+      bottom: calc(100% - .1rem);
+      height: 100%;
+      left: 0;
+      position: absolute;
+      width: 100%;
+      will-change: transform;
+    }
+
+    .content-border-top {
+      background: $dark;
+      border-top: .1rem solid $primary-color;
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: calc(100% - .1rem);
+      width: 100%;
+      will-change: transform;
+    }
+  }
+
+  .inner-content {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    transform-origin: center;
+    width: 100%;
+    z-index: 1;
+  }
+
+  .jef-logo {
+    background-image: url('../images/jef-logo.svg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 10rem;
+    margin: 0 auto;
+    width: 17.6rem;
+  }
+
+  .intro-statement {
+    color: $white;
+    font-size: 2.2rem;
+    line-height: calc(36 / 22);
+    margin-top: 4rem;
+    padding: 0 4rem;
+
+    .highlight {
+      color: $primary-color;
+    }
+  }
+}
