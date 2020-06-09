@@ -2,6 +2,12 @@
   position: relative;
   width: 100%;
   z-index: 1;
+
+  .site-asset {
+    display: block;
+    height: auto;
+    width: 100%;
+  }
 }
 
 .fixed-bg {

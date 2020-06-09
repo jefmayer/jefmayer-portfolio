@@ -27,11 +27,11 @@ const addSceneAnimations = () => {
       .to('.header', 1, { y: 0 }),
     ampElements: new TimelineLite()
       .to('.project-animation-amplifyit .video-grid-wrapper', 1, { y: 0 })
-      .fromTo('.project-animation-amplifyit .tablet-sampler-wrapper', 1, { y: 200 }, { y: 0 }, 0.25)
-      .to('.project-animation-amplifyit .tablet-sampler-shadow', 1, { y: 100 }, 0.25)
-      .fromTo('.project-animation-amplifyit .mixing-board-wrapper', 1, { y: 300 }, { y: 0 }, 0.25)
-      .to('.project-animation-amplifyit .mixing-board-shadow', 1, { scale: 1 }, 0.25)
-      .fromTo('.project-animation-amplifyit .beats-headphones-wrapper', 1, { y: 400 }, { y: 0 }, 0.25)
+      .fromTo('.project-animation-amplifyit .tablet-sampler-wrapper', 1, { y: '106%' }, { y: '0%' }, 0.25) // 200 (height: 188)
+      .fromTo('.project-animation-amplifyit .tablet-sampler-shadow', 1, { y: -50 }, { y: 0 }, 0.25) // -50
+      .fromTo('.project-animation-amplifyit .mixing-board-wrapper', 1, { y: '234%' }, { y: '0%' }, 0.25) // 300 (height: 128)
+      .fromTo('.project-animation-amplifyit .mixing-board-shadow', 1, { y: -10 }, { y: 0 }, 0.25) // -10
+      .fromTo('.project-animation-amplifyit .beats-headphones-wrapper', 1, { y: 400 }, { y: 0 }, 0.25) // 400
       .to('.project-animation-amplifyit .beats-headphones-shadow', 1, { scale: 1, y: 0 }, 0.25),
     videoGrid: new TimelineLite()
       .to('.project-animation-amplifyit .video-grid-t-l', 1, { visibility: 'visible', scale: 1 })

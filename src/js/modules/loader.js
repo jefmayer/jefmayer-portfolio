@@ -21,14 +21,15 @@ const onLoadComplete = () => {
 };
 
 const update = () => {
-  console.log(`${(assetLoadedCt / assetsToLoad.length) * 100}%`);
-  loadingBars.style.transform = `rotate(0) scaleX(${assetLoadedCt / assetsToLoad.length})`;
   const div = assetsToLoad[assetLoadedCt];
   const img = document.createElement('img');
   img.src = div.getAttribute('data-src');
+  img.className = 'site-asset';
   div.parentNode.appendChild(img);
   div.parentNode.removeChild(div);
   assetLoadedCt += 1;
+  console.log(`${(assetLoadedCt / assetsToLoad.length) * 100}%`);
+  loadingBars.style.transform = `rotate(0) scaleX(${assetLoadedCt / assetsToLoad.length})`;
   if (assetLoadedCt === assetsToLoad.length) {
     onLoadComplete();
     return;
@@ -37,6 +38,7 @@ const update = () => {
 };
 
 const load = () => {
+  window.scrollTo(0, 0);
   addIntroLoadAnimation();
   update();
   // [].map.call(itemsToLoad, (div) => {

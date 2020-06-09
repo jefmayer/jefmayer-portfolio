@@ -2,6 +2,11 @@
   @return $pixelValue / 924 * 99%;
 }
 
+@mixin gradient-background {
+  background: rgb(236, 28, 36);
+  background: linear-gradient(0deg, rgba(255, 52, 60, 1) 0%, rgba(236, 28, 36, 1) 100%);
+}
+
 .project-animation-amplifyit {
   height: 70rem;
 
@@ -10,8 +15,7 @@
   }
 
   .fixed-bg {
-    background: rgb(236, 28, 36);
-    background: linear-gradient(0deg, rgba(255, 52, 60, 1) 0%, rgba(236, 28, 36, 1) 100%);
+    @include gradient-background;
   }
 
   .video-grid {
@@ -29,12 +33,6 @@
     transform-origin: center;
     visibility: hidden;
     will-change: transform;
-
-    img {
-      display: block;
-      height: auto;
-      width: 100%;
-    }
   }
 
   .video-grid-t-l {
@@ -105,25 +103,17 @@
     position: relative;
     width: translate-width(389);
     z-index: 2;
-
-    img {
-      display: block;
-      height: auto;
-      width: 100%;
-    }
   }
 
   .tablet-sampler-shadow {
+    bottom: -40%;
     height: auto;
     position: absolute;
-    top: 0;
     width: 100%;
     will-change: transform;
     z-index: 1;
 
     img {
-      display: block;
-      height: auto;
       margin: 0 auto;
       max-width: 38.9rem;
       width: translate-width(389);
@@ -144,36 +134,25 @@
     position: relative;
     width: translate-width(534);
     z-index: 2;
-
-    img {
-      display: block;
-      height: auto;
-      width: 100%;
-    }
   }
 
   .mixing-board-shadow {
+    bottom: -4%;
     height: auto;
-    margin: -7rem auto 0;
+    left: 50%;
     max-width: 53.4rem;
-    position: relative;
-    transform: scale(.65);
+    position: absolute;
+    transform: translate(-50%);
     transform-origin: top;
     width: translate-width(534);
     will-change: transform;
     z-index: 1;
-
-    img {
-      display: block;
-      height: auto;
-      width: 100%;
-    }
   }
 
   .beats-headphones-wrapper {
     display: flex;
     justify-content: flex-end;
-    margin: -38% auto 0;
+    margin: -40% auto 0;
     max-width: 92.4rem;
     position: relative;
     width: 100%;
@@ -182,8 +161,12 @@
 
     > div {
       position: relative;
-      right: calc(-100% + 14rem);
+      right: calc(-100% + 153 / 924 * 99%); /* stylelint-disable-line function-calc-no-unspaced-operator */
       width: 100%;
+
+      @include breakpoint(md) {
+        right: calc(-100% + 14rem);
+      }
     }
 
     @include breakpoint(lg) {
@@ -198,36 +181,23 @@
     width: translate-width(153);
     will-change: transform;
     z-index: 2;
-
-    img {
-      display: block;
-      height: auto;
-      width: 100%;
-    }
   }
 
   .beats-headphones-shadow {
     height: auto;
     margin-top: 2rem;
-    max-width: 10.8rem;
+    max-width: 12.3rem;
     position: relative;
     transform: scale(1.25);
     transform-origin: center;
-    width: 100%;
+    width: translate-width(123);
     will-change: transform;
     z-index: 1;
-
-    img {
-      display: block;
-      height: auto;
-      width: 100%;
-    }
   }
 }
 
 .project-details-amplifyit {
-  background: rgb(236, 28, 36);
-  background: linear-gradient(0deg, rgba(255, 52, 60, .85) 0%, rgba(236, 28, 36, .85) 100%);
+  @include gradient-background;
   background-attachment: fixed;
   background-size: 100% 100%;
 }
