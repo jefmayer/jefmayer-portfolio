@@ -1,36 +1,49 @@
-.site-section-intro {
+.site-loading {
+
+  .project-animation-intro .intro-borders {
+    transform: rotate(0) scaleX(0);
+    transition: transform .35s ease-in-out;
+  }
+}
+
+.site-loaded {
+
+  .project-animation-intro .intro-borders {
+    transform: rotate(106deg) scaleX(.75);
+    transition: transform .35s ease-in-out;
+  }
+}
+
+.project-animation-intro {
 
   .fixed-bg {
     background: $body-background-color;
   }
 
-  // Animation triggers
-  .at-1 {
-    margin-top: 10rem;
-  }
-
   .content-wrapper {
-    height: 54rem;
-    left: 50%;
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 54rem;
+    left: 0;
+    margin: 0 auto;
+    max-width: 54rem;
+    position: relative;
+    top: 0;
+    width: 100%;
   }
 
-  .content-border {
+  .intro-borders {
     height: 0;
     left: 0;
+    margin-top: -50%;
     overflow: hidden;
     padding-top: 100%;
     position: absolute;
-    transform: rotate(106deg);
+    top: 0;
+    transform: rotate(106deg) scaleX(.75);
     transform-origin: center;
     width: 100%;
     will-change: transform;
     z-index: 2;
 
-    .content-border-bottom {
+    .intro-border-bottom {
       background: $dark;
       border-bottom: .1rem solid $primary-color;
       bottom: calc(100% - .1rem);
@@ -41,7 +54,7 @@
       will-change: transform;
     }
 
-    .content-border-top {
+    .intro-border-top {
       background: $dark;
       border-top: .1rem solid $primary-color;
       height: 100%;
@@ -53,7 +66,20 @@
     }
   }
 
-  .inner-content {
+  .intro-content {
+    height: 0;
+    left: 50%;
+    overflow: hidden;
+    padding-top: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transform-origin: center;
+    width: 100%;
+    z-index: 1;
+  }
+
+  .intro-inner-content {
     align-items: center;
     display: flex;
     height: 100%;

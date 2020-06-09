@@ -1,6 +1,9 @@
 @import 'base/variables';
 @import 'base/base';
-@import 'modules/site-section';
+@import 'base/breakpoints';
+@import 'layout/header';
+@import 'layout/page';
+@import 'modules/project';
 @import 'modules/amplifyit';
 @import 'modules/graber';
 @import 'modules/intro';

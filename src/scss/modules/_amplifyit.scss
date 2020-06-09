@@ -1,8 +1,239 @@
-.site-section-amplifyit {
-  height: 110rem;
+@function translate-width($pixelValue) {
+  @return $pixelValue / 924 * 99%;
+}
+
+.project-animation-amplifyit {
+  height: 70rem;
+
+  @include breakpoint(md) {
+    height: 90rem;
+  }
 
   .fixed-bg {
     background: rgb(236, 28, 36);
     background: linear-gradient(0deg, rgba(255, 52, 60, 1) 0%, rgba(236, 28, 36, 1) 100%);
   }
+
+  .video-grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 8rem auto 0;
+    max-width: 92.4rem;
+    width: 100%;
+  }
+
+  .video-grid-item {
+    height: auto;
+    transform: scale(1.25);
+    transform-origin: center;
+    visibility: hidden;
+    will-change: transform;
+
+    img {
+      display: block;
+      height: auto;
+      width: 100%;
+    }
+  }
+
+  .video-grid-t-l {
+    width: translate-width(315);
+  }
+
+  .video-grid-t-m {
+    margin-left: translate-width(-6);
+    width: translate-width(306);
+  }
+
+  .video-grid-t-r {
+    margin-left: translate-width(-9);
+    width: translate-width(318);
+  }
+
+  .video-grid-m-l {
+    margin-left: translate-width(30);
+    margin-top: translate-width(3);
+    width: translate-width(294);
+  }
+
+  .video-grid-m-m {
+    margin-left: translate-width(-5.5);
+    margin-top: translate-width(3);
+    width: translate-width(286);
+  }
+
+  .video-grid-m-r {
+    margin-left: translate-width(-8);
+    margin-top: translate-width(3);
+    width: translate-width(296);
+  }
+
+  .video-grid-b-l {
+    margin-left: translate-width(56);
+    margin-top: translate-width(2);
+    width: translate-width(274.5);
+  }
+
+  .video-grid-b-m {
+    margin-left: translate-width(-5);
+    margin-top: translate-width(2);
+    width: translate-width(268);
+  }
+
+  .video-grid-b-r {
+    margin-left: translate-width(-7);
+    margin-top: translate-width(2);
+    width: translate-width(276.5);
+  }
+
+  .tablet-sampler-wrapper {
+    margin-top: -16%;
+    position: relative;
+    will-change: transform;
+    z-index: 2;
+
+    @include breakpoint(lg) {
+      margin-top: -15rem;
+    }
+  }
+
+  .tablet-sampler {
+    height: auto;
+    margin: 0 auto;
+    max-width: 38.9rem;
+    position: relative;
+    width: translate-width(389);
+    z-index: 2;
+
+    img {
+      display: block;
+      height: auto;
+      width: 100%;
+    }
+  }
+
+  .tablet-sampler-shadow {
+    height: auto;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    will-change: transform;
+    z-index: 1;
+
+    img {
+      display: block;
+      height: auto;
+      margin: 0 auto;
+      max-width: 38.9rem;
+      width: translate-width(389);
+    }
+  }
+
+  .mixing-board-wrapper {
+    margin-top: 1rem;
+    position: relative;
+    will-change: transform;
+    z-index: 1;
+  }
+
+  .mixing-board {
+    height: auto;
+    margin: 0 auto;
+    max-width: 53.4rem;
+    position: relative;
+    width: translate-width(534);
+    z-index: 2;
+
+    img {
+      display: block;
+      height: auto;
+      width: 100%;
+    }
+  }
+
+  .mixing-board-shadow {
+    height: auto;
+    margin: -7rem auto 0;
+    max-width: 53.4rem;
+    position: relative;
+    transform: scale(.65);
+    transform-origin: top;
+    width: translate-width(534);
+    will-change: transform;
+    z-index: 1;
+
+    img {
+      display: block;
+      height: auto;
+      width: 100%;
+    }
+  }
+
+  .beats-headphones-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin: -38% auto 0;
+    max-width: 92.4rem;
+    position: relative;
+    width: 100%;
+    will-change: transform;
+    z-index: 2;
+
+    > div {
+      position: relative;
+      right: calc(-100% + 14rem);
+      width: 100%;
+    }
+
+    @include breakpoint(lg) {
+      margin-top: -36rem;
+    }
+  }
+
+  .beats-headphones {
+    height: auto;
+    max-width: 15.3rem;
+    position: relative;
+    width: translate-width(153);
+    will-change: transform;
+    z-index: 2;
+
+    img {
+      display: block;
+      height: auto;
+      width: 100%;
+    }
+  }
+
+  .beats-headphones-shadow {
+    height: auto;
+    margin-top: 2rem;
+    max-width: 10.8rem;
+    position: relative;
+    transform: scale(1.25);
+    transform-origin: center;
+    width: 100%;
+    will-change: transform;
+    z-index: 1;
+
+    img {
+      display: block;
+      height: auto;
+      width: 100%;
+    }
+  }
+}
+
+.project-details-amplifyit {
+  background: rgb(236, 28, 36);
+  background: linear-gradient(0deg, rgba(255, 52, 60, .85) 0%, rgba(236, 28, 36, .85) 100%);
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+
+.verizon-logo {
+  background-image: url('../images/amplifyit/verizon-logo.svg');
+  height: 2.4rem;
+  width: 11.6rem;
 }

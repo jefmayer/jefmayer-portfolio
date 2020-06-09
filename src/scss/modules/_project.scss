@@ -1,0 +1,88 @@
+.project-animation {
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}
+
+.fixed-bg {
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  transition: opacity .5s ease-in-out;
+  width: 100%;
+  z-index: 1;
+}
+
+.section-top-indicator {
+  border-top: .2rem solid $white;
+  opacity: 0;
+  position: relative;
+  z-index: 3;
+}
+
+.section-content {
+  padding: 0 2rem;
+  position: relative;
+  width: 100% !important; /* stylelint-disable-line declaration-no-important */
+  z-index: 2;
+
+  @include breakpoint(lg) {
+    padding: 0;
+  }
+}
+
+.in-focus {
+
+  .fixed-bg {
+    opacity: 1;
+  }
+}
+
+.project-details {
+  position: relative;
+  width: 100%;
+  z-index: 1;
+
+  .project-logo {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    margin-top: 1.2rem;
+
+    @include breakpoint(md) {
+      margin-bottom: 2.5rem;
+    }
+  }
+
+  .project-details-inner {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    max-width: 96rem;
+    padding: 5rem 2rem;
+    position: relative;
+    width: 100%;
+
+    @include breakpoint(lg) {
+      padding: 5rem 0;
+    }
+
+    > div {
+      margin-bottom: 2.5rem;
+      width: 100%;
+
+      @include breakpoint(md) {
+        margin-bottom: 0;
+        margin-right: 5rem;
+        width: calc((100% - 10rem) / 3);
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+        margin-right: 0;
+      }
+    }
+  }
+}

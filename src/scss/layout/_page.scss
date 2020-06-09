@@ -1,0 +1,36 @@
+.site-loading {
+  height: 100%;
+  overflow: hidden;
+}
+
+.heading-sm {
+  color: $white;
+  font-size: 1.1rem;
+  font-weight: 900;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.heading-lg {
+  color: $white;
+  font-size: 4.2rem;
+  font-weight: 200;
+  line-height: 1.15;
+
+  strong {
+    font-weight: 500;
+    padding-right: .25em;
+
+    @include breakpoint(md) {
+      display: block;
+      padding-right: 0;
+    }
+  }
+}
+
+.body-regular {
+  color: $white;
+  font-size: 1.3rem;
+  font-weight: 500;
+  line-height: 2;
+}
