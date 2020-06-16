@@ -71,19 +71,42 @@
     position: relative;
     width: 100%;
 
+    @include breakpoint(sm) {
+
+      > div {
+        margin-bottom: 0;
+        margin-right: 5rem;
+        width: calc((100% - 5rem) / 2);
+      }
+
+      > div:first-child {
+        margin-bottom: 2.5rem;
+        margin-right: 0;
+        width: 100%;
+      }
+    }
+
+    @include breakpoint(md) {
+
+      > div {
+        margin-bottom: 0;
+        margin-right: 5rem;
+        width: calc((100% - 10rem) / 3);
+      }
+
+      > div:first-child {
+        margin-bottom: 0;
+        margin-right: 5rem;
+        width: calc((100% - 10rem) / 3);
+      }
+    }
+
     @include breakpoint(lg) {
       padding: 5rem 0;
     }
 
     > div {
       margin-bottom: 2.5rem;
-      width: 100%;
-
-      @include breakpoint(md) {
-        margin-bottom: 0;
-        margin-right: 5rem;
-        width: calc((100% - 10rem) / 3);
-      }
 
       &:last-child {
         margin-bottom: 0;
