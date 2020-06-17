@@ -2,20 +2,20 @@
   @return $pixelValue / 924 * 99%;
 }
 
-@mixin gradient-background {
-  background: rgb(236, 28, 36);
-  background: linear-gradient(0deg, rgba(255, 52, 60, 1) 0%, rgba(236, 28, 36, 1) 100%);
-}
-
 .project-animation-amplifyit {
-  height: 70rem;
+  height: 40rem;
+
+  @include breakpoint(sm) {
+    height: 75rem;
+  }
 
   @include breakpoint(md) {
     height: 90rem;
   }
 
   .fixed-bg {
-    @include gradient-background;
+    background: rgb(236, 28, 36);
+    background: linear-gradient(0deg, rgba(255, 52, 60, 1) 0%, rgba(236, 28, 36, 1) 100%);
   }
 
   .video-grid {
@@ -88,6 +88,7 @@
   .tablet-sampler-wrapper {
     margin-top: -16%;
     position: relative;
+    visibility: hidden;
     will-change: transform;
     z-index: 2;
 
@@ -123,6 +124,7 @@
   .mixing-board-wrapper {
     margin-top: 1rem;
     position: relative;
+    visibility: hidden;
     will-change: transform;
     z-index: 1;
   }
@@ -154,7 +156,9 @@
     justify-content: flex-end;
     margin: -40% auto 0;
     max-width: 92.4rem;
+    overflow: hidden;
     position: relative;
+    visibility: hidden;
     width: 100%;
     will-change: transform;
     z-index: 2;
@@ -165,7 +169,7 @@
       width: 100%;
 
       @include breakpoint(md) {
-        right: calc(-100% + 14rem);
+        right: calc(-100% + 15.5rem);
       }
     }
 
@@ -187,17 +191,19 @@
     height: auto;
     margin-top: 2rem;
     max-width: 12.3rem;
+    opacity: 0;
     position: relative;
     transform: scale(1.25);
     transform-origin: center;
     width: translate-width(123);
-    will-change: transform;
+    will-change: opacity, transform;
     z-index: 1;
   }
 }
 
 .project-details-amplifyit {
-  @include gradient-background;
+  background: rgb(236, 28, 36);
+  background: linear-gradient(0deg, rgba(255, 52, 60, .75) 0%, rgba(236, 28, 36, .75) 100%);
   background-attachment: fixed;
   background-size: 100% 100%;
 }
