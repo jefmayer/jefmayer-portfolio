@@ -19,14 +19,16 @@ const addIntroLoadAnimation = () => {
 
 const addSceneAnimations = () => {
   const timelines = {
-    intro: new TimelineLite()
+    introRotate: new TimelineLite()
+      .fromTo('.project-animation-intro .intro-borders', { rotation: 106, scaleX: 0.75 }, { rotation: 180, scaleX: 1 })
+      .fromTo('.project-animation-intro .scroll-indicator-animation', { scale: 1, opacity: 1 }, { scale: 0, opacity: 0 }, 0.1),
+    introOutro: new TimelineLite()
       .to('.project-animation-intro .intro-border-top', 1, { y: '-50%' })
       .to('.project-animation-intro .intro-border-bottom', 1, { y: '50%' }, 0)
       .to('.project-animation-intro .intro-inner-content', 1, { scale: 0.75, opacity: 0 }, 0)
       .to('.project-animation-intro .intro-borders', 0.5, { scaleX: 0 }, 1)
       .to('.header', 1, { y: 0 }),
     ampElements: new TimelineLite()
-      .to('.project-animation-amplifyit .video-grid-wrapper', 1, { y: 0 })
       .fromTo('.project-animation-amplifyit .tablet-sampler-wrapper', 1, { visibility: 'hidden', y: '106%' }, { visibility: 'visible', y: '0%' }, 0.25) // 200 (height: 188)
       .fromTo('.project-animation-amplifyit .tablet-sampler-shadow', 1, { y: '-35%' }, { y: '0%' }, 0.25) // -50 (height: 220)
       .fromTo('.project-animation-amplifyit .mixing-board-wrapper', 1, { visibility: 'hidden', y: '234%' }, { visibility: 'visible', y: '0%' }, 0.25) // 300 (height: 128)
@@ -43,6 +45,8 @@ const addSceneAnimations = () => {
       .to('.project-animation-amplifyit .video-grid-b-l', 1, { visibility: 'visible', scale: 1 }, 1.5)
       .to('.project-animation-amplifyit .video-grid-b-m', 1, { visibility: 'visible', scale: 1 }, 1.75)
       .to('.project-animation-amplifyit .video-grid-b-r', 1, { visibility: 'visible', scale: 1 }, 2),
+    kioskElements: new TimelineLite()
+      .fromTo('.project-animation-samsung .kiosks', 1, { y: '100%' }, { y: '0%' }),
   };
 
   // Intro
@@ -50,20 +54,20 @@ const addSceneAnimations = () => {
     triggerElement: '.project-animation-intro',
     duration: 300,
     offset: 500,
-  }).setTween(TweenLite.fromTo('.project-animation-intro .intro-borders', { rotation: 106, scaleX: 0.75 }, { rotation: 180, scaleX: 1 }))
+  }).setTween(timelines.introRotate)
     .addTo(controller);
 
   new ScrollMagic.Scene({
     triggerElement: '.project-animation-intro',
     duration: 300,
     offset: 800,
-  }).setTween(timelines.intro)
+  }).setTween(timelines.introOutro)
     .addTo(controller);
 
   // AmplifyIt
   new ScrollMagic.Scene({
     triggerElement: '.project-animation-amplifyit',
-    duration: 1600,
+    duration: 1500,
   }).setClassToggle('.project-animation-amplifyit', 'in-focus')
     .addTo(controller);
 
@@ -89,9 +93,21 @@ const addSceneAnimations = () => {
   // Samsung
   new ScrollMagic.Scene({
     triggerElement: '.project-animation-samsung',
-    duration: 1200,
+    duration: 1800,
   }).setClassToggle('.project-animation-samsung', 'in-focus')
-    .setPin('.project-animation-samsung .section-content')
+    .addTo(controller);
+
+  new ScrollMagic.Scene({
+    triggerElement: '.project-animation-samsung',
+    duration: 1000,
+    triggerHook: 0,
+  }).setPin('.project-animation-samsung .section-content')
+    .addTo(controller);
+
+  new ScrollMagic.Scene({
+    triggerElement: '.project-animation-samsung',
+    duration: 1200,
+  }).setTween(timelines.kioskElements)
     .addTo(controller);
 
   // Graber

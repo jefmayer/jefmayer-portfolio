@@ -1,8 +1,83 @@
 .project-animation-samsung {
-  height: 110rem;
+  height: 80rem;
+
+  @include breakpoint(sm) {
+    height: 100rem;
+  }
+
+  @include breakpoint(md) {
+    height: 130rem;
+  }
 
   .fixed-bg {
     background: rgb(23, 46, 157);
     background: linear-gradient(0deg, rgba(42, 79, 255, 1) 0%, rgba(23, 46, 157, 1) 100%);
   }
+
+  .kiosks {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    left: 0;
+    position: absolute;
+    width: 100%;
+
+    > div {
+      height: 100%;
+      margin-top: -2%;
+      width: translate-width(294);
+      will-change: transform;
+    }
+
+    .kiosk {
+      height: auto;
+      max-width: 29.4rem;
+      position: relative;
+      width: 100%;
+      z-index: 2;
+    }
+
+    .kiosk-shadow {
+      bottom: -.5%;
+      height: auto;
+      position: absolute;
+      width: 100%;
+      will-change: transform;
+      z-index: 1;
+
+      img {
+        max-width: 29.4rem;
+        width: 100%;
+      }
+    }
+  }
+
+  .kiosk-left-wrapper {
+    margin-right: 5%;
+
+    .kiosk {
+      float: right;
+    }
+
+    .kiosk-shadow img {
+      float: right;
+    }
+  }
+
+  .kiosk-right-wrapper {
+    margin-left: 5%;
+  }
+}
+
+.project-details-samsung {
+  background: rgb(23, 46, 157);
+  background: linear-gradient(0deg, rgba(42, 79, 255, .75) 0%, rgba(23, 46, 157, .75) 100%);
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+
+.samsung-logo {
+  background-image: url('../images/samsung/samsung-logo.svg');
+  height: 2.1rem;
+  width: 13.2rem;
 }

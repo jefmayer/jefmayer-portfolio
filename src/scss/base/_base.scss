@@ -383,3 +383,12 @@ template {
 [hidden] {
   display: none;
 }
+
+.clearfix {
+
+  &::after {
+    clear: both;
+    content: '';
+    display: block;
+  }
+}

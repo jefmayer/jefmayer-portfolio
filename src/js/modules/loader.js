@@ -7,11 +7,13 @@ let assetLoadedCt = 0;
 
 const onLoadComplete = () => {
   const body = document.querySelector('body');
+  const scrollIndicator = document.querySelector('.scroll-indicator-animation');
 
   setTimeout(() => {
     loadingBars.removeAttribute('style');
     body.classList.remove('site-loading');
     body.classList.add('site-loaded');
+    scrollIndicator.classList.add('animate-in');
   }, 1000);
 
   setTimeout(() => {

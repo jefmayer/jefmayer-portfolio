@@ -1,9 +1,5 @@
-@function translate-width($pixelValue) {
-  @return $pixelValue / 924 * 99%;
-}
-
 .project-animation-amplifyit {
-  height: 40rem;
+  height: 45rem;
 
   @include breakpoint(sm) {
     height: 75rem;
