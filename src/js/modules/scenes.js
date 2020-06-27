@@ -28,7 +28,7 @@ const addSceneAnimations = () => {
       .to('.project-animation-intro .intro-inner-content', 1, { scale: 0.75, opacity: 0 }, 0)
       .to('.project-animation-intro .intro-borders', 0.5, { scaleX: 0 }, 1)
       .to('.header', 1, { y: 0 }),
-    ampElements: new TimelineLite()
+    verizonElements: new TimelineLite()
       .fromTo('.project-animation-amplifyit .tablet-sampler-wrapper', 1, { visibility: 'hidden', y: '106%' }, { visibility: 'visible', y: '0%' }, 0.25) // 200 (height: 188)
       .fromTo('.project-animation-amplifyit .tablet-sampler-shadow', 1, { y: '-35%' }, { y: '0%' }, 0.25) // -50 (height: 220)
       .fromTo('.project-animation-amplifyit .mixing-board-wrapper', 1, { visibility: 'hidden', y: '234%' }, { visibility: 'visible', y: '0%' }, 0.25) // 300 (height: 128)
@@ -45,8 +45,14 @@ const addSceneAnimations = () => {
       .to('.project-animation-amplifyit .video-grid-b-l', 1, { visibility: 'visible', scale: 1 }, 1.5)
       .to('.project-animation-amplifyit .video-grid-b-m', 1, { visibility: 'visible', scale: 1 }, 1.75)
       .to('.project-animation-amplifyit .video-grid-b-r', 1, { visibility: 'visible', scale: 1 }, 2),
-    kioskElements: new TimelineLite()
-      .fromTo('.project-animation-samsung .kiosks', 1, { y: '100%' }, { y: '0%' }),
+    samsungElements: new TimelineLite()
+      .fromTo('.project-animation-samsung .kiosks', 1, { y: '100%' }, { y: '0%' })
+      .fromTo('.project-animation-samsung .kiosk-left-wrapper', 1, { y: '10%' }, { y: '0%' }, 0)
+      .fromTo('.project-animation-samsung .kiosk-right-wrapper', 1, { y: '-10%' }, { y: '0%' }, 0),
+    graberElements: new TimelineLite()
+      .fromTo('.project-animation-graber .devices', 1, { y: '100%' }, { y: '0%' }),
+    // .fromTo('.project-animation-samsung .kiosk-left-wrapper', 1, { y: '10%' }, { y: '0%' }, 0)
+    // .fromTo('.project-animation-samsung .kiosk-right-wrapper', 1, { y: '-10%' }, { y: '0%' }, 0),
   };
 
   // Intro
@@ -64,7 +70,7 @@ const addSceneAnimations = () => {
   }).setTween(timelines.introOutro)
     .addTo(controller);
 
-  // AmplifyIt
+  // Verizon
   new ScrollMagic.Scene({
     triggerElement: '.project-animation-amplifyit',
     duration: 1500,
@@ -87,7 +93,7 @@ const addSceneAnimations = () => {
   new ScrollMagic.Scene({
     triggerElement: '.project-animation-amplifyit',
     duration: 800,
-  }).setTween(timelines.ampElements)
+  }).setTween(timelines.verizonElements)
     .addTo(controller);
 
   // Samsung
@@ -107,7 +113,7 @@ const addSceneAnimations = () => {
   new ScrollMagic.Scene({
     triggerElement: '.project-animation-samsung',
     duration: 1200,
-  }).setTween(timelines.kioskElements)
+  }).setTween(timelines.samsungElements)
     .addTo(controller);
 
   // Graber
@@ -115,7 +121,27 @@ const addSceneAnimations = () => {
     triggerElement: '.project-animation-graber',
     duration: 1200,
   }).setClassToggle('.project-animation-graber', 'in-focus')
-    .setPin('.project-animation-graber .section-content')
+    .addTo(controller);
+
+  new ScrollMagic.Scene({
+    triggerElement: '.project-animation-graber',
+    duration: 1000,
+    triggerHook: 0,
+  }).setPin('.project-animation-graber .section-content')
+    .addTo(controller);
+
+  new ScrollMagic.Scene({
+    triggerElement: '.project-animation-graber',
+    duration: 1200,
+  }).setTween(timelines.graberElements)
+    .addTo(controller);
+
+  // Outro
+  new ScrollMagic.Scene({
+    triggerElement: '.project-animation-outro',
+    duration: 1200,
+  }).setClassToggle('.project-animation-outro', 'in-focus')
+    // .setPin('.project-animation-graber .section-content')
     .addTo(controller);
 };
 

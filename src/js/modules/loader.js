@@ -18,6 +18,7 @@ const onLoadComplete = () => {
 
   setTimeout(() => {
     body.classList.remove('site-loaded');
+    scrollIndicator.classList.add('animate-loop');
     addSceneAnimations();
   }, 2000);
 };
@@ -30,7 +31,7 @@ const update = () => {
   div.parentNode.appendChild(img);
   div.parentNode.removeChild(div);
   assetLoadedCt += 1;
-  console.log(`${(assetLoadedCt / assetsToLoad.length) * 100}%`);
+  // console.log(`${(assetLoadedCt / assetsToLoad.length) * 100}%`);
   loadingBars.style.transform = `rotate(0) scaleX(${assetLoadedCt / assetsToLoad.length})`;
   if (assetLoadedCt === assetsToLoad.length) {
     onLoadComplete();
@@ -43,8 +44,6 @@ const load = () => {
   window.scrollTo(0, 0);
   addIntroLoadAnimation();
   update();
-  // [].map.call(itemsToLoad, (div) => {
-  // });
 };
 
 export default load;

@@ -1,8 +1,53 @@
 .project-animation-graber {
-  height: 95rem;
+  height: 80rem;
 
   .fixed-bg {
     background: rgb(148, 161, 135);
     background: linear-gradient(0deg, rgba(136, 190, 199, 1) 0%, rgba(148, 161, 135, 1) 100%);
   }
+
+  .devices {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    left: 0;
+    position: absolute;
+    width: 100%;
+  }
+
+  .laptop-wrapper {
+    margin-top: 10%;
+    position: relative;
+    will-change: transform;
+  }
+
+  .laptop {
+    height: auto;
+    max-width: 63.3rem;
+    position: relative;
+    width: translate-width(633);
+    z-index: 2;
+  }
+
+  .laptop-shadow {
+    //
+    z-index: 1;
+  }
+}
+
+.project-details-graber {
+  background: rgba(148, 161, 135, .75);
+  background: linear-gradient(0deg, rgba(136, 190, 199, .75) 0%, rgba(148, 161, 135, .75) 100%);
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+
+.graber-logo {
+  background-image: url('../images/graber/graber-logo.svg');
+  height: 2.5rem;
+  width: 14.9rem;
+}
+
+.project-logo.graber-logo {
+  margin-top: 2rem;
 }
