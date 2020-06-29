@@ -51,8 +51,8 @@ const addSceneAnimations = () => {
       .fromTo('.project-animation-samsung .kiosk-right-wrapper', 1, { y: '-10%' }, { y: '0%' }, 0),
     graberElements: new TimelineLite()
       .fromTo('.project-animation-graber .devices', 1, { y: '100%' }, { y: '0%' }),
-    // .fromTo('.project-animation-samsung .kiosk-left-wrapper', 1, { y: '10%' }, { y: '0%' }, 0)
-    // .fromTo('.project-animation-samsung .kiosk-right-wrapper', 1, { y: '-10%' }, { y: '0%' }, 0),
+    graberScreenContent: new TimelineLite()
+      .fromTo('.project-animation-graber .laptop .screen-content', 1, { y: '0%' }, { y: '-60%' }),
   };
 
   // Intro
@@ -125,15 +125,22 @@ const addSceneAnimations = () => {
 
   new ScrollMagic.Scene({
     triggerElement: '.project-animation-graber',
-    duration: 1000,
+    duration: 400,
     triggerHook: 0,
   }).setPin('.project-animation-graber .section-content')
     .addTo(controller);
 
   new ScrollMagic.Scene({
     triggerElement: '.project-animation-graber',
-    duration: 1200,
+    duration: 800,
   }).setTween(timelines.graberElements)
+    .addTo(controller);
+
+  new ScrollMagic.Scene({
+    triggerElement: '.project-animation-graber',
+    offset: 350,
+    duration: 1200,
+  }).setTween(timelines.graberScreenContent)
     .addTo(controller);
 
   // Outro

@@ -1,5 +1,13 @@
 .project-animation-graber {
-  height: 80rem;
+  height: 55rem;
+
+  @include breakpoint(sm) {
+    height: 78rem;
+  }
+
+  @include breakpoint(md) {
+    height: 85rem;
+  }
 
   .fixed-bg {
     background: rgb(148, 161, 135);
@@ -11,27 +19,80 @@
     flex-direction: row;
     justify-content: center;
     left: 0;
+    padding: 0 2rem;
     position: absolute;
     width: 100%;
   }
 
   .laptop-wrapper {
-    margin-top: 10%;
+    margin-top: 40%;
     position: relative;
     will-change: transform;
+
+    @include breakpoint(sm) {
+      margin-top: 16%;
+    }
+
+    @include breakpoint(md) {
+      margin-top: 8%;
+    }
   }
 
   .laptop {
     height: auto;
     max-width: 63.3rem;
     position: relative;
-    width: translate-width(633);
+    width: 100%;
     z-index: 2;
+
+    .screen-content-wrapper {
+      height: 100%;
+      left: 50%;
+      max-width: 51.6rem;
+      position: absolute;
+      top: 3.55%;
+      transform: translateX(-50%);
+      width: 81.52%;
+    }
+
+    .screen-content-wrapper-inner {
+      // background: $black;
+      height: 0;
+      left: 0;
+      overflow: hidden;
+      padding-top: 63.95%;
+      position: absolute;
+      top: 0;
+      width: 100%;
+
+      .screen-content {
+        height: auto;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+      }
+    }
   }
 
   .laptop-shadow {
-    //
+    bottom: -2.5%;
+    height: auto;
+    left: 0;
+    opacity: .5;
+    position: absolute;
+    width: 100%;
+    will-change: transform;
     z-index: 1;
+
+    img {
+      bottom: 0;
+      left: 50%;
+      max-width: 60.4rem;
+      position: absolute;
+      transform: translateX(-50%);
+      width: 100%;
+    }
   }
 }
 

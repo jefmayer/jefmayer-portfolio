@@ -16,3 +16,27 @@
   margin: 2rem auto 0;
   width: 7.5rem;
 }
+
+.nav-menu-btn {
+  background: transparent;
+  border: 0;
+  float: right;
+  margin-top: -3.5rem;
+  outline: none;
+
+  .menu-btn-dot {
+    background: $white;
+    border-radius: 50%;
+    display: block;
+    height: .3rem;
+    width: .3rem;
+  }
+
+  > span:nth-child(2) {
+    transform: translateY(.3rem);
+  }
+
+  > span:nth-child(3) {
+    transform: translateY(.6rem);
+  }
+}
