@@ -18,25 +18,52 @@
 }
 
 .nav-menu-btn {
+  align-items: flex-end;
   background: transparent;
   border: 0;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
   float: right;
-  margin-top: -3.5rem;
+  margin-top: -6.5rem;
   outline: none;
+  padding: 3rem 1.5rem;
+  width: 7.5rem;
 
   .menu-btn-dot {
     background: $white;
-    border-radius: 50%;
+    border-radius: .15rem;
     display: block;
     height: .3rem;
+    transform-origin: right;
+    transition: transform .2s linear, width .2s linear;
     width: .3rem;
   }
 
   > span:nth-child(2) {
     transform: translateY(.3rem);
+    transition-delay: .0625s;
   }
 
   > span:nth-child(3) {
     transform: translateY(.6rem);
+    transition-delay: .125s;
+  }
+
+  &:hover {
+
+    > span:nth-child(1) {
+      width: 1.5rem;
+    }
+
+    > span:nth-child(2) {
+      transform: translate(-.2rem, .3rem);
+      width: 1.5rem;
+    }
+
+    > span:nth-child(3) {
+      transform: translate(-.4rem, .6rem);
+      width: 1.5rem;
+    }
   }
 }

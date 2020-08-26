@@ -1,0 +1,23 @@
+.project-animation-oovoo {
+  height: 55rem;
+
+  @include breakpoint(sm) {
+    height: 78rem;
+  }
+
+  @include breakpoint(md) {
+    height: 85rem;
+  }
+
+  .fixed-bg {
+    background: rgb(238, 131, 0);
+    background: linear-gradient(0deg, rgba(238, 175, 0, 1) 0%, rgba(238, 131, 0, 1) 100%);
+  }
+}
+
+.project-details-oovoo {
+  background: rgba(238, 131, 0, .75);
+  background: linear-gradient(0deg, rgba(238, 175, 0, .75) 0%, rgba(238, 131, 0, .75) 100%);
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}

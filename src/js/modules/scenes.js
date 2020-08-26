@@ -36,7 +36,7 @@ const addSceneAnimations = () => {
       .fromTo('.project-animation-amplifyit .beats-headphones-wrapper', 1, { visibility: 'hidden', y: '120%' }, { visibility: 'visible', y: '0%' }, 0.25) // 400 (height: 153)
       .to('.project-animation-amplifyit .beats-headphones-shadow', 1, { scale: 1, y: 0, opacity: 1 }, 0.5),
     videoGrid: new TimelineLite()
-      .to('.project-animation-amplifyit .video-grid-t-l', 1, { visibility: 'visible', scale: 1 })
+      .to('.project-animation-amplifyit .video-grid-t-l', 1, { visibility: 'visible', scale: 1 }, 0)
       .to('.project-animation-amplifyit .video-grid-t-m', 1, { visibility: 'visible', scale: 1 }, 0.25)
       .to('.project-animation-amplifyit .video-grid-t-r', 1, { visibility: 'visible', scale: 1 }, 0.5)
       .to('.project-animation-amplifyit .video-grid-m-l', 1, { visibility: 'visible', scale: 1 }, 0.75)
@@ -44,15 +44,21 @@ const addSceneAnimations = () => {
       .to('.project-animation-amplifyit .video-grid-m-r', 1, { visibility: 'visible', scale: 1 }, 1.25)
       .to('.project-animation-amplifyit .video-grid-b-l', 1, { visibility: 'visible', scale: 1 }, 1.5)
       .to('.project-animation-amplifyit .video-grid-b-m', 1, { visibility: 'visible', scale: 1 }, 1.75)
-      .to('.project-animation-amplifyit .video-grid-b-r', 1, { visibility: 'visible', scale: 1 }, 2),
+      .to('.project-animation-amplifyit .video-grid-b-r', 1, { visibility: 'visible', scale: 1 }, 2)
+      .fromTo('.project-animation-amplifyit .video-grid', 3, { rotateX: '0deg' }, { rotateX: '-20deg' }, 0.5),
     samsungElements: new TimelineLite()
       .fromTo('.project-animation-samsung .kiosks', 1, { y: '100%' }, { y: '0%' })
       .fromTo('.project-animation-samsung .kiosk-left-wrapper', 1, { y: '10%' }, { y: '0%' }, 0)
-      .fromTo('.project-animation-samsung .kiosk-right-wrapper', 1, { y: '-10%' }, { y: '0%' }, 0),
+      .fromTo('.project-animation-samsung .kiosk-right-wrapper', 1, { y: '-10%' }, { y: '0%' }, 0)
+      .fromTo('.project-animation-samsung .kiosk-left-wrapper .kiosk-ux-bg', 0.5, { opacity: 0 }, { opacity: 1 }, 0.5)
+      .fromTo('.project-animation-samsung .kiosk-left-wrapper .kiosk-ux-ui', 0.5, { opacity: 0, y: 30 }, { opacity: 1, y: 0 }, 0.75),
     graberElements: new TimelineLite()
-      .fromTo('.project-animation-graber .devices', 1, { y: '100%' }, { y: '0%' }),
+      .fromTo('.project-animation-graber .devices', 1, { y: '100%' }, { y: '0%' })
+      .fromTo('.project-animation-graber .tablet-wrapper', 1, { y: '40%' }, { y: '0%' }, 0)
+      .fromTo('.project-animation-graber .tablet-shadow', 1, { opacity: 0, scale: 0.5 }, { opacity: 0.5, scale: 1 }, 0.25),
     graberScreenContent: new TimelineLite()
-      .fromTo('.project-animation-graber .laptop .screen-content', 1, { y: '0%' }, { y: '-60%' }),
+      .fromTo('.project-animation-graber .laptop .screen-content', 1.5, { y: '0%' }, { y: '-60%' })
+      .fromTo('.project-animation-graber .tablet .screen-content', 2, { y: '0%' }, { y: '-60%' }, 0),
   };
 
   // Intro
@@ -99,13 +105,13 @@ const addSceneAnimations = () => {
   // Samsung
   new ScrollMagic.Scene({
     triggerElement: '.project-animation-samsung',
-    duration: 1800,
+    duration: 1500,
   }).setClassToggle('.project-animation-samsung', 'in-focus')
     .addTo(controller);
 
   new ScrollMagic.Scene({
     triggerElement: '.project-animation-samsung',
-    duration: 1000,
+    duration: 500,
     triggerHook: 0,
   }).setPin('.project-animation-samsung .section-content')
     .addTo(controller);
@@ -119,7 +125,7 @@ const addSceneAnimations = () => {
   // Graber
   new ScrollMagic.Scene({
     triggerElement: '.project-animation-graber',
-    duration: 1200,
+    duration: 1300,
   }).setClassToggle('.project-animation-graber', 'in-focus')
     .addTo(controller);
 
@@ -141,6 +147,20 @@ const addSceneAnimations = () => {
     offset: 350,
     duration: 1200,
   }).setTween(timelines.graberScreenContent)
+    .addTo(controller);
+
+  // ooVoo
+  new ScrollMagic.Scene({
+    triggerElement: '.project-animation-oovoo',
+    duration: 1200,
+  }).setClassToggle('.project-animation-oovoo', 'in-focus')
+    .addTo(controller);
+
+  new ScrollMagic.Scene({
+    triggerElement: '.project-animation-oovoo',
+    duration: 400,
+    triggerHook: 0,
+  }).setPin('.project-animation-oovoo .section-content')
     .addTo(controller);
 
   // Outro

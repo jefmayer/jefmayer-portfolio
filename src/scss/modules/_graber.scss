@@ -25,7 +25,7 @@
   }
 
   .laptop-wrapper {
-    margin-top: 40%;
+    margin-top: 10%;
     position: relative;
     will-change: transform;
 
@@ -89,6 +89,78 @@
       bottom: 0;
       left: 50%;
       max-width: 60.4rem;
+      position: absolute;
+      transform: translateX(-50%);
+      width: 100%;
+    }
+  }
+
+  .tablet-wrapper {
+    display: none;
+    position: relative;
+    will-change: transform;
+
+    @include breakpoint(sm) {
+      display: block;
+      margin-top: 19%;
+    }
+
+    @include breakpoint(md) {
+      margin-top: 10.5%;
+    }
+  }
+
+  .tablet {
+    height: auto;
+    max-width: 21.9rem;
+    position: relative;
+    width: 100%;
+    z-index: 2;
+
+    .tablet-content-wrapper {
+      height: 100%;
+      left: 50%;
+      max-width: 19.7rem;
+      position: absolute;
+      top: 10.78%;
+      transform: translateX(-50%);
+      width: 89.95%;
+    }
+
+    .tablet-content-wrapper-inner {
+      // background: $black;
+      height: 0;
+      left: 0;
+      overflow: hidden;
+      padding-top: 133%;
+      position: absolute;
+      top: 0;
+      width: 100%;
+
+      .screen-content {
+        height: auto;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+      }
+    }
+  }
+
+  .tablet-shadow {
+    bottom: 2.5%;
+    height: auto;
+    left: 0;
+    opacity: .5;
+    position: absolute;
+    width: 100%;
+    will-change: transform;
+    z-index: 1;
+
+    img {
+      bottom: 0;
+      left: 50%;
+      max-width: 23.6rem;
       position: absolute;
       transform: translateX(-50%);
       width: 100%;

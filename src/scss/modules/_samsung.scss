@@ -1,12 +1,12 @@
 .project-animation-samsung {
   height: 80rem;
 
-  @include breakpoint(sm) {
+  /* @include breakpoint(sm) {
     height: 100rem;
-  }
+  } */
 
   @include breakpoint(md) {
-    height: 130rem;
+    height: 90rem;
   }
 
   .fixed-bg {
@@ -25,13 +25,13 @@
     > div {
       height: 100%;
       margin-top: -2%;
-      width: translate-width(294);
+      width: translate-width(282.5);
       will-change: transform;
     }
 
     .kiosk {
       height: auto;
-      max-width: 29.4rem;
+      max-width: 28.25rem;
       position: relative;
       width: 100%;
       z-index: 2;
@@ -46,7 +46,7 @@
       z-index: 1;
 
       img {
-        max-width: 29.4rem;
+        max-width: 28.25rem;
         width: 100%;
       }
     }
@@ -57,6 +57,23 @@
 
     .kiosk {
       float: right;
+      position: relative;
+    }
+
+    .kiosk-ux-wrapper {
+      height: auto;
+      left: 16.64%;
+      position: absolute;
+      top: 17.11%;
+      width: 61.24%;
+    }
+
+    .kiosk-ux {
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
     }
 
     .kiosk-shadow img {
