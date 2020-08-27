@@ -50,6 +50,10 @@ const addSceneAnimations = () => {
       .fromTo('.project-animation-samsung .kiosks', 1, { y: '100%' }, { y: '0%' })
       .fromTo('.project-animation-samsung .kiosk-left-wrapper', 1, { y: '10%' }, { y: '0%' }, 0)
       .fromTo('.project-animation-samsung .kiosk-right-wrapper', 1, { y: '-10%' }, { y: '0%' }, 0)
+      .fromTo('.project-animation-samsung .kiosk-right-wrapper .kiosk-ux-bg', 0.5, { opacity: 0 }, { opacity: 1 }, 0.25)
+      .fromTo('.project-animation-samsung .kiosk-right-wrapper .kiosk-ux-ui-1', 0.5, { opacity: 0, y: 30 }, { opacity: 1, y: 0 }, 0.5)
+      .fromTo('.project-animation-samsung .kiosk-right-wrapper .kiosk-ux-ui-2', 0.5, { opacity: 0, y: 30 }, { opacity: 1, y: 0 }, 0.75)
+      .fromTo('.project-animation-samsung .kiosk-right-wrapper .kiosk-ux-ui-3', 0.5, { opacity: 0, y: 30 }, { opacity: 1, y: 0 }, 1)
       .fromTo('.project-animation-samsung .kiosk-left-wrapper .kiosk-ux-bg', 0.5, { opacity: 0 }, { opacity: 1 }, 0.5)
       .fromTo('.project-animation-samsung .kiosk-left-wrapper .kiosk-ux-ui', 0.5, { opacity: 0, y: 30 }, { opacity: 1, y: 0 }, 0.75),
     graberElements: new TimelineLite()
@@ -59,6 +63,9 @@ const addSceneAnimations = () => {
     graberScreenContent: new TimelineLite()
       .fromTo('.project-animation-graber .laptop .screen-content', 1.5, { y: '0%' }, { y: '-60%' })
       .fromTo('.project-animation-graber .tablet .screen-content', 2, { y: '0%' }, { y: '-60%' }, 0),
+    /* oovooElements: new TimelineLite()
+      .fromTo('.project-animation-oovoo .site-bg', 1, { visibility: 'hidden', scale: 1 }, { visibility: 'visible', scale: 0.5 })
+      .fromTo('.project-animation-oovoo .site-hand-drawn-type', 0.5, { visibility: 'hidden', scale: 1.5, y: '-30%' }, { visibility: 'visible', scale: 0.5, y: '0%' }, 0.5), */
   };
 
   // Intro
@@ -162,6 +169,12 @@ const addSceneAnimations = () => {
     triggerHook: 0,
   }).setPin('.project-animation-oovoo .section-content')
     .addTo(controller);
+
+  /* new ScrollMagic.Scene({
+    triggerElement: '.project-animation-oovoo',
+    duration: 800,
+  }).setTween(timelines.oovooElements)
+    .addTo(controller); */
 
   // Oovoo
   // Springs Corp

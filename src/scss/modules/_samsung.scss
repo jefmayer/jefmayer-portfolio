@@ -57,23 +57,12 @@
 
     .kiosk {
       float: right;
-      position: relative;
     }
 
     .kiosk-ux-wrapper {
-      height: auto;
       left: 16.64%;
-      position: absolute;
       top: 17.11%;
       width: 61.24%;
-    }
-
-    .kiosk-ux {
-      height: 100%;
-      left: 0;
-      position: absolute;
-      top: 0;
-      width: 100%;
     }
 
     .kiosk-shadow img {
@@ -83,6 +72,30 @@
 
   .kiosk-right-wrapper {
     margin-left: 5%;
+    width: translate-width(285.5);
+
+    .kiosk-ux-wrapper {
+      left: 21.89%;
+      top: 17.11%;
+      width: 60.77%;
+    }
+  }
+
+  .kiosk {
+    position: relative;
+  }
+
+  .kiosk-ux-wrapper {
+    height: auto;
+    position: absolute;
+  }
+
+  .kiosk-ux {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
   }
 }
 

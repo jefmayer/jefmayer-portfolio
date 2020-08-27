@@ -13,6 +13,36 @@
     background: rgb(238, 131, 0);
     background: linear-gradient(0deg, rgba(238, 175, 0, 1) 0%, rgba(238, 131, 0, 1) 100%);
   }
+
+  .site-graphics {
+    border: 1px dotted #f00;
+    height: 32.6rem;
+    margin: 0 auto;
+    max-width: 42.5rem;
+    position: relative;
+    width: 90%;
+  }
+
+  .site-bg {
+    height: 100%;
+    max-width: 96rem;
+    position: absolute;
+    top: 0;
+    transform-origin: center;
+    width: 100%;
+  }
+
+  .site-hand-drawn-type-wrapper {
+    height: auto;
+    left: 50%;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transform-origin: center;
+    width: 65.31%;
+    z-index: 1;
+  }
 }
 
 .project-details-oovoo {

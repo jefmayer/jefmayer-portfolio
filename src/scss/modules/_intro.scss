@@ -82,13 +82,17 @@
     height: 0;
     left: 50%;
     overflow: hidden;
-    padding-top: 130%;
+    padding-top: 200%;
     position: absolute;
     top: 50%;
     transform: translate(-50%, -50%);
     transform-origin: center;
     width: 100%;
     z-index: 1;
+
+    @media (min-width: 360px) {
+      padding-top: 130%;
+    }
 
     @include breakpoint(sm) {
       padding-top: 100%;
@@ -147,15 +151,24 @@
 
 $delay: .25;
 
+.scroll-indicator-animation-wrapper {
+  transform: scale(.8);
+  transition: transform .15s ease-out;
+
+  @include breakpoint(sm) {
+    transform: scale(1);
+  }
+}
+
 .scroll-indicator-animation {
   height: 6rem;
   left: 50%;
-  margin: 1rem auto 0;
+  margin: 2rem auto 0;
   position: absolute;
   transform: translateX(-50%);
   width: 6rem;
 
-  @include breakpoint(sm) {
+  @include breakpoint(xs) {
     margin-top: 3rem;
   }
 
