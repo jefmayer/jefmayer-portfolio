@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Jef Mayer</title>
-    <meta name="description" content="Jef Mayer is a developer/designer in Chicago" />
+    <meta name="description" content="Jef Mayer is a Tucson-based developer/designer" />
     <link href="https://fonts.googleapis.com/css?family=Muli:200,300,500,900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="css/main.v1.0-1.min.css" />
   </head>
@@ -13,11 +13,16 @@
     <div class="site-wrapper">
       <header class="header">
         <div class="header-logo"></div>
-        <button class="nav-menu-btn">
-          <span class="menu-btn-dot"></span>
-          <span class="menu-btn-dot"></span>
-          <span class="menu-btn-dot"></span>
-        </button>
+        <nav>
+          <div class="nav-menu-overlay"></div>
+          <button class="nav-menu-btn">
+            <span class="menu-dot nav-dot menu-dot-top"></span>
+            <span class="menu-dot"></span>
+            <span class="menu-dot nav-dot menu-dot-mid"></span>
+            <span class="menu-dot"></span>
+            <span class="menu-dot nav-dot menu-dot-btm"></span>
+          </button>
+        </nav>
       </header>
       <!-- Intro -->
       <section class="project-animation project-animation-intro">
@@ -61,40 +66,31 @@
             <div class="video-grid-wrapper">
               <div class="video-grid">
                 <div class="video-grid-item video-grid-t-l">
-                  <!--<div class="add-site-img" data-src="images/amplifyit/a-video-grid-t-l.png"></div>-->
-                  <div class="add-site-img" data-src="images/amplifyit/a-video-grid-t-l.gif"></div>
+                  <div class="add-site-img" data-src="images/amplifyit/a-video-grid-t-l.gif" data-lores-src="images/amplifyit/a-video-grid-t-l.png"></div>
                 </div>
                 <div class="video-grid-item video-grid-t-m">
-                  <!--<div class="add-site-img" data-src="images/amplifyit/video-grid-t-m.png"></div>-->
-                  <div class="add-site-img" data-src="images/amplifyit/a-video-grid-t-m.gif"></div>
+                  <div class="add-site-img" data-src="images/amplifyit/a-video-grid-t-m.gif" data-lores-src="images/amplifyit/video-grid-t-m.png"></div>
                 </div>
                 <div class="video-grid-item video-grid-t-r">
-                  <!--<div class="add-site-img" data-src="images/amplifyit/video-grid-t-r.png"></div>-->
-                  <div class="add-site-img" data-src="images/amplifyit/a-video-grid-t-r.gif"></div>
+                  <div class="add-site-img" data-src="images/amplifyit/a-video-grid-t-r.gif" data-lores-src="images/amplifyit/video-grid-t-r.png"></div>
                 </div>
                 <div class="video-grid-item video-grid-m-l">
-                  <!--<div class="add-site-img" data-src="images/amplifyit/video-grid-m-l.png"></div>-->
-                  <div class="add-site-img" data-src="images/amplifyit/a-video-grid-m-l.gif"></div>
+                  <div class="add-site-img" data-src="images/amplifyit/a-video-grid-m-l.gif" data-lores-src="images/amplifyit/video-grid-m-l.png"></div>
                 </div>
                 <div class="video-grid-item video-grid-m-m">
-                  <!--<div class="add-site-img" data-src="images/amplifyit/video-grid-m-m.png"></div>-->
-                  <div class="add-site-img" data-src="images/amplifyit/a-video-grid-m-m.gif"></div>
+                  <div class="add-site-img" data-src="images/amplifyit/a-video-grid-m-m.gif" data-lores-src="images/amplifyit/video-grid-m-m.png"></div>
                 </div>
                 <div class="video-grid-item video-grid-m-r">
-                  <!--<div class="add-site-img" data-src="images/amplifyit/video-grid-m-r.png"></div>-->
-                  <div class="add-site-img" data-src="images/amplifyit/a-video-grid-m-r.gif"></div>
+                  <div class="add-site-img" data-src="images/amplifyit/a-video-grid-m-r.gif" data-lores-src="images/amplifyit/video-grid-m-r.png"></div>
                 </div>
                 <div class="video-grid-item video-grid-b-l">
-                  <!--<div class="add-site-img" data-src="images/amplifyit/video-grid-b-l.png"></div>-->
-                  <div class="add-site-img" data-src="images/amplifyit/a-video-grid-b-l.gif"></div>
+                  <div class="add-site-img" data-src="images/amplifyit/a-video-grid-b-l.gif" data-lores-src="images/amplifyit/video-grid-b-m.png"></div>
                 </div>
                 <div class="video-grid-item video-grid-b-m">
-                  <!--<div class="add-site-img" data-src="images/amplifyit/video-grid-b-m.png"></div>-->
-                  <div class="add-site-img" data-src="images/amplifyit/a-video-grid-b-m.gif"></div>
+                  <div class="add-site-img" data-src="images/amplifyit/a-video-grid-b-m.gif" data-lores-src="images/amplifyit/video-grid-b-m.png"></div>
                 </div>
                 <div class="video-grid-item video-grid-b-r">
-                  <!--<div class="add-site-img" data-src="images/amplifyit/video-grid-b-r.png"></div>-->
-                  <div class="add-site-img" data-src="images/amplifyit/a-video-grid-b-r.gif"></div>
+                  <div class="add-site-img" data-src="images/amplifyit/a-video-grid-b-r.gif" data-lores-src="images/amplifyit/video-grid-b-r.png"></div>
                 </div>
               </div>
             </div>
@@ -172,6 +168,17 @@
               <div class="kiosk-right-wrapper">
                 <div class="kiosk">
                   <div class="add-site-img" data-src="images/samsung/kiosk-right.png"></div>
+                  <div class="kiosk-ux-wrapper">
+                    <div class="kiosk-ux kiosk-ux-default">
+                      <!--<div class="add-site-img" data-src="images/samsung/kiosk-right-ux-default.png"></div>-->
+                    </div>
+                    <div class="kiosk-ux kiosk-ux-bg">
+                      <!--<div class="add-site-img" data-src="images/samsung/kiosk-right-ux-bg.png"></div>-->
+                    </div>
+                    <div class="kiosk-ux kiosk-ux-ui">
+                      <!--<div class="add-site-img" data-src="images/samsung/kiosk-right-ux-ui.png"></div>-->
+                    </div>
+                  </div>
                 </div>
                 <div class="kiosk-shadow">
                   <div class="add-site-img" data-src="images/samsung/kiosk-right-shadow.png"></div>
@@ -272,8 +279,8 @@
       <section class="project-details project-details-oovoo">
         <div class="project-details-inner">
           <div class="project-title">
-            <h2 class="heading-lg">Consumer + Developer Websites</h2>
-            <div class="project-logo graber-logo"></div>
+            <h2 class="heading-lg"><strong>Oovoo</strong>Brand + SDK Websites</h2>
+            <div class="project-logo oovoo-logo"></div>
           </div>
           <div class="project-overview">
             <h3 class="heading-sm">Overview</h3>
@@ -285,7 +292,9 @@
           </div>
         </div>
       </section>
+      <!-- Springs Corp -->
       <!-- Trainspotted -->
+      <!-- Tumblr -->
       <!-- Outro -->
       <section class="project-animation project-animation-outro">
         <div class="fixed-bg"></div>

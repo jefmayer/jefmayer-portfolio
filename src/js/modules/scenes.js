@@ -163,7 +163,9 @@ const addSceneAnimations = () => {
   }).setPin('.project-animation-oovoo .section-content')
     .addTo(controller);
 
-  // Outro
+  // Oovoo
+  // Springs Corp
+  // Outro (Tumblr Site)
   new ScrollMagic.Scene({
     triggerElement: '.project-animation-outro',
     duration: 1200,

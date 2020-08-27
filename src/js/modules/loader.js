@@ -26,6 +26,7 @@ const onLoadComplete = () => {
 const update = () => {
   const div = assetsToLoad[assetLoadedCt];
   const img = document.createElement('img');
+  // Check for screen-size/device? to determine whether to load data-lores-asset
   img.src = div.getAttribute('data-src');
   img.className = 'site-asset';
   div.parentNode.appendChild(img);
@@ -37,7 +38,9 @@ const update = () => {
     onLoadComplete();
     return;
   }
-  update();
+  img.addEventListener('load', () => {
+    update();
+  });
 };
 
 const load = () => {
