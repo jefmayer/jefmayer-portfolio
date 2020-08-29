@@ -63,9 +63,17 @@ const addSceneAnimations = () => {
     graberScreenContent: new TimelineLite()
       .fromTo('.project-animation-graber .laptop .screen-content', 1.5, { y: '0%' }, { y: '-60%' })
       .fromTo('.project-animation-graber .tablet .screen-content', 2, { y: '0%' }, { y: '-60%' }, 0),
-    /* oovooElements: new TimelineLite()
-      .fromTo('.project-animation-oovoo .site-bg', 1, { visibility: 'hidden', scale: 1 }, { visibility: 'visible', scale: 0.5 })
-      .fromTo('.project-animation-oovoo .site-hand-drawn-type', 0.5, { visibility: 'hidden', scale: 1.5, y: '-30%' }, { visibility: 'visible', scale: 0.5, y: '0%' }, 0.5), */
+    oovooElements: new TimelineLite()
+      .fromTo('.project-animation-oovoo .site-bg', 1, { visibility: 'hidden', scale: 3, y: '-30%', borderRadius: 0 }, { visibility: 'visible', scale: 1, y: '0%', borderRadius: 4 })
+      .fromTo('.project-animation-oovoo .site-hand-drawn-type', 0.5, { visibility: 'hidden', scale: 5 }, { visibility: 'visible', scale: 1 }, 0.3)
+      .fromTo('.project-animation-oovoo .screen-content-wrapper', 0.5, { visibility: 'hidden', opacity: 0 }, { visibility: 'visible', opacity: 1 })
+      .fromTo('.project-animation-oovoo .device-form-factor', 0.5, { visibility: 'hidden', opacity: 0 }, { visibility: 'visible', opacity: 1 }, 0.3)
+      .fromTo('.project-animation-oovoo .screen-content', 1.5, { y: '0%' }, { y: '-80%' }, 1.4)
+      .fromTo('.project-animation-oovoo .device-form-factor', 0.5, { scaleX: 1, scaleY: 1, rotate: '0deg' }, { scaleX: 0.2913, scaleY: 0.76, rotate: '90deg' }, 1.75)
+      .fromTo('.project-animation-oovoo .site-bg', 0.5, { visibility: 'visible' }, { visibility: 'hidden' }, 1.75)
+      .fromTo('.project-animation-oovoo .site-hand-drawn-type', 0.5, { visibility: 'visible' }, { visibility: 'hidden' }, 1.75)
+      .fromTo('.project-animation-oovoo .screen-content-wrapper', 0.5, { scaleX: 1, scaleY: 1, rotate: '0deg' }, { scaleX: 0.2759, scaleY: 0.773, rotate: '90deg' }, 1.75)
+      .fromTo('.project-animation-oovoo .device-wrapper', 0.5, { y: '0%' }, { y: '-25%' }, 1.75),
   };
 
   // Intro
@@ -159,26 +167,66 @@ const addSceneAnimations = () => {
   // ooVoo
   new ScrollMagic.Scene({
     triggerElement: '.project-animation-oovoo',
-    duration: 1200,
+    duration: 1100,
   }).setClassToggle('.project-animation-oovoo', 'in-focus')
     .addTo(controller);
 
   new ScrollMagic.Scene({
     triggerElement: '.project-animation-oovoo',
-    duration: 400,
+    duration: 500,
     triggerHook: 0,
   }).setPin('.project-animation-oovoo .section-content')
     .addTo(controller);
 
-  /* new ScrollMagic.Scene({
+  new ScrollMagic.Scene({
     triggerElement: '.project-animation-oovoo',
-    duration: 800,
+    duration: 1000,
   }).setTween(timelines.oovooElements)
-    .addTo(controller); */
+    .addTo(controller);
 
-  // Oovoo
   // Springs Corp
-  // Outro (Tumblr Site)
+  new ScrollMagic.Scene({
+    triggerElement: '.project-animation-swfcorp',
+    duration: 1000,
+  }).setClassToggle('.project-animation-swfcorp', 'in-focus')
+    .addTo(controller);
+
+  new ScrollMagic.Scene({
+    triggerElement: '.project-animation-swfcorp',
+    duration: 500,
+    triggerHook: 0,
+  }).setPin('.project-animation-swfcorp .section-content')
+    .addTo(controller);
+
+  // Trainspotted
+  new ScrollMagic.Scene({
+    triggerElement: '.project-animation-trainspotted',
+    duration: 1000,
+  }).setClassToggle('.project-animation-trainspotted', 'in-focus')
+    .addTo(controller);
+
+  new ScrollMagic.Scene({
+    triggerElement: '.project-animation-trainspotted',
+    duration: 500,
+    triggerHook: 0,
+  }).setPin('.project-animation-trainspotted .section-content')
+    .addTo(controller);
+
+  // Tumblr
+  new ScrollMagic.Scene({
+    triggerElement: '.project-animation-tumblr',
+    duration: 1000,
+  }).setClassToggle('.project-animation-tumblr', 'in-focus')
+    .addTo(controller);
+
+  new ScrollMagic.Scene({
+    triggerElement: '.project-animation-tumblr',
+    duration: 500,
+    triggerHook: 0,
+  }).setPin('.project-animation-tumblr .section-content')
+    .addTo(controller);
+
+  // Outro
   new ScrollMagic.Scene({
     triggerElement: '.project-animation-outro',
     duration: 1200,

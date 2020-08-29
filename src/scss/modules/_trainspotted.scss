@@ -1,0 +1,15 @@
+.project-animation-trainspotted {
+  height: 55rem;
+
+  .fixed-bg {
+    background: rgb(201, 201, 185);
+    background: linear-gradient(0deg, rgba(201, 201, 185, 1) 0%, rgba(229, 229, 217, 1) 100%);
+  }
+}
+
+.project-details-trainspotted {
+  background: rgba(201, 201, 185, .75);
+  background: linear-gradient(0deg, rgba(201, 201, 185, .75) 0%, rgba(229, 229, 217, .75) 100%);
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}

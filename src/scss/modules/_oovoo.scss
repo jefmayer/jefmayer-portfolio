@@ -2,11 +2,11 @@
   height: 55rem;
 
   @include breakpoint(sm) {
-    height: 78rem;
+    height: 65rem;
   }
 
   @include breakpoint(md) {
-    height: 85rem;
+    height: 70rem;
   }
 
   .fixed-bg {
@@ -14,21 +14,20 @@
     background: linear-gradient(0deg, rgba(238, 175, 0, 1) 0%, rgba(238, 131, 0, 1) 100%);
   }
 
-  .site-graphics {
-    border: 1px dotted #f00;
+  .device-wrapper {
     height: 32.6rem;
-    margin: 0 auto;
-    max-width: 42.5rem;
+    margin: 15% auto 0;
+    max-width: 43.5rem;
     position: relative;
     width: 90%;
   }
 
   .site-bg {
-    height: 100%;
-    max-width: 96rem;
+    height: auto;
     position: absolute;
     top: 0;
     transform-origin: center;
+    visibility: hidden;
     width: 100%;
   }
 
@@ -40,8 +39,76 @@
     top: 50%;
     transform: translate(-50%, -50%);
     transform-origin: center;
-    width: 65.31%;
+    visibility: hidden;
+    width: 71.02%;
     z-index: 1;
+  }
+
+  .screen-content-wrapper {
+    border-radius: .4rem;
+    height: 100%;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    transform-origin: center;
+    visibility: hidden;
+    width: 100%;
+    z-index: 1;
+  }
+
+  .device-form-factor {
+    height: 107.36%;
+    left: -2.875%;
+    max-height: 35rem; // 76% for phone transformation
+    max-width: 46rem; // 29.13% for phone transformation
+    min-height: 26.6rem;
+    min-width: 13.4rem;
+    opacity: 0;
+    position: absolute;
+    top: -3.68%;
+    transform-origin: center;
+    visibility: hidden;
+    width: 105.75%;
+
+    .device-shadow {
+      height: 110%;
+      left: -5%;
+      opacity: .7;
+      position: absolute;
+      top: -10%;
+      width: 110%;
+    }
+
+    .device-frame {
+      background-color: rgb(238, 126, 23);
+      border-radius: 1.2rem;
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+
+    .tablet-volume-button {
+      background-color: rgb(238, 126, 23);
+      border-radius: .2rem;
+      height: 1.14%;
+      left: 6.52%;
+      position: absolute;
+      top: -.57%;
+      width: 4.35%;
+    }
+
+    .tablet-power-button {
+      background-color: rgb(238, 126, 23);
+      border-radius: .2rem;
+      height: 5.71%;
+      left: -.435%;
+      position: absolute;
+      top: 5.71%;
+      width: .87%;
+    }
   }
 }
 

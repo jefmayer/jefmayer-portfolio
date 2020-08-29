@@ -43,10 +43,12 @@ const load = () => {
       update();
     });
   };
-
-  window.scrollTo(0, 0);
   addIntroLoadAnimation();
   update();
+  // Reset window to top
+  setTimeout(() => {
+    window.scroll(0, 0);
+  }, 250);
 };
 
 export default load;

@@ -19,11 +19,9 @@
 
   strong {
     font-weight: 500;
-    padding-right: .25em;
 
-    @include breakpoint(lg) {
+    @include breakpoint(md) {
       display: block;
-      padding-right: 0;
     }
   }
 }

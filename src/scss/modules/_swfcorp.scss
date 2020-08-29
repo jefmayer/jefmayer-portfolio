@@ -1,0 +1,15 @@
+.project-animation-swfcorp {
+  height: 55rem;
+
+  .fixed-bg {
+    background: rgb(2, 47, 97);
+    background: linear-gradient(0deg, rgba(105, 197, 231, 1) 0%, rgba(2, 47, 97, 1) 100%);
+  }
+}
+
+.project-details-swfcorp {
+  background: rgba(2, 47, 97, .75);
+  background: linear-gradient(0deg, rgba(105, 197, 231, .75) 0%, rgba(2, 47, 97, .75) 100%);
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
