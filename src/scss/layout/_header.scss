@@ -17,6 +17,53 @@
   width: 7.5rem;
 }
 
+.nav-menu-overlay {
+  background: $black;
+  height: 100vh;
+  opacity: .75;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform .2s linear;
+  transition-delay: .2s;
+  width: 41rem;
+  will-change: transform;
+  z-index: 3;
+}
+
+.nav-menu {
+  display: none;
+  flex-direction: column;
+  position: fixed;
+  right: 0;
+  top: 7rem;
+  transform-origin: right;
+  width: 41rem;
+  z-index: 4;
+
+  button {
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    height: 12rem;
+    margin: 0;
+    outline: none;
+    padding: 0;
+    width: 100%;
+
+    > span {
+      color: $white;
+      display: block;
+      text-align: right;
+      width: 100%;
+    }
+  }
+}
+
 .nav-menu-btn {
   align-items: flex-end;
   background: transparent;
@@ -27,14 +74,12 @@
   float: right;
   margin-top: -6.5rem;
   outline: none;
-  padding: 3rem 1.5rem;
+  padding: 3rem 2.5rem 3rem .5rem;
+  position: relative;
   width: 7.5rem;
+  z-index: 5;
 
-  .nav-dot:not(.menu-dot) {
-    display: none;
-  }
-
-  .nav-dot {
+  .nav-btn-dot {
     background: $white;
     border-radius: .15rem;
     display: block;
@@ -44,28 +89,66 @@
     width: .3rem;
   }
 
-  .menu-dot-mid {
+  .nav-dot-mid {
     transform: translateY(.3rem);
     transition-delay: .0625s;
   }
 
-  .menu-dot-btm {
+  .nav-dot-btm {
     transform: translateY(.6rem);
     transition-delay: .125s;
   }
 
+  .nav-label {
+    color: $white;
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 900;
+    letter-spacing: .12em;
+    margin-top: .1rem;
+    overflow: hidden;
+    position: absolute;
+    right: 3rem;
+    text-transform: uppercase;
+    // top: 0;
+    transition: width .2s linear;
+    width: 0;
+  }
+
+  .nav-close-btn {
+    height: 1.8rem;
+    position: absolute;
+    right: 2.2rem;
+    top: 3.3rem;
+    transform: rotate(45deg);
+    transform-origin: center;
+    width: 1.8rem;
+  }
+
+  .nav-dot-left {
+    transform: rotate(90deg) translate(.1rem, 0) scale(0);
+    transform-origin: center;
+    width: 1.8rem;
+  }
+
+  .nav-dot-right {
+    transform: translate(0, -.15rem) scale(0);
+    transform-origin: center;
+    width: 1.8rem;
+  }
+
   &:hover {
 
-    .menu-dot-top {
+    .nav-dot-top {
       width: 1.5rem;
     }
 
-    .menu-dot-mid {
+    .nav-dot-mid {
       transform: translate(-.2rem, .3rem);
       width: 1.5rem;
     }
 
-    .menu-dot-btm {
+    .nav-dot-btm {
       transform: translate(-.4rem, .6rem);
       width: 1.5rem;
     }
@@ -73,18 +156,71 @@
 
   &:active {
 
-    .menu-dot-top {
+    .nav-dot-top {
       width: .3rem;
     }
 
-    .menu-dot-mid {
+    .nav-dot-mid {
       transform: translate(-.2rem, .3rem);
       width: .3rem;
     }
 
-    .menu-dot-btm {
+    .nav-dot-btm {
       transform: translate(-.4rem, .6rem);
       width: .3rem;
+    }
+  }
+}
+
+.nav-menu-open {
+
+  .nav-menu-overlay {
+    transform: scaleX(1);
+    transition-delay: 0s;
+  }
+
+  .nav-menu {
+    display: flex;
+  }
+
+  .nav-dot-top {
+    width: 0;
+  }
+
+  .nav-dot-mid {
+    transform: translate(-8rem, .3rem);
+    width: 25rem;
+  }
+
+  .nav-dot-btm {
+    width: 0;
+  }
+
+  .nav-label {
+    width: 100%;
+  }
+
+  .nav-dot-left {
+    transform: rotate(90deg) translate(.1rem, 0) scale(1);
+  }
+
+  .nav-dot-right {
+    transform: translate(0, -.15rem) scale(1);
+  }
+
+  .nav-menu-btn:hover {
+
+    .nav-dot-top {
+      width: 0;
+    }
+
+    .nav-dot-mid {
+      transform: translate(-8rem, .3rem);
+      width: 25rem;
+    }
+
+    .nav-dot-btm {
+      width: 0;
     }
   }
 }

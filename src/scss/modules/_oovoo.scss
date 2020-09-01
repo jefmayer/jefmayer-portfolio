@@ -27,7 +27,6 @@
     position: absolute;
     top: 0;
     transform-origin: center;
-    visibility: hidden;
     width: 100%;
   }
 
@@ -39,7 +38,6 @@
     top: 50%;
     transform: translate(-50%, -50%);
     transform-origin: center;
-    visibility: hidden;
     width: 71.02%;
     z-index: 1;
   }

@@ -19,8 +19,6 @@ module.exports = {
       watch: './src/js/**/*.js',
       mainJs: {
         source: [
-          './src/js/modules/loader.js',
-          './src/js/modules/scenes.js',
           './src/js/main.js',
         ],
         watch: ['./src/js/main.js', './src/js/modules/**/*.js'],

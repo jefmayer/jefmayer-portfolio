@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="discog-icon" x="0px" y="0px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+  <defs>
+  <style type="text/css">
+    .st2{fill:#f9d843;}
+  </style>
+  </defs>
+  <circle class="st2" cx="12" cy="12" r="1"/><path class="st2" d="M3.6,20.5l5.4-5.3c-0.9-0.8-1.4-2-1.4-3.3c0-2.5,2-4.5,4.5-4.5c0.9,0,1.6,0.2,2.3,0.7l3.6-6.6 C16.2,0.6,14.1,0,12,0C5.4,0,0,5.4,0,12C0,15.3,1.4,18.4,3.6,20.5z"/><path class="st2" d="M20.7,3.7L15.3,9c0.7,0.8,1.2,1.8,1.2,3c0,2.5-2,4.5-4.5,4.5c-0.7,0-1.4-0.2-1.9-0.4l-3.6,6.6 C8.1,23.5,10,24,12,24c6.6,0,12-5.4,12-12C24,8.8,22.7,5.9,20.7,3.7z"/>
+</svg>

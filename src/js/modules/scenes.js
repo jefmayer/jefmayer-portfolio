@@ -64,7 +64,9 @@ const addSceneAnimations = () => {
       .fromTo('.project-animation-graber .laptop .screen-content', 1.5, { y: '0%' }, { y: '-60%' })
       .fromTo('.project-animation-graber .tablet .screen-content', 2, { y: '0%' }, { y: '-60%' }, 0),
     oovooElements: new TimelineLite()
-      .fromTo('.project-animation-oovoo .site-bg', 1, { visibility: 'hidden', scale: 3, y: '-30%', borderRadius: 0 }, { visibility: 'visible', scale: 1, y: '0%', borderRadius: 4 })
+      .fromTo('.project-animation-oovoo .site-bg', 0.05, { opacity: 0 }, { opacity: 1 }, 0)
+      .fromTo('.project-animation-oovoo .site-bg', 1, { visibility: 'hidden', scale: 3, borderRadius: 0 }, { visibility: 'visible', scale: 1, borderRadius: 4 }, 0)
+      .fromTo('.project-animation-oovoo .site-hand-drawn-type', 0.05, { opacity: 0 }, { opacity: 1 }, 0.3)
       .fromTo('.project-animation-oovoo .site-hand-drawn-type', 0.5, { visibility: 'hidden', scale: 5 }, { visibility: 'visible', scale: 1 }, 0.3)
       .fromTo('.project-animation-oovoo .screen-content-wrapper', 0.5, { visibility: 'hidden', opacity: 0 }, { visibility: 'visible', opacity: 1 })
       .fromTo('.project-animation-oovoo .device-form-factor', 0.5, { visibility: 'hidden', opacity: 0 }, { visibility: 'visible', opacity: 1 }, 0.3)
@@ -224,14 +226,6 @@ const addSceneAnimations = () => {
     duration: 500,
     triggerHook: 0,
   }).setPin('.project-animation-tumblr .section-content')
-    .addTo(controller);
-
-  // Outro
-  new ScrollMagic.Scene({
-    triggerElement: '.project-animation-outro',
-    duration: 1200,
-  }).setClassToggle('.project-animation-outro', 'in-focus')
-    // .setPin('.project-animation-graber .section-content')
     .addTo(controller);
 };
 
