@@ -4,6 +4,7 @@ const menu = () => {
   const body = document.querySelector('body');
   const menuActiveClass = 'nav-menu-open';
   const menuAnimatelass = 'nav-menu-animate';
+  const navHightlight = document.querySelector('.nav-highlight');
 
   const removeActiveClass = () => {
     body.classList.remove(menuAnimatelass);
@@ -36,6 +37,18 @@ const menu = () => {
       removeActiveClass();
     }
   });
+
+  [].map.call(document.querySelectorAll('.nav-menu button'), btn => (
+    btn.addEventListener('mouseover', () => {
+      navHightlight.style.top = `${btn.offsetTop}px`;
+      navHightlight.classList.add('active');
+    })
+  ));
+  [].map.call(document.querySelectorAll('.nav-menu button'), btn => (
+    btn.addEventListener('mouseout', () => {
+      navHightlight.classList.remove('active');
+    })
+  ));
 };
 
 export default menu;
