@@ -5,6 +5,7 @@ const menu = () => {
   const menuActiveClass = 'nav-menu-open';
   const menuAnimatelass = 'nav-menu-animate';
   const navHightlight = document.querySelector('.nav-highlight');
+  const sectionNavItems = document.querySelectorAll('.nav-menu button');
 
   const removeActiveClass = () => {
     body.classList.remove(menuAnimatelass);
@@ -36,15 +37,19 @@ const menu = () => {
     if (window.pageYOffset < 565 && body.classList.contains(menuActiveClass)) {
       removeActiveClass();
     }
+    // Add active state to nav item based on scroll position
+    for (let i = sectionNavItems.length - 1; i >= 0; i--) { /* eslint-disable-line no-plusplus */
+      //
+    }
   });
 
-  [].map.call(document.querySelectorAll('.nav-menu button'), btn => (
+  [].map.call(sectionNavItems, btn => (
     btn.addEventListener('mouseover', () => {
       navHightlight.style.top = `${btn.offsetTop}px`;
       navHightlight.classList.add('active');
     })
   ));
-  [].map.call(document.querySelectorAll('.nav-menu button'), btn => (
+  [].map.call(sectionNavItems, btn => (
     btn.addEventListener('mouseout', () => {
       navHightlight.classList.remove('active');
     })

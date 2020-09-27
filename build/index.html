@@ -41,11 +41,27 @@
                 <span class="heading-xs">Role</span>
                 <span class="body-sm">Lead Designer<br />Front-end Developer</span>
               </button>
-              <button class="scene-navigation-btn" data-scene-name="samsung">
+              <button class="scene-navigation-btn" data-scene-name="swfcorp">
                 <span class="heading-md">Springs</span>
                 <span class="body-regular">Corporate Website</span>
                 <span class="heading-xs">Role</span>
                 <span class="body-sm">Creative Director<br />Lead Developer</span>
+              </button>
+              <button class="scene-navigation-btn" data-scene-name="trainspotted">
+                <span class="heading-md">Trainspotted</span>
+                <span class="body-regular">React App</span>
+                <span class="heading-xs">Role</span>
+                <span class="body-sm">Javascript Developer</span>
+              </button>
+              <button class="scene-navigation-btn" data-scene-name="tumblr">
+                <span class="heading-md">Personal Site</span>
+                <span class="body-regular">Tumblr Infographics</span>
+                <span class="heading-xs">Role</span>
+                <span class="body-sm">Javascript Developer</span>
+              </button>
+              <button class="scene-navigation-btn" data-scene-name="about">
+                <span class="heading-md">About</span>
+                <span class="body-regular">Skills & Clients</span>
               </button>
             </div>
           </div>
@@ -58,6 +74,10 @@
             <span class="nav-close-btn">
               <span class="nav-btn-dot nav-dot-left"></span>
               <span class="nav-btn-dot nav-dot-right"></span>
+              <span class="nav-btn-dot nav-dot-top-left"></span>
+              <span class="nav-btn-dot nav-dot-top-right"></span>
+              <span class="nav-btn-dot nav-dot-btm-left"></span>
+              <span class="nav-btn-dot nav-dot-btm-right"></span>
             </span>
           </button>
         </nav>
@@ -322,6 +342,7 @@
           <div class="content-wrapper">
             <div class="device-wrapper">
               <div class="site-graphics">
+                <!-- Will want to wrap form factor and vertical/horz wrappers -->
                 <div class="device-form-factor">
                   <div class="device-shadow">
                     <div class="add-site-img" data-src="images/oovoo/device-shadow.png"></div>
@@ -341,13 +362,13 @@
                     <div class="add-site-img" data-src="images/oovoo/site-hand-drawn-type.png"></div>
                   </div>
                 </div>
-                <div class="screen-content-wrapper">
-                <div class="screen-content-wrapper-inner">
-                  <div class="screen-content">
-                    <div class="add-site-img" data-src="images/oovoo/screen-content.jpg"></div>
+                <div class="screen-content-horz-wrapper">
+                  <div class="screen-content-wrapper-inner">
+                    <div class="screen-content">
+                      <div class="add-site-img" data-src="images/oovoo/screen-content.jpg"></div>
+                    </div>
                   </div>
                 </div>
-              </div>
               </div>
             </div>
           </div>
@@ -374,7 +395,10 @@
         <div class="fixed-bg"></div>
         <div class="section-top-indicator"></div>
         <div class="section-content">
-          <div class="content-wrapper"></div>
+          <div class="content-wrapper">
+            <div class="shelf-wrapper"></div>
+            <div class="monitor-wrapper"></div>
+          </div>
         </div>
       </section>
       <section class="project-details project-details-swfcorp">
@@ -385,11 +409,11 @@
           </div>
           <div class="project-overview">
             <h3 class="heading-sm">Overview</h3>
-            <p class="body-regular">...</p>
+            <p class="body-regular">Springs corporate website had lagged behind its other business transformation efforts. They needed a new site that reflected their evolution as a modern window treatments brand that focused on customer digital experience and that appealed to new talent and investment.</p>
           </div>
           <div class="project-solution">
             <h3 class="heading-sm">Solution</h3>
-            <p class="body-regular">...</p>
+            <p class="body-regular">My team expanded the visual language of their "Best Experience" brand and migrated their SharePoint site to Episerver. New site templates allowed admins to keep content current, educating visitors about the modernization of their facilities, company culture, and community outreach.</p>
           </div>
         </div>
         <div class="project-link-wrapper">
@@ -419,13 +443,31 @@
             <p class="body-regular">...</p>
           </div>
         </div>
+        <div class="project-link-wrapper">
+          <a href="https://trainspotted.herokuapp.com/" class="project-link" target="_blank">
+            <span>
+              <span>View Site</span>
+            </span>
+          </a>
+        </div>
       </section>
       <!-- Tumblr -->
       <section class="project-animation project-animation-tumblr">
         <div class="fixed-bg"></div>
         <div class="section-top-indicator"></div>
         <div class="section-content">
-          <div class="content-wrapper"></div>
+          <div class="content-wrapper">
+            <div class="info-card"></div>
+            <div class="info-card"></div>
+            <div class="info-card"></div>
+            <div class="info-card"></div>
+            <div class="info-card"></div>
+            <div class="info-card"></div>
+            <div class="info-card"></div>
+            <div class="info-card"></div>
+            <div class="info-card"></div>
+            <div class="info-card"></div>
+          </div>
         </div>
       </section>
       <section class="project-details project-details-tumblr">
@@ -440,7 +482,7 @@
         </div>
       </section>
       <!-- Footer -->
-      <footer class="footer">
+      <footer class="footer project-animation-about">
         <div class="footer-inner">
           <h2 class="heading-lg">About</h2>
           <div class="footer-content">
@@ -462,31 +504,37 @@
             <div>
               <h3 class="heading-sm">Where I&rsquo;ve been</h3>
               <div class="flag-wrapper">
-                
+                <div class="oh-flag">
+                  <img src="images/oh-flag.svg" alt="" />
+                </div>
+                <div class="chi-flag">
+                  <img src="images/chi-flag.svg" alt="" />
+                </div>
+                <div class="az-flag current">
+                  <img src="images/az-flag.svg" alt="" />
+                </div>
               </div>
             </div>
           </div>
-          <div class="social-nav">
-            <ul>
-              <li>
-                <a href="https://www.instagram.com/modeseventyeight" target="_blank" class="instagram-link">Instagram</a>
-              </li>
-              <li>
-                <a href="https://www.strava.com/athletes/5643933" target="_blank" class="strava-link">Strava</a>
-              </li>
-              <li>
-                <a href="https://www.linkedin.com/in/jefmayer" target="_blank" class="linkedin-link">Linkedin</a>
-              </li>
-              <li>
-                <a href="https://www.discogs.com/user/mode78" target="_blank" class="discogs-link">Discogs</a>
-              </li>
-              <li>
-                <a href="https://github.com/jefmayer" target="_blank" class="github-link">Github</a>
-              </li>
-            </ul>
-          </div>
+          <ul class="social-nav">
+            <li>
+              <a href="https://www.instagram.com/modeseventyeight" target="_blank" class="instagram-link">Instagram</a>
+            </li>
+            <li>
+              <a href="https://www.strava.com/athletes/5643933" target="_blank" class="strava-link">Strava</a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/jefmayer" target="_blank" class="linkedin-link">Linkedin</a>
+            </li>
+            <li>
+              <a href="https://www.discogs.com/user/mode78" target="_blank" class="discogs-link">Discogs</a>
+            </li>
+            <li>
+              <a href="https://github.com/jefmayer" target="_blank" class="github-link">Github</a>
+            </li>
+          </ul>
           <div class="copyright-content">
-            
+            <p class="body-sm">&copy;2020 Jef Mayer</p>
           </div>
         </div>
       </footer>

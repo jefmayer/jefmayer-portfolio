@@ -174,6 +174,26 @@ $delay: .25;
   transform: translateX(-50%);
   width: 6rem;
 
+  &::after {
+    color: $white;
+    content: 'Scroll';
+    font-size: 1.1rem;
+    font-weight: 900;
+    letter-spacing: .12em;
+    opacity: 0;
+    position: absolute;
+    right: -7rem;
+    text-transform: uppercase;
+    top: calc(50% - .5rem);
+    transform: translateY(2rem);
+    transition: opacity .2s linear, transform .2s linear;
+  }
+
+  &:hover::after {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
   @include breakpoint(xs) {
     margin-top: 3rem;
   }

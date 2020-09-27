@@ -1,6 +1,5 @@
 .footer {
   background: $black;
-  height: 45rem;
   position: relative;
   width: 100%;
   z-index: 2;
@@ -30,5 +29,34 @@
 
   .heading-sm {
     color: $primary-color;
+  }
+
+  .flag-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 1rem;
+  }
+
+  .social-nav {
+    display: flex;
+    flex-direction: row;
+    margin: 5rem auto 0;
+    max-width: 30rem;
+    width: 100%;
+
+    li {
+      border: 1px dotted $white;
+      display: block;
+      height: 0;
+      overflow: hidden;
+      padding-top: 25%;
+      width: 25%;
+    }
+  }
+
+  .copyright-content {
+    margin-top: 3rem;
+    text-align: center;
   }
 }

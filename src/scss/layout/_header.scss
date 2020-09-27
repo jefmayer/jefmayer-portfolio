@@ -5,7 +5,7 @@
   top: 0;
   transform: translateY(-8rem);
   width: 100%;
-  z-index: 2;
+  z-index: 3;
 }
 
 .header-logo {
@@ -35,7 +35,8 @@
 
 .nav-menu {
   height: calc(100vh - 7em);
-  overflow: hidden;
+  // overflow: hidden;
+  overflow: scroll;
   position: fixed;
   right: 0;
   top: 7rem;
@@ -81,17 +82,33 @@
     display: flex;
     flex-direction: column;
     height: 12rem;
-    justify-content: center;
     margin: 0;
     outline: none;
-    padding: 0 2rem 0 0;
+    padding: 1rem 2rem 0 0;
+    position: relative;
     width: 100%;
+
+    .heading-md {
+
+      &::after {
+        background-color: $white;
+        border-radius: .15rem;
+        content: '';
+        height: .3rem;
+        position: absolute;
+        right: 0;
+        top: 2.2rem;
+        transform: translateX(.75rem);
+        transition: transform .15s linear;
+        width: 1.5rem;
+      }
+    }
 
     > span {
       color: $white;
       display: block;
       text-align: right;
-      transition: color .15s linear;
+      transition: color .15s linear, background-color .15s linear;
       width: 100%;
     }
 
@@ -100,10 +117,15 @@
       > span {
         color: $black;
       }
+
+      .heading-md::after {
+        background-color: $black;
+        transform: translateX(0);
+      }
     }
 
     .heading-xs {
-      margin-top: .8rem;
+      margin-top: .6rem;
     }
   }
 }
@@ -152,33 +174,73 @@
     margin-top: .1rem;
     overflow: hidden;
     position: absolute;
-    right: 3rem;
+    right: 3.2rem;
     text-transform: uppercase;
-    // top: 0;
     transition: width .2s linear;
     width: 0;
   }
 
   .nav-close-btn {
     height: 1.8rem;
+    opacity: 0;
     position: absolute;
-    right: 2.2rem;
-    top: 3.3rem;
-    transform: rotate(45deg);
+    right: 2.5rem;
+    top: 2.9rem;
     transform-origin: center;
-    width: 1.8rem;
+    transition: opacity .2s linear;
+    transition-delay: .4s;
+    width: 1.5rem;
+
+    .nav-btn-dot {
+      position: absolute;
+      transition-delay: 0s;
+    }
   }
 
   .nav-dot-left {
+    opacity: 0;
     transform: rotate(90deg) translate(.1rem, 0) scale(0);
     transform-origin: center;
     width: 1.8rem;
   }
 
   .nav-dot-right {
+    opacity: 0;
     transform: translate(0, -.15rem) scale(0);
     transform-origin: center;
     width: 1.8rem;
+  }
+
+  .nav-dot-top-left {
+    left: 0;
+    top: 0;
+    transform: rotate(51deg);
+    transform-origin: left;
+    width: .3rem;
+  }
+
+  .nav-dot-top-right {
+    right: 0;
+    top: 0;
+    transform: rotate(-40deg);
+    transform-origin: right;
+    width: .3rem;
+  }
+
+  .nav-dot-btm-left {
+    bottom: 0;
+    left: -.3rem;
+    transform: rotate(-40deg);
+    transform-origin: left;
+    width: .3rem;
+  }
+
+  .nav-dot-btm-right {
+    bottom: 0;
+    right: .3rem;
+    transform: rotate(51deg);
+    transform-origin: right;
+    width: .3rem;
   }
 
   &:hover {
@@ -249,12 +311,14 @@
     width: 100%;
   }
 
-  .nav-dot-left {
-    transform: rotate(90deg) translate(.1rem, 0) scale(1);
-  }
+  .nav-close-btn {
+    opacity: 1;
+    transition-delay: 0s;
 
-  .nav-dot-right {
-    transform: translate(0, -.15rem) scale(1);
+    .nav-btn-dot {
+      transition-delay: .4s;
+      width: 1.5rem;
+    }
   }
 
   .nav-menu-btn:hover {
@@ -270,14 +334,6 @@
 
     .nav-dot-btm {
       width: 0;
-    }
-
-    .nav-dot-left {
-      transform: rotate(90deg) translate(.1rem, 0) scale(.85);
-    }
-
-    .nav-dot-right {
-      transform: translate(0, -.15rem) scale(.85);
     }
   }
 }

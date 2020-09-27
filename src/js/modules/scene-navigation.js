@@ -12,7 +12,11 @@ const sceneNavigation = () => {
     btn.addEventListener('click', () => {
       const sceneName = btn.getAttribute('data-scene-name');
       const sceneTop = document.querySelector(`.project-animation-${sceneName}`).offsetTop;
-      const sceneOffset = document.querySelector(`.project-details-${sceneName}`).offsetHeight;
+      const sceneDetails = document.querySelector(`.project-details-${sceneName}`);
+      let sceneOffset = 0;
+      if (sceneDetails !== null) {
+        sceneOffset = sceneDetails.offsetHeight;
+      }
       // console.log(`${sceneTop}/${sceneOffset}`);
       scrollToPosition(sceneTop + sceneOffset);
     })
