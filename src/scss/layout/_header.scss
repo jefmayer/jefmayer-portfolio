@@ -151,7 +151,7 @@
     display: block;
     height: .3rem;
     transform-origin: right;
-    transition: transform .2s linear, width .2s linear;
+    transition: transform .2s linear, width .2s linear, background .2s linear;
     width: .3rem;
   }
 
@@ -322,6 +322,10 @@
   }
 
   .nav-menu-btn:hover {
+
+    .nav-btn-dot {
+      // background: $primary-color;
+    }
 
     .nav-dot-top {
       width: 0;
