@@ -36,6 +36,20 @@
     flex-direction: row;
     justify-content: space-evenly;
     margin-top: 1rem;
+
+    .current {
+      position: relative;
+
+      &::after {
+        background-color: $primary-color;
+        bottom: 0;
+        content: '';
+        height: .3rem;
+        left: 0;
+        position: absolute;
+        width: 100%;
+      }
+    }
   }
 
   .social-nav {

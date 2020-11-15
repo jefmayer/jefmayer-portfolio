@@ -68,14 +68,19 @@ const addSceneAnimations = () => {
       .fromTo('.project-animation-oovoo .site-bg', 1, { visibility: 'hidden', scale: 3, borderRadius: 0 }, { visibility: 'visible', scale: 1, borderRadius: 4 }, 0)
       .fromTo('.project-animation-oovoo .site-hand-drawn-type', 0.05, { opacity: 0 }, { opacity: 1 }, 0.3)
       .fromTo('.project-animation-oovoo .site-hand-drawn-type', 0.5, { visibility: 'hidden', scale: 5 }, { visibility: 'visible', scale: 1 }, 0.3)
-      .fromTo('.project-animation-oovoo .screen-content-horz-wrapper', 0.5, { visibility: 'hidden', opacity: 0 }, { visibility: 'visible', opacity: 1 })
-      .fromTo('.project-animation-oovoo .device-form-factor', 0.5, { visibility: 'hidden', opacity: 0 }, { visibility: 'visible', opacity: 1 }, 0.3)
+      .fromTo('.project-animation-oovoo .screen-content-tablet-wrapper', 0.5, { visibility: 'hidden', opacity: 0 }, { visibility: 'visible', opacity: 1 })
+      //
+      .to('.project-animation-oovoo .site-bg', 0.5, { opacity: 0 })
+      .to('.project-animation-oovoo .site-hand-drawn-type', 0.5, { opacity: 0 })
+      //
+      .fromTo('.project-animation-oovoo .tablet-device-form-factor', 0.5, { visibility: 'hidden', opacity: 0 }, { visibility: 'visible', opacity: 1 }, 0.3)
       .fromTo('.project-animation-oovoo .screen-content', 1.5, { y: '0%' }, { y: '-80%' }, 1.4)
-      .fromTo('.project-animation-oovoo .device-form-factor', 0.5, { scaleX: 1, scaleY: 1, rotate: '0deg' }, { scaleX: 0.2913, scaleY: 0.76, rotate: '90deg' }, 1.75)
+      .fromTo('.project-animation-oovoo .tablet-device-form-factor', 0.5, { x: '0%' }, { x: '-30%' }, 1.75)
       .fromTo('.project-animation-oovoo .site-bg', 0.5, { visibility: 'visible' }, { visibility: 'hidden' }, 1.75)
       .fromTo('.project-animation-oovoo .site-hand-drawn-type', 0.5, { visibility: 'visible' }, { visibility: 'hidden' }, 1.75)
-      .fromTo('.project-animation-oovoo .screen-content-horz-wrapper', 0.5, { scaleX: 1, scaleY: 1, rotate: '0deg' }, { scaleX: 0.2759, scaleY: 0.773, rotate: '90deg' }, 1.75)
-      .fromTo('.project-animation-oovoo .device-wrapper', 0.5, { y: '0%' }, { y: '-25%' }, 1.75),
+      .fromTo('.project-animation-oovoo .screen-content-horz-wrapper', 0.5, { x: '0%' }, { x: '-32.875%' }, 1.75)
+      .fromTo('.project-animation-oovoo .device-wrapper', 0.5, { y: '0%' }, { y: '-25%' }, 1.75)
+      .fromTo('.project-animation-oovoo .phone-device-form-factor', 0.5, { visibility: 'hidden', opacity: 0, x: '0%' }, { visibility: 'visible', opacity: 1, x: '100%' }, 1.75),
   };
 
   // Intro

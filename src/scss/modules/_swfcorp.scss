@@ -5,6 +5,85 @@
     background: rgb(2, 47, 97);
     background: linear-gradient(0deg, rgba(105, 197, 231, 1) 0%, rgba(2, 47, 97, 1) 100%);
   }
+
+  .devices {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    left: 0;
+    padding: 0 2rem;
+    perspective: 100rem;
+    position: absolute;
+    width: 100%;
+  }
+
+  .monitor-left-wrapper,
+  .monitor-right-wrapper {
+    height: 39.8rem;
+    position: relative;
+    width: 53.5rem;
+  }
+
+  .perspective-content {
+    height: 100%;
+    width: 100%;
+  }
+
+  .monitor-left-wrapper {
+
+    .perspective-content {
+      transform: rotateX(-2deg) rotateY(50deg) rotateZ(-2deg);
+    }
+  }
+
+  .monitor-right-wrapper {
+
+    .perspective-content {
+      transform: rotateX(-2deg) rotateY(-50deg) rotateZ(2deg);
+    }
+  }
+
+  .device-frame {
+    background-color: rgb(158, 214, 229);
+    border-radius: 2rem;
+    height: 100%;
+    left: 0;
+    opacity: .5;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+  .device-frame-bottom {
+    background-color: rgb(158, 214, 229);
+    border-radius: 0 0 2rem 2rem;
+    bottom: 0;
+    height: 15.58%;
+    left: 0;
+    opacity: .5;
+    position: absolute;
+    width: 100%;
+  }
+
+  .screen-content-wrapper {
+    background-color: $white;
+    height: 76.38%;
+    left: 50%;
+    position: absolute;
+    top: 4.27%;
+    transform: translateX(-50%);
+    width: 94%;
+    z-index: 1;
+  }
+
+  .device-base {
+    bottom: -20%;
+    height: auto;
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+    width: 32.34%;
+  }
 }
 
 .project-details-swfcorp {

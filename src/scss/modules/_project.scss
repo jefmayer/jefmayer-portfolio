@@ -211,4 +211,27 @@
       }
     }
   }
+
+  &.inverted {
+
+    > span::before {
+      border-top-color: $dark;
+    }
+
+    > span::after {
+      border-top-color: $dark;
+    }
+
+    > span span {
+      color: $dark;
+    }
+
+    > span span::before {
+      border-bottom-color: $dark;
+    }
+  }
+}
+
+.inverted {
+  color: $dark !important; /* stylelint-disable-line declaration-no-important */
 }

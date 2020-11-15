@@ -1,5 +1,11 @@
 <!doctype html>
 <html lang="en">
+  <!--
+    Todos
+    - oovoo content
+    - screengrab corporate site content
+    - monitors... determine angle
+  -->
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
@@ -343,16 +349,31 @@
             <div class="device-wrapper">
               <div class="site-graphics">
                 <!-- Will want to wrap form factor and vertical/horz wrappers -->
-                <div class="device-form-factor">
+                <div class="tablet-device-form-factor">
                   <div class="device-shadow">
-                    <div class="add-site-img" data-src="images/oovoo/device-shadow.png"></div>
+                    <div class="add-site-img" data-src="images/oovoo/device-shadow-tablet.png"></div>
                   </div>
                   <div class="device-frame"></div>
-                  <div class="tablet-device-buttons">
+                  <div class="device-buttons">
                     <div class="tablet-volume-button"></div>
                     <div class="tablet-power-button"></div>
                   </div>
-                  <div class="phone-device-buttons"></div>
+                </div>
+                <div class="phone-device-form-factor">
+                  <div class="device-shadow">
+                    <div class="add-site-img" data-src="images/oovoo/device-shadow-phone.png"></div>
+                  </div>
+                  <div class="device-frame"></div>
+                  <div class="screen-content-wrapper">
+                    <div class="screen-content-wrapper-inner">
+                      <div class="screen-content">
+                        <div class="add-site-img" data-src="images/oovoo/screen-content-phone.jpg"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="device-buttons">
+                    <div class="add-site-img" data-src="images/oovoo/phone-tab.svg"></div>
+                  </div>
                 </div>
                 <div class="site-bg">
                   <div class="add-site-img" data-src="images/oovoo/site-bg.jpg"></div>
@@ -362,10 +383,10 @@
                     <div class="add-site-img" data-src="images/oovoo/site-hand-drawn-type.png"></div>
                   </div>
                 </div>
-                <div class="screen-content-horz-wrapper">
+                <div class="screen-content-tablet-wrapper">
                   <div class="screen-content-wrapper-inner">
                     <div class="screen-content">
-                      <div class="add-site-img" data-src="images/oovoo/screen-content.jpg"></div>
+                      <div class="add-site-img" data-src="images/oovoo/screen-content-tablet.jpg"></div>
                     </div>
                   </div>
                 </div>
@@ -397,7 +418,36 @@
         <div class="section-content">
           <div class="content-wrapper">
             <div class="shelf-wrapper"></div>
-            <div class="monitor-wrapper"></div>
+            <div class="devices">
+              <div class="monitor-left-wrapper">
+                <div class="perspective-content">
+                  <div class="device-frame"></div>
+                  <div class="device-frame-bottom"></div>
+                  <div class="screen-content-wrapper">
+                    <div class="screen-content-wrapper-inner">
+                      <div class="screen-content"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="device-base">
+                  <div class="add-site-img" data-src="images/swfcorp/device-base.svg"></div>
+                </div>
+              </div>
+              <div class="monitor-right-wrapper">
+                <div class="perspective-content">
+                  <div class="device-frame"></div>
+                  <div class="device-frame-bottom"></div>
+                  <div class="screen-content-wrapper">
+                    <div class="screen-content-wrapper-inner">
+                      <div class="screen-content"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="device-base">
+                  <div class="add-site-img" data-src="images/swfcorp/device-base.svg"></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -435,16 +485,16 @@
       <section class="project-details project-details-trainspotted">
         <div class="project-details-inner">
           <div class="project-title">
-            <h2 class="heading-lg"><strong>Trainspotted </strong>React App</h2>
+            <h2 class="heading-lg inverted"><strong>Trainspotted </strong>React App</h2>
             <div class="project-logo trainspotted-logo"></div>
           </div>
           <div class="project-overview">
-            <h3 class="heading-sm">About</h3>
-            <p class="body-regular">...</p>
+            <h3 class="heading-sm inverted">About</h3>
+            <p class="body-regular inverted">I used the Chicago freight train traffic outside my office window as the dataset for a MongoDB/React proof of concept. I wanted to get a sense of the time between repeat engine sightings, but I was found interesting observations about engine combinations, frequency, and daytime operating schedules.</p>
           </div>
         </div>
         <div class="project-link-wrapper">
-          <a href="https://trainspotted.herokuapp.com/" class="project-link" target="_blank">
+          <a href="https://trainspotted.herokuapp.com/" class="project-link inverted" target="_blank">
             <span>
               <span>View Site</span>
             </span>
