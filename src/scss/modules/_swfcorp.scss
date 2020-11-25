@@ -1,5 +1,13 @@
 .project-animation-swfcorp {
-  height: 55rem;
+  height: 80rem;
+
+  /* @include breakpoint(sm) {
+    height: 65rem;
+  } */
+
+  @include breakpoint(md) {
+    height: 100rem;
+  }
 
   .fixed-bg {
     background: rgb(2, 47, 97);
@@ -11,6 +19,7 @@
     flex-direction: row;
     justify-content: center;
     left: 0;
+    margin-top: 10%;
     padding: 0 2rem;
     perspective: 100rem;
     position: absolute;
@@ -19,14 +28,16 @@
 
   .monitor-left-wrapper,
   .monitor-right-wrapper {
-    height: 39.8rem;
+    max-width: 53.5rem;
     position: relative;
-    width: 53.5rem;
+    width: 100%;
   }
 
   .perspective-content {
-    height: 100%;
+    padding-top: 74.39%;
+    position: relative;
     width: 100%;
+    z-index: 1;
   }
 
   .monitor-left-wrapper {
@@ -40,6 +51,10 @@
 
     .perspective-content {
       transform: rotateX(-2deg) rotateY(-50deg) rotateZ(2deg);
+    }
+
+    .device-base {
+      transform: scaleX(-1) translateX(51%);
     }
   }
 
@@ -77,12 +92,13 @@
   }
 
   .device-base {
-    bottom: -20%;
+    bottom: -23%;
     height: auto;
     left: 50%;
+    opacity: .5;
     position: absolute;
     transform: translateX(-50%);
-    width: 32.34%;
+    width: 37.01%;
   }
 }
 

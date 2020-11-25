@@ -62,6 +62,10 @@
     }
   }
 
+  .body-regular {
+    hyphens: auto;
+  }
+
   .project-details-inner {
     display: flex;
     flex-direction: row;
