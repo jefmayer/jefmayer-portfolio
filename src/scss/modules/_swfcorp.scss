@@ -19,7 +19,7 @@
     flex-direction: row;
     justify-content: center;
     left: 0;
-    margin-top: 10%;
+    margin-top: 15%;
     padding: 0 2rem;
     perspective: 100rem;
     position: absolute;
@@ -84,6 +84,7 @@
     background-color: $white;
     height: 76.38%;
     left: 50%;
+    overflow: hidden;
     position: absolute;
     top: 4.27%;
     transform: translateX(-50%);

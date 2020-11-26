@@ -75,12 +75,14 @@ const addSceneAnimations = () => {
       .fromTo('.project-animation-oovoo .tablet-wrapper', 0.5, { x: '0%' }, { x: '-30%' }, 1.5)
       .fromTo('.project-animation-oovoo .site-bg', 0.5, { visibility: 'visible' }, { visibility: 'hidden' }, 1.5)
       .fromTo('.project-animation-oovoo .site-hand-drawn-type', 0.5, { visibility: 'visible' }, { visibility: 'hidden' }, 1.5)
-      .fromTo('.project-animation-oovoo .phone-wrapper', 0.5, { visibility: 'hidden', opacity: 0, x: '0%' }, { visibility: 'visible', opacity: 1, x: '150%' }, 1.5),
+      .fromTo('.project-animation-oovoo .phone-wrapper', 0.5, { visibility: 'hidden', x: '0%' }, { visibility: 'visible', x: '150%' }, 1.5),
     oovooScreenContent: new TimelineLite()
       .fromTo('.project-animation-oovoo .screen-content', 1.5, { y: '0%' }, { y: '-80%' }),
     swfcorpElements: new TimelineLite()
       .fromTo('.project-animation-swfcorp .monitor-left-wrapper', 0.5, { left: '-60%' }, { left: '0%' })
       .fromTo('.project-animation-swfcorp .monitor-right-wrapper', 0.5, { left: '60%' }, { left: '0%' }, 0),
+    swfcorpScreenContent: new TimelineLite()
+      .fromTo('.project-animation-swfcorp .screen-content', 1.5, { y: '0%' }, { y: '-80%' }),
   };
 
   // Intro
@@ -216,6 +218,13 @@ const addSceneAnimations = () => {
     triggerElement: '.project-animation-swfcorp',
     duration: 1200,
   }).setTween(timelines.swfcorpElements)
+    .addTo(controller);
+
+  new ScrollMagic.Scene({
+    triggerElement: '.project-animation-swfcorp',
+    offset: 500,
+    duration: 1300,
+  }).setTween(timelines.swfcorpScreenContent)
     .addTo(controller);
 
   // Trainspotted

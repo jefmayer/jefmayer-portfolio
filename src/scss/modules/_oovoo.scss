@@ -118,10 +118,8 @@
   .phone-wrapper {
     height: 100%;
     left: 50%;
-    // margin-top: 5.64%;
     max-height: 25.2rem;
     max-width: 12rem;
-    opacity: 0;
     position: absolute;
     transform-origin: center;
     visibility: hidden;
@@ -153,10 +151,10 @@
 
       .device-shadow {
         height: 120%;
-        left: -10%;
-        opacity: .7;
+        left: 50%;
         position: absolute;
-        top: -12%;
+        top: 50%;
+        transform: translate(-50%, -50%);
         width: 120%;
       }
 
