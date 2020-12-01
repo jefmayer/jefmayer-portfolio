@@ -1,5 +1,5 @@
 .project-animation-graber {
-  height: 55rem;
+  height: 50rem;
 
   @include breakpoint(sm) {
     height: 78rem;
@@ -25,13 +25,13 @@
   }
 
   .laptop-wrapper {
-    margin-top: 10%;
+    margin-top: 22%;
     position: relative;
     will-change: transform;
 
-    @include breakpoint(sm) {
+    /* @include breakpoint(sm) {
       margin-top: 16%;
-    }
+    } */
 
     @include breakpoint(md) {
       margin-top: 8%;
@@ -179,8 +179,4 @@
   background-image: url('../images/graber/graber-logo.svg');
   height: 2.5rem;
   width: 14.9rem;
-}
-
-.project-logo.graber-logo {
-  margin-top: 2rem;
 }

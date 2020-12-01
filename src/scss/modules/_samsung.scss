@@ -19,8 +19,13 @@
     flex-direction: row;
     justify-content: center;
     left: 0;
+    margin-top: 7rem;
     position: absolute;
     width: 100%;
+
+    @include breakpoint(md) {
+      margin-top: 0;
+    }
 
     > div {
       height: 100%;

@@ -1,9 +1,39 @@
 .project-animation-tumblr {
-  height: 55rem;
+  height: 200rem;
+
+  @include breakpoint(md) {
+    height: 130rem;
+  }
 
   .fixed-bg {
     background: rgb(216, 180, 17);
     background: linear-gradient(0deg, rgba(216, 180, 17, 1) 0%, rgba(249, 216, 67, 1) 100%);
+  }
+
+  .content-wrapper {
+    //
+  }
+
+  .info-card-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 10% auto 0;
+    max-width: 96rem;
+    width: 100%;
+  }
+
+  .info-card {
+    perspective: 100rem;
+  }
+
+  .info-card-inner {
+    background-color: $white;
+    height: 26rem;
+    margin-bottom: 1.5rem;
+    transform-style: preserve-3d;
+    width: 18rem;
   }
 }
 

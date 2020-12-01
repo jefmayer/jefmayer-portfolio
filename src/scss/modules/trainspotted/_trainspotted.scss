@@ -1,9 +1,26 @@
+@import 'variables';
+@import 'typography';
+@import 'at-a-glance';
+@import 'resightings';
+
 .project-animation-trainspotted {
   height: 55rem;
+
+  @include breakpoint(sm) {
+    height: 65rem;
+  }
+
+  @include breakpoint(md) {
+    height: 70rem;
+  }
 
   .fixed-bg {
     background: rgb(201, 201, 185);
     background: linear-gradient(0deg, rgba(201, 201, 185, 1) 0%, rgba(229, 229, 217, 1) 100%);
+  }
+
+  .data-visualization {
+    margin-top: 10%;
   }
 }
 
@@ -12,4 +29,10 @@
   background: linear-gradient(0deg, rgba(201, 201, 185, .75) 0%, rgba(229, 229, 217, .75) 100%);
   background-attachment: fixed;
   background-size: 100% 100%;
+}
+
+.trainspotted-logo {
+  background-image: url('../images/trainspotted/trainspotted-logo.svg');
+  height: 12rem;
+  width: 15rem;
 }

@@ -14,15 +14,31 @@
     background: linear-gradient(0deg, rgba(105, 197, 231, 1) 0%, rgba(2, 47, 97, 1) 100%);
   }
 
+  .content-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .shelf-wrapper {
+    margin-top: 2%;
+    width: 100%;
+
+    .shelf-inner {
+      background: linear-gradient(0deg, rgba(2, 47, 97, 0) 0%, rgba(2, 47, 97, .2) 100%);
+      height: 0;
+      margin-top: 0;
+      overflow: hidden;
+      padding-top: 12.5%;
+    }
+  }
+
   .devices {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    left: 0;
     margin-top: 15%;
     padding: 0 2rem;
     perspective: 100rem;
-    position: absolute;
     width: 100%;
   }
 
@@ -108,4 +124,10 @@
   background: linear-gradient(0deg, rgba(105, 197, 231, .75) 0%, rgba(2, 47, 97, .75) 100%);
   background-attachment: fixed;
   background-size: 100% 100%;
+}
+
+.swfcorp-logo {
+  background-image: url('../images/swfcorp/swfcorp-logo.svg');
+  height: 5.9rem;
+  width: 10.7rem;
 }

@@ -1,0 +1,92 @@
+.data-table {
+
+  .table-title {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1.5rem;
+    position: relative;
+    width: 100%;
+
+    h3 {
+      @include trainspotted-san-serif-regular;
+      font-size: .8rem;
+      letter-spacing: .05em;
+      padding: 0 .5rem;
+      position: relative;
+      text-transform: uppercase;
+    }
+
+    .title-spacing {
+      background: $trainspotted-dark;
+      height: .3rem;
+      width: auto;
+    }
+
+    .title-left-spacing {
+      width: .5rem;
+    }
+
+    .title-right-spacing {
+      width: calc(100% - 27.7rem);
+    }
+  }
+
+  .table-values-grid {
+    clear: both;
+  }
+
+  .y-axis {
+    clear: both;
+  }
+}
+
+.data-visualization {
+  width: 100%;
+
+  .data-table {
+    margin: 2rem 0;
+    min-width: calc(76.8rem - 18rem);
+  }
+
+  .y-axis-header {
+    margin-bottom: 2rem;
+    margin-left: 2rem;
+  }
+
+  .y-axis-row {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: .5rem;
+    position: relative;
+    width: 100%;
+  }
+
+  .row-label {
+    text-align: right;
+    width: 10rem;
+  }
+
+  .row-axis {
+    border-bottom: .1rem dotted $trainspotted-dark-15;
+    margin-bottom: .5rem;
+    margin-left: 1rem;
+    width: 100%;
+  }
+
+  .x-axis {
+    margin-left: 11rem;
+    width: 100%;
+  }
+
+  .data-set-values {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: calc(100% + 2rem);
+
+    li {
+      font-size: .8rem;
+    }
+  }
+}

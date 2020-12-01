@@ -9,6 +9,13 @@ const menu = () => {
 
   let activeMenuItem = '';
 
+  const sceneNames = [];
+  const sceneNavBtns = document.querySelectorAll('.nav-menu .scene-navigation-btn');
+  for (let i = 0; i < sceneNavBtns.length; i++) { /* eslint-disable-line no-plusplus */
+    sceneNames.push(sceneNavBtns[i].getAttribute('data-scene-name'));
+  }
+  // console.log(sceneNames);
+
   const removeActiveClass = () => {
     body.classList.remove(menuAnimatelass);
     setTimeout(() => {
@@ -31,30 +38,14 @@ const menu = () => {
     }
   };
 
-  menuBtn.addEventListener('click', () => {
-    updateMenuState();
-  });
-
-  window.addEventListener('scroll', () => {
-    if (window.pageYOffset < 565 && body.classList.contains(menuActiveClass)) {
-      removeActiveClass();
-    }
-    // Add active state to nav item based on scroll position
-    for (let i = sectionNavItems.length - 1; i >= 0; i--) { /* eslint-disable-line no-plusplus */
-      //
-    }
-  });
-
-  const sceneNames = [];
-  const sceneNavBtns = document.querySelectorAll('.nav-menu .scene-navigation-btn');
-  for (let i = 0; i < sceneNavBtns.length; i++) { /* eslint-disable-line no-plusplus */
-    sceneNames.push(sceneNavBtns[i].getAttribute('data-scene-name'));
-  }
-  // console.log(sceneNames);
-
   const setActiveMenuState = (btn) => {
     navHightlight.style.top = `${btn.offsetTop}px`;
     navHightlight.classList.add('active');
+    const navBtn = document.querySelector('.scene-navigation-btn.active');
+    if (navBtn) {
+      navBtn.classList.remove('active');
+    }
+    btn.classList.add('active');
   };
 
   const getSceneOffsetPos = (sceneName) => {
@@ -67,8 +58,11 @@ const menu = () => {
     return sceneTop; // + sceneOffset;
   };
 
-  window.addEventListener('scroll', () => {
+  const onWindowScroll = () => {
     // console.log(`ypos: ${window.pageYOffset}`);
+    if (window.pageYOffset < 565 && body.classList.contains(menuActiveClass)) {
+      removeActiveClass();
+    }
     for (let i = sceneNames.length - 1; i >= 0; i--) { /* eslint-disable-line no-plusplus */
       if (getSceneOffsetPos(sceneNames[i]) <= window.pageYOffset) {
         // console.log(`${sceneNames[i]}: ${getSceneOffsetPos(sceneNames[i])}`);
@@ -78,6 +72,22 @@ const menu = () => {
         return;
       }
     }
+  };
+
+  const handleWindowScroll = () => {
+    setTimeout(() => {
+      if (body.classList.contains(menuActiveClass)) {
+        onWindowScroll();
+        window.addEventListener('scroll', onWindowScroll);
+      } else {
+        window.removeEventListener('scroll', onWindowScroll);
+      }
+    }, 100);
+  };
+
+  menuBtn.addEventListener('click', () => {
+    updateMenuState();
+    handleWindowScroll();
   });
 
   const scrollToPosition = (pos) => {

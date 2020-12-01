@@ -14,7 +14,12 @@
   background-size: 100% 100%;
   height: 4.3rem;
   margin: 2rem auto 0;
+  transition: background-image .2s linear;
   width: 7.5rem;
+}
+
+.inverted .header-logo {
+  background-image: url('../images/jef-logo-dark.svg');
 }
 
 .nav-menu-overlay {
@@ -126,6 +131,18 @@
 
     .heading-xs {
       margin-top: .6rem;
+    }
+  }
+
+  .active {
+
+    > span {
+      color: $black;
+    }
+
+    .heading-md::after {
+      background-color: $black;
+      transform: translateX(0);
     }
   }
 }

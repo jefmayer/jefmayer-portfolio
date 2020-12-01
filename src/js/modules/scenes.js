@@ -1,7 +1,11 @@
 /* eslint-disable no-console */
 import ScrollMagic from 'scrollmagic';
-import { TweenLite, TimelineLite } from 'gsap';
+import { TweenLite, TimelineLite, gsap } from 'gsap';
 import { ScrollMagicPluginGsap } from 'scrollmagic-plugin-gsap';
+
+gsap.config({
+  nullTargetWarn: false,
+});
 
 ScrollMagicPluginGsap(ScrollMagic, TweenLite, TimelineLite);
 TweenLite.defaultOverwrite = false;
@@ -20,7 +24,7 @@ const addIntroLoadAnimation = () => {
 const addSceneAnimations = () => {
   const timelines = {
     introRotate: new TimelineLite()
-      .fromTo('.project-animation-intro .intro-borders', { rotation: 106, scaleX: 0.75 }, { rotation: 180, scaleX: 1 })
+      .fromTo('.project-animation-intro .intro-borders', 1, { rotation: 106, scaleX: 0.75 }, { rotation: 180, scaleX: 1 })
       .fromTo('.project-animation-intro .scroll-indicator-animation', { scale: 1, opacity: 1 }, { scale: 0, opacity: 0 }, 0.1),
     introOutro: new TimelineLite()
       .to('.project-animation-intro .intro-border-top', 1, { y: '-50%' })
@@ -83,13 +87,28 @@ const addSceneAnimations = () => {
       .fromTo('.project-animation-swfcorp .monitor-right-wrapper', 0.5, { left: '60%' }, { left: '0%' }, 0),
     swfcorpScreenContent: new TimelineLite()
       .fromTo('.project-animation-swfcorp .screen-content', 1.5, { y: '0%' }, { y: '-80%' }),
+    trainspottedElements: new TimelineLite()
+      .fromTo('.project-animation-trainspotted .data-visualization', 0.5, { visibility: 'hidden', y: '100%' }, { visibility: 'visible', y: '0%' }),
+    tumblrElements: new TimelineLite()
+      .fromTo('.project-animation-tumblr .info-card-wrapper', 0.5, { visibility: 'hidden', y: '100%' }, { visibility: 'visible', y: '0%' }),
+    tumblrCards: new TimelineLite()
+      .fromTo('.project-animation-tumblr .info-card:nth-child(1) .info-card-inner', 0.5, { visibility: 'hidden', rotateX: '90deg' }, { visibility: 'visible', rotateX: '0deg' }, 0)
+      .fromTo('.project-animation-tumblr .info-card:nth-child(2) .info-card-inner', 0.5, { visibility: 'hidden', rotateX: '90deg' }, { visibility: 'visible', rotateX: '0deg' }, 0.125)
+      .fromTo('.project-animation-tumblr .info-card:nth-child(3) .info-card-inner', 0.5, { visibility: 'hidden', rotateX: '90deg' }, { visibility: 'visible', rotateX: '0deg' }, 0.25)
+      .fromTo('.project-animation-tumblr .info-card:nth-child(4) .info-card-inner', 0.5, { visibility: 'hidden', rotateX: '90deg' }, { visibility: 'visible', rotateX: '0deg' }, 0.375)
+      .fromTo('.project-animation-tumblr .info-card:nth-child(5) .info-card-inner', 0.5, { visibility: 'hidden', rotateX: '90deg' }, { visibility: 'visible', rotateX: '0deg' }, 0.5)
+      .fromTo('.project-animation-tumblr .info-card:nth-child(6) .info-card-inner', 0.5, { visibility: 'hidden', rotateX: '90deg' }, { visibility: 'visible', rotateX: '0deg' }, 0.625)
+      .fromTo('.project-animation-tumblr .info-card:nth-child(7) .info-card-inner', 0.5, { visibility: 'hidden', rotateX: '90deg' }, { visibility: 'visible', rotateX: '0deg' }, 0.75)
+      .fromTo('.project-animation-tumblr .info-card:nth-child(8) .info-card-inner', 0.5, { visibility: 'hidden', rotateX: '90deg' }, { visibility: 'visible', rotateX: '0deg' }, 0.875)
+      .fromTo('.project-animation-tumblr .info-card:nth-child(9) .info-card-inner', 0.5, { visibility: 'hidden', rotateX: '90deg' }, { visibility: 'visible', rotateX: '0deg' }, 1)
+      .fromTo('.project-animation-tumblr .info-card:nth-child(10) .info-card-inner', 0.5, { visibility: 'hidden', rotateX: '90deg' }, { visibility: 'visible', rotateX: '0deg' }, 1.125),
   };
 
   // Intro
   new ScrollMagic.Scene({
     triggerElement: '.project-animation-intro',
     duration: 300,
-    offset: 500,
+    triggerHook: 0,
   }).setTween(timelines.introRotate)
     .addTo(controller);
 
@@ -230,29 +249,54 @@ const addSceneAnimations = () => {
   // Trainspotted
   new ScrollMagic.Scene({
     triggerElement: '.project-animation-trainspotted',
-    duration: 1000,
+    duration: 1300,
   }).setClassToggle('.project-animation-trainspotted', 'in-focus')
     .addTo(controller);
 
   new ScrollMagic.Scene({
     triggerElement: '.project-animation-trainspotted',
-    duration: 500,
+    duration: 400,
     triggerHook: 0,
   }).setPin('.project-animation-trainspotted .section-content')
+    .addTo(controller);
+
+  new ScrollMagic.Scene({
+    triggerElement: '.project-animation-trainspotted',
+    duration: 1150,
+  }).setClassToggle('body', 'inverted')
+    .addTo(controller);
+
+  new ScrollMagic.Scene({
+    triggerElement: '.project-animation-trainspotted',
+    duration: 1200,
+  }).setTween(timelines.trainspottedElements)
     .addTo(controller);
 
   // Tumblr
   new ScrollMagic.Scene({
     triggerElement: '.project-animation-tumblr',
-    duration: 1000,
+    duration: 3000, // Make duration extremely long for last project, so that bg stays fixed as footer appears
   }).setClassToggle('.project-animation-tumblr', 'in-focus')
     .addTo(controller);
 
   new ScrollMagic.Scene({
     triggerElement: '.project-animation-tumblr',
-    duration: 500,
+    duration: 700,
     triggerHook: 0,
   }).setPin('.project-animation-tumblr .section-content')
+    .addTo(controller);
+
+  new ScrollMagic.Scene({
+    triggerElement: '.project-animation-tumblr',
+    duration: 1200,
+  }).setTween(timelines.tumblrElements)
+    .addTo(controller);
+
+  new ScrollMagic.Scene({
+    triggerElement: '.project-animation-tumblr',
+    duration: 600,
+    offset: 200,
+  }).setTween(timelines.tumblrCards)
     .addTo(controller);
 };
 

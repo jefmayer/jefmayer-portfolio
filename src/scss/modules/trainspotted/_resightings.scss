@@ -1,0 +1,96 @@
+.resightings-values-table {
+  position: relative;
+
+  .y-axis-row {
+    cursor: default;
+    position: relative;
+
+    .row-label,
+    .row-axis {
+      position: relative;
+      z-index: 1;
+    }
+  }
+
+  .sighting-marker {
+    -webkit-appearance: none; /* stylelint-disable-line property-no-vendor-prefix */
+    -moz-appearance: none; /* stylelint-disable-line property-no-vendor-prefix */
+    border: 0;
+    border-radius: .4rem;
+    cursor: pointer;
+    height: .8rem;
+    left: 0;
+    margin-left: -.4rem;
+    outline: none;
+    padding: 0;
+    position: absolute;
+    top: .4rem;
+    transition: left .5s ease-in-out;
+    width: .8rem;
+    z-index: 2;
+
+    &::after {
+      background: inherit;
+      border-radius: .8rem;
+      content: '';
+      height: 1.6rem;
+      left: calc(-50% - 1.2rem);
+      position: absolute;
+      top: -50%;
+      transform: scale(.15, .375);
+      transform-origin: center;
+      transition: transform .25s ease-in-out;
+      width: 4rem;
+      will-change: transform;
+    }
+
+    span {
+      @include trainspotted-san-serif-regular;
+      color: $trainspotted-white;
+      display: none;
+      left: calc(-50% - 1.2rem);
+      position: relative;
+      text-align: center;
+      top: -.1rem;
+      width: 4rem;
+      z-index: 1;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+
+    &:hover {
+
+      span {
+        display: block;
+      }
+    }
+  }
+
+  .sighting-connector {
+    height: .1rem;
+    margin-left: .4rem;
+    position: absolute;
+    top: .7rem;
+    transition: all .5s ease-in-out;
+    z-index: 1;
+  }
+
+  &.initial-state {
+
+    .sighting-marker {
+      left: 0 !important; /* stylelint-disable-line declaration-no-important */
+    }
+
+    .sighting-connector {
+      left: 0 !important; /* stylelint-disable-line declaration-no-important */
+      width: 0 !important; /* stylelint-disable-line declaration-no-important */
+    }
+  }
+}
+
+.y-axis {
+  max-height: 27rem;
+  overflow: auto;
+}
