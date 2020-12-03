@@ -22,7 +22,6 @@ const addIntroLoadAnimation = () => {
 };
 
 const addSceneAnimations = () => {
-  console.log('scenes.js, addSceneAnimations');
   const timelines = {
     introRotate: new TimelineLite()
       .fromTo('.project-animation-intro .intro-borders', 1, { rotation: 106, scaleX: 0.75 }, { rotation: 180, scaleX: 1 })
@@ -88,7 +87,8 @@ const addSceneAnimations = () => {
       .fromTo('.project-animation-swfcorp .monitor-right-wrapper', 0.5, { visibility: 'hidden', x: '10%' }, { visibility: 'visible', x: '0%' }, 0)
       .fromTo('.project-animation-swfcorp .device-base', 0.5, { visibility: 'hidden' }, { visibility: 'visible' }, 0),
     swfcorpScreenContent: new TimelineLite()
-      .fromTo('.project-animation-swfcorp .screen-content', 1.5, { y: '0%' }, { y: '-80%' }),
+      .fromTo('.project-animation-swfcorp .monitor-left-wrapper .screen-content', 2, { y: '0%' }, { y: '-65%' })
+      .fromTo('.project-animation-swfcorp .monitor-right-wrapper .screen-content', 2.5, { y: '0%' }, { y: '-65%' }, 0),
     trainspottedElements: new TimelineLite()
       .fromTo('.project-animation-trainspotted .data-visualization', 0.5, { visibility: 'hidden', y: '100%' }, { visibility: 'visible', y: '0%' }),
     tumblrElements: new TimelineLite()
@@ -216,7 +216,7 @@ const addSceneAnimations = () => {
 
   new ScrollMagic.Scene({
     triggerElement: '.project-animation-oovoo',
-    offset: 600,
+    offset: 550,
     duration: 1000,
   }).setTween(timelines.oovooScreenContent)
     .addTo(controller);
@@ -244,7 +244,7 @@ const addSceneAnimations = () => {
   new ScrollMagic.Scene({
     triggerElement: '.project-animation-swfcorp',
     offset: 300,
-    duration: 1300,
+    duration: 1400,
   }).setTween(timelines.swfcorpScreenContent)
     .addTo(controller);
 

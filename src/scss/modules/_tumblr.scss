@@ -20,12 +20,13 @@
     flex-wrap: wrap;
     justify-content: space-between;
     margin: 10% auto 0;
-    max-width: 96rem;
+    max-width: 102.4rem;
     width: 100%;
   }
 
   .info-card {
     perspective: 100rem;
+    width: calc(20% - 1.5em);
   }
 
   .info-card-inner {
@@ -33,10 +34,11 @@
     display: flex;
     flex-direction: column;
     height: 26rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.8rem;
     transform-origin: center;
     transform-style: preserve-3d;
-    width: 18rem;
+    // width: 18rem;
+    width: 100%;
 
     .card-img {
       height: 10rem;

@@ -58,10 +58,6 @@
 
   .monitor-left-wrapper {
 
-    @include breakpoint(lg) {
-      margin-left: -5%;
-    }
-
     .perspective-content {
       // transform: rotateX(-2deg) rotateY(50deg) rotateZ(-2deg);
       transform: rotateX(-1deg) rotateY(33deg) rotateZ(-5deg);
