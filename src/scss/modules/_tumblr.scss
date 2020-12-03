@@ -2,7 +2,7 @@
   height: 200rem;
 
   @include breakpoint(md) {
-    height: 130rem;
+    height: 90rem;
   }
 
   .fixed-bg {
@@ -30,10 +30,49 @@
 
   .info-card-inner {
     background-color: $white;
+    display: flex;
+    flex-direction: column;
     height: 26rem;
     margin-bottom: 1.5rem;
+    transform-origin: center;
     transform-style: preserve-3d;
     width: 18rem;
+
+    .card-img {
+      height: 10rem;
+      margin-top: 1rem;
+      width: auto;
+
+      img {
+        height: 100%;
+      }
+    }
+
+    .card-content {
+      display: flex;
+      flex-direction: column;
+      margin: .5rem 2rem 1rem;
+    }
+
+    .card-total {
+      border-bottom: .1rem solid $light-gray;
+      color: $mid-gray;
+      font-family: 'Rubik One', 'Muli', Helvetica, Arial, sans-serif;
+      font-size: 3.4rem;
+      letter-spacing: -.05em;
+      margin-bottom: .5rem;
+    }
+
+    .card-interval {
+      font-size: 1.1rem;
+      font-weight: 900;
+      margin-bottom: .2rem;
+      text-transform: uppercase;
+    }
+
+    .card-desc {
+      font-size: 1rem;
+    }
   }
 }
 

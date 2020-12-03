@@ -47,6 +47,11 @@
     position: relative;
     width: 90%;
 
+    @media (max-width: 768px) {
+      margin-top: 10%;
+      transform: translate3d(0%, 0, 0) !important; /* stylelint-disable-line declaration-no-important */
+    }
+
     .screen-content-wrapper {
       border-radius: .4rem;
       height: 100%;
@@ -116,6 +121,7 @@
   }
 
   .phone-wrapper {
+    display: none;
     height: 100%;
     left: 50%;
     max-height: 25.2rem;
@@ -124,6 +130,10 @@
     transform-origin: center;
     visibility: hidden;
     width: 100%;
+
+    @include breakpoint(md) {
+      display: block;
+    }
 
     .screen-content-wrapper {
       border-radius: .4rem;

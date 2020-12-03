@@ -1,12 +1,12 @@
 .project-animation-swfcorp {
-  height: 80rem;
+  height: 55rem;
 
-  /* @include breakpoint(sm) {
-    height: 65rem;
-  } */
-
-  @include breakpoint(md) {
+  @include breakpoint(lg) {
     height: 100rem;
+  }
+
+  .section-content {
+    padding: 0;
   }
 
   .fixed-bg {
@@ -38,13 +38,13 @@
     justify-content: center;
     margin-top: 15%;
     padding: 0 2rem;
-    perspective: 100rem;
     width: 100%;
   }
 
   .monitor-left-wrapper,
   .monitor-right-wrapper {
     max-width: 53.5rem;
+    perspective: 100rem;
     position: relative;
     width: 100%;
   }
@@ -58,15 +58,27 @@
 
   .monitor-left-wrapper {
 
+    @include breakpoint(lg) {
+      margin-left: -5%;
+    }
+
     .perspective-content {
-      transform: rotateX(-2deg) rotateY(50deg) rotateZ(-2deg);
+      // transform: rotateX(-2deg) rotateY(50deg) rotateZ(-2deg);
+      transform: rotateX(-1deg) rotateY(33deg) rotateZ(-5deg);
     }
   }
 
   .monitor-right-wrapper {
+    display: none;
+
+    @include breakpoint(lg) {
+      display: block;
+      margin-left: 5%;
+    }
 
     .perspective-content {
-      transform: rotateX(-2deg) rotateY(-50deg) rotateZ(2deg);
+      // transform: rotateX(-2deg) rotateY(-50deg) rotateZ(2deg);
+      transform: rotateX(1deg) rotateY(-33deg) rotateZ(5deg);
     }
 
     .device-base {

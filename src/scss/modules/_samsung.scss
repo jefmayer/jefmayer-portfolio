@@ -30,7 +30,7 @@
     > div {
       height: 100%;
       margin-top: -2%;
-      width: translate-width(282.5);
+      // width: translate-width(282.5);
       will-change: transform;
     }
 
@@ -58,7 +58,12 @@
   }
 
   .kiosk-left-wrapper {
-    margin-right: 5%;
+    width: 50%;
+
+    @include breakpoint(md) {
+      margin-right: 5%;
+      width: translate-width(282.5);
+    }
 
     .kiosk {
       float: right;
@@ -76,8 +81,13 @@
   }
 
   .kiosk-right-wrapper {
+    display: none;
     margin-left: 5%;
     width: translate-width(285.5);
+
+    @include breakpoint(md) {
+      display: block;
+    }
 
     .kiosk-ux-wrapper {
       left: 21.89%;

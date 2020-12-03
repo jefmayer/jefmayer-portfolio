@@ -18,8 +18,12 @@
   width: 7.5rem;
 }
 
-.inverted .header-logo {
-  background-image: url('../images/jef-logo-dark.svg');
+.project-trainspotted,
+.project-tumblr {
+
+  .header-logo {
+    background-image: url('../images/jef-logo-dark.svg');
+  }
 }
 
 .nav-menu-overlay {
