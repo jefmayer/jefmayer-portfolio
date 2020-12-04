@@ -65,8 +65,8 @@ const addSceneAnimations = () => {
       .fromTo('.project-animation-graber .tablet-wrapper', 1, { y: '40%' }, { y: '0%' }, 0)
       .fromTo('.project-animation-graber .tablet-shadow', 1, { opacity: 0, scale: 0.5 }, { opacity: 0.5, scale: 1 }, 0.25),
     graberScreenContent: new TimelineLite()
-      .fromTo('.project-animation-graber .laptop .screen-content', 1.5, { y: '0%' }, { y: '-60%' })
-      .fromTo('.project-animation-graber .tablet .screen-content', 2, { y: '0%' }, { y: '-60%' }, 0),
+      .fromTo('.project-animation-graber .laptop .screen-content', 1.5, { y: '0%' }, { y: '-70%' })
+      .fromTo('.project-animation-graber .tablet .screen-content', 2, { y: '0%' }, { y: '-70%' }, 0),
     oovooElements: new TimelineLite()
       .fromTo('.project-animation-oovoo .site-bg', 0.05, { opacity: 0 }, { opacity: 1 }, 0)
       .fromTo('.project-animation-oovoo .site-bg', 1, { visibility: 'hidden', scale: 3, borderRadius: 0 }, { visibility: 'visible', scale: 1, borderRadius: 4 }, 0)
@@ -81,7 +81,7 @@ const addSceneAnimations = () => {
       .fromTo('.project-animation-oovoo .site-hand-drawn-type', 0.5, { visibility: 'visible' }, { visibility: 'hidden' }, 1.5)
       .fromTo('.project-animation-oovoo .phone-wrapper', 0.5, { visibility: 'hidden', x: '0%' }, { visibility: 'visible', x: '150%' }, 1.5),
     oovooScreenContent: new TimelineLite()
-      .fromTo('.project-animation-oovoo .screen-content', 1.5, { y: '0%' }, { y: '-80%' }),
+      .fromTo('.project-animation-oovoo .screen-content', 1.5, { y: '0%' }, { y: '-90%' }),
     swfcorpElements: new TimelineLite()
       .fromTo('.project-animation-swfcorp .monitor-left-wrapper', 0.5, { visibility: 'hidden', x: '-10%' }, { visibility: 'visible', x: '0%' })
       .fromTo('.project-animation-swfcorp .monitor-right-wrapper', 0.5, { visibility: 'hidden', x: '10%' }, { visibility: 'visible', x: '0%' }, 0)
@@ -90,7 +90,7 @@ const addSceneAnimations = () => {
       .fromTo('.project-animation-swfcorp .monitor-left-wrapper .screen-content', 2, { y: '0%' }, { y: '-65%' })
       .fromTo('.project-animation-swfcorp .monitor-right-wrapper .screen-content', 2.5, { y: '0%' }, { y: '-65%' }, 0),
     trainspottedElements: new TimelineLite()
-      .fromTo('.project-animation-trainspotted .data-visualization', 0.5, { visibility: 'hidden', y: '100%' }, { visibility: 'visible', y: '0%' }),
+      .fromTo('.project-animation-trainspotted .data-visualization', 0.5, { visibility: 'hidden', y: '50%' }, { visibility: 'visible', y: '0%' }),
     tumblrElements: new TimelineLite()
       .fromTo('.project-animation-tumblr .info-card-wrapper', 0.5, { visibility: 'hidden', y: '40%' }, { visibility: 'visible', y: '0%' }),
     tumblrCards: new TimelineLite()
@@ -103,7 +103,17 @@ const addSceneAnimations = () => {
       .fromTo('.project-animation-tumblr .info-card:nth-child(7) .info-card-inner', 0.5, { visibility: 'hidden', rotateX: '90deg' }, { visibility: 'visible', rotateX: '0deg' }, 0.75)
       .fromTo('.project-animation-tumblr .info-card:nth-child(8) .info-card-inner', 0.5, { visibility: 'hidden', rotateX: '90deg' }, { visibility: 'visible', rotateX: '0deg' }, 0.875)
       .fromTo('.project-animation-tumblr .info-card:nth-child(9) .info-card-inner', 0.5, { visibility: 'hidden', rotateX: '90deg' }, { visibility: 'visible', rotateX: '0deg' }, 1)
-      .fromTo('.project-animation-tumblr .info-card:nth-child(10) .info-card-inner', 0.5, { visibility: 'hidden', rotateX: '90deg' }, { visibility: 'visible', rotateX: '0deg' }, 1.125),
+      .fromTo('.project-animation-tumblr .info-card:nth-child(10) .info-card-inner', 0.5, { visibility: 'hidden', rotateX: '90deg' }, { visibility: 'visible', rotateX: '0deg' }, 1.125)
+      .fromTo('.project-animation-tumblr .info-card:nth-child(1) .content-wrapper', 0.5, { opacity: 0 }, { opacity: 1 }, 0.125)
+      .fromTo('.project-animation-tumblr .info-card:nth-child(2) .content-wrapper', 0.5, { opacity: 0 }, { opacity: 1 }, 0.25)
+      .fromTo('.project-animation-tumblr .info-card:nth-child(3) .content-wrapper', 0.5, { opacity: 0 }, { opacity: 1 }, 0.375)
+      .fromTo('.project-animation-tumblr .info-card:nth-child(4) .content-wrapper', 0.5, { opacity: 0 }, { opacity: 1 }, 0.5)
+      .fromTo('.project-animation-tumblr .info-card:nth-child(5) .content-wrapper', 0.5, { opacity: 0 }, { opacity: 1 }, 0.625)
+      .fromTo('.project-animation-tumblr .info-card:nth-child(6) .content-wrapper', 0.5, { opacity: 0 }, { opacity: 1 }, 0.75)
+      .fromTo('.project-animation-tumblr .info-card:nth-child(7) .content-wrapper', 0.5, { opacity: 0 }, { opacity: 1 }, 0.875)
+      .fromTo('.project-animation-tumblr .info-card:nth-child(8) .content-wrapper', 0.5, { opacity: 0 }, { opacity: 1 }, 1)
+      .fromTo('.project-animation-tumblr .info-card:nth-child(9) .content-wrapper', 0.5, { opacity: 0 }, { opacity: 1 }, 1.125)
+      .fromTo('.project-animation-tumblr .info-card:nth-child(10) .content-wrapper', 0.5, { opacity: 0 }, { opacity: 1 }, 1.25),
   };
 
   // Intro
@@ -224,7 +234,7 @@ const addSceneAnimations = () => {
   // Springs Corp
   new ScrollMagic.Scene({
     triggerElement: '.project-animation-swfcorp',
-    duration: 1300,
+    duration: 1400,
   }).setClassToggle('.project-animation-swfcorp', 'in-focus')
     .addTo(controller);
 

@@ -14,7 +14,6 @@ const menu = () => {
   for (let i = 0; i < sceneNavBtns.length; i++) { /* eslint-disable-line no-plusplus */
     sceneNames.push(sceneNavBtns[i].getAttribute('data-scene-name'));
   }
-  // console.log(sceneNames);
 
   const removeActiveClass = () => {
     body.classList.remove(menuAnimatelass);
@@ -48,24 +47,21 @@ const menu = () => {
     btn.classList.add('active');
   };
 
-  const getSceneOffsetPos = (sceneName) => {
-    const sceneTop = document.querySelector(`.project-animation-${sceneName}`).offsetTop;
-    /* const sceneDetails = document.querySelector(`.project-details-${sceneName}`);
-    let sceneOffset = 0;
-    if (sceneDetails !== null) {
-      sceneOffset = sceneDetails.offsetHeight;
-    } */
-    return sceneTop; // + sceneOffset;
-  };
+  const getSceneStartOffsetPos = sceneName => (
+    document.querySelector(`.project-animation-${sceneName}`).offsetTop - (window.innerHeight / 2)
+  );
+
+  const getSceneOffsetPos = sceneName => (
+    document.querySelector(`.project-details-${sceneName}`).offsetTop - (window.innerHeight - document.querySelector(`.project-details-${sceneName}`).offsetHeight)
+  );
 
   const onWindowScroll = () => {
-    // console.log(`ypos: ${window.pageYOffset}`);
     if (window.pageYOffset < 565 && body.classList.contains(menuActiveClass)) {
       removeActiveClass();
     }
     for (let i = sceneNames.length - 1; i >= 0; i--) { /* eslint-disable-line no-plusplus */
-      if (getSceneOffsetPos(sceneNames[i]) <= window.pageYOffset) {
-        // console.log(`${sceneNames[i]}: ${getSceneOffsetPos(sceneNames[i])}`);
+      if (getSceneStartOffsetPos(sceneNames[i]) <= window.pageYOffset) {
+        // console.log(`${window.pageYOffset}/${getSceneStartOffsetPos(sceneNames[i])}`);
         activeMenuItem = sceneNames[i];
         const btn = document.querySelector(`.nav-menu [data-scene-name="${activeMenuItem}"]`);
         setActiveMenuState(btn);

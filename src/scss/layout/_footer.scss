@@ -77,6 +77,23 @@
         position: absolute;
         top: 0;
         width: 100%;
+
+        &::before {
+          background-color: $primary-color;
+          bottom: 0;
+          content: '';
+          height: .3rem;
+          position: absolute;
+          transform: scaleY(0);
+          transition: transform .2s linear;
+          width: 100%;
+          will-change: transform;
+        }
+
+        &:hover::before,
+        &:focus::before {
+          transform: scaleY(1);
+        }
       }
 
       .instagram-link {

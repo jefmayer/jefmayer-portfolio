@@ -10,10 +10,6 @@
     background: linear-gradient(0deg, rgba(216, 180, 17, 1) 0%, rgba(249, 216, 67, 1) 100%);
   }
 
-  .content-wrapper {
-    //
-  }
-
   .info-card-wrapper {
     display: flex;
     flex-direction: row;
@@ -80,7 +76,7 @@
 
 .project-details-tumblr {
   background: rgba(216, 180, 17, .75);
-  background: linear-gradient(0deg, rgba(216, 180, 17, .75) 0%, rgba(249, 216, 67, .75) 100%);
+  background: linear-gradient(0deg, rgba(216, 180, 17, .9) 0%, rgba(249, 216, 67, .9) 100%);
   background-attachment: fixed;
   background-size: 100% 100%;
 }
