@@ -7,6 +7,7 @@ const menu = () => {
   const navHightlight = document.querySelector('.nav-highlight');
   const sectionNavItems = document.querySelectorAll('.nav-menu button');
 
+  let navItemClicked = false;
   let activeMenuItem = '';
 
   const sceneNames = [];
@@ -56,6 +57,9 @@ const menu = () => {
   );
 
   const onWindowScroll = () => {
+    if (navItemClicked) {
+      return;
+    }
     if (window.pageYOffset < 565 && body.classList.contains(menuActiveClass)) {
       removeActiveClass();
     }
@@ -113,6 +117,12 @@ const menu = () => {
       const sceneName = btn.getAttribute('data-scene-name');
       const pos = getSceneOffsetPos(sceneName);
       scrollToPosition(pos);
+      activeMenuItem = sceneName;
+      navItemClicked = true;
+      setActiveMenuState(btn);
+      setTimeout(() => {
+        navItemClicked = false;
+      }, 1000);
     })
   ));
 };

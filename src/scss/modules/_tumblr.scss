@@ -2,7 +2,7 @@
   height: 200rem;
 
   @include breakpoint(md) {
-    height: 90rem;
+    height: 80rem;
   }
 
   .fixed-bg {
@@ -22,19 +22,48 @@
 
   .info-card {
     perspective: 100rem;
-    width: calc(20% - 1.5em);
+    width: calc(50% - 1em);
+
+    @include breakpoint(sm) {
+      width: calc(33.333% - 1.333em);
+    }
+
+    @include breakpoint(md) {
+      width: calc(20% - 1.5em);
+    }
+  }
+
+  @media (max-width: 576px) {
+
+    .info-card:nth-child(n + 5) {
+      display: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+
+    .info-card:nth-child(n + 7) {
+      display: none;
+    }
   }
 
   .info-card-inner {
     background-color: $white;
     display: flex;
     flex-direction: column;
-    height: 26rem;
+    height: 24rem;
     margin-bottom: 1.8rem;
     transform-origin: center;
     transform-style: preserve-3d;
-    // width: 18rem;
     width: 100%;
+
+    @include breakpoint(md) {
+      height: 24.5rem;
+    }
+
+    @include breakpoint(lg) {
+      height: 26rem;
+    }
 
     .card-img {
       height: 10rem;
@@ -56,9 +85,13 @@
       border-bottom: .1rem solid $light-gray;
       color: $mid-gray;
       font-family: 'Rubik One', 'Muli', Helvetica, Arial, sans-serif;
-      font-size: 3.4rem;
+      font-size: 3rem;
       letter-spacing: -.05em;
       margin-bottom: .5rem;
+
+      @include breakpoint(lg) {
+        font-size: 3.4rem;
+      }
     }
 
     .card-interval {
@@ -76,7 +109,7 @@
 
 .project-details-tumblr {
   background: rgba(216, 180, 17, .75);
-  background: linear-gradient(0deg, rgba(216, 180, 17, .9) 0%, rgba(249, 216, 67, .9) 100%);
+  background: linear-gradient(0deg, rgba(216, 180, 17, .93) 0%, rgba(249, 216, 67, .93) 100%);
   background-attachment: fixed;
   background-size: 100% 100%;
 }

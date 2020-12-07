@@ -18,14 +18,6 @@
   width: 7.5rem;
 }
 
-.project-trainspotted,
-.project-tumblr {
-
-  .header-logo {
-    background-image: url('../images/jef-logo-dark.svg');
-  }
-}
-
 .nav-menu-overlay {
   background: $black;
   height: 100vh;
@@ -301,6 +293,10 @@
 
 .nav-menu-open {
 
+  .nav-btn-dot {
+    background: $white !important; /* stylelint-disable-line declaration-no-important */
+  }
+
   .nav-menu {
     width: 41rem;
   }
@@ -344,10 +340,6 @@
 
   .nav-menu-btn:hover {
 
-    .nav-btn-dot {
-      // background: $primary-color;
-    }
-
     .nav-dot-top {
       width: 0;
     }
@@ -360,5 +352,17 @@
     .nav-dot-btm {
       width: 0;
     }
+  }
+}
+
+.project-trainspotted,
+.project-tumblr {
+
+  .header-logo {
+    background-image: url('../images/jef-logo-dark.svg');
+  }
+
+  .nav-menu-btn .nav-btn-dot {
+    background: $dark;
   }
 }

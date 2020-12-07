@@ -1,16 +1,9 @@
 /*
   TODO:
-  [ ] Add js from Tumblr site
   [ ] Host on amazon/heroku? Leaning amazon
   [ ] Add modal image/container to trainspotted animation
-  [ ] Animate out chart for trainspotted
-  [x] Fade in card content for Tumblr after flip has started
-  [ ] Responsive Tumblr...
-  [x] Write better meta description
-  [x] Springs to Trainspotted bg color
-  [ ] Fix nav hightlight so not as jumpy on click
+  [ ] Animate in the trainspotted chart
   [ ] Check device/resolution and only load in images for mobile... might need solution on resize to load additional
-  [ ] nav color should also change if inverted...
 */
 
 /* eslint-disable no-console */
