@@ -6,12 +6,16 @@
 .project-animation-trainspotted {
   height: 55rem;
 
-  @include breakpoint(sm) {
-    height: 65rem;
+  @include breakpoint(xs) {
+    height: 57rem;
   }
 
-  @include breakpoint(md) {
-    height: 70rem;
+  @include breakpoint(sm) {
+    height: 60rem;
+  }
+
+  @include breakpoint(lg) {
+    height: 66rem;
   }
 
   .fixed-bg {
@@ -21,6 +25,19 @@
 
   .data-visualization {
     margin-top: 10%;
+  }
+
+  .visualization-overlay {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+  }
+
+  .visualization-overlay-inner {
+    margin: 0 auto;
+    max-width: 45rem;
+    width: 100%;
   }
 }
 

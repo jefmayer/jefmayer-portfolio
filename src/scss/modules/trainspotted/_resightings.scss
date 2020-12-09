@@ -17,7 +17,7 @@
     -moz-appearance: none; /* stylelint-disable-line property-no-vendor-prefix */
     border: 0;
     border-radius: .4rem;
-    cursor: pointer;
+    // cursor: pointer;
     height: .8rem;
     left: 0;
     margin-left: -.4rem;
@@ -25,7 +25,7 @@
     padding: 0;
     position: absolute;
     top: .4rem;
-    transition: left .5s ease-in-out;
+    // transition: left .5s ease-in-out;
     width: .8rem;
     z-index: 2;
 
@@ -56,11 +56,11 @@
       z-index: 1;
     }
 
-    &:hover::after {
+    &.active::after {
       transform: scale(1);
     }
 
-    &:hover {
+    &.active {
 
       span {
         display: block;
@@ -73,7 +73,8 @@
     margin-left: .4rem;
     position: absolute;
     top: .7rem;
-    transition: all .5s ease-in-out;
+    transform-origin: left;
+    // transition: all .5s ease-in-out;
     z-index: 1;
   }
 

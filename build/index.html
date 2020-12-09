@@ -14,53 +14,53 @@
     <div class="site-wrapper">
       <header class="header">
         <div class="header-logo"></div>
-        <nav>
+        <nav class="site-nav" role="menubar">
           <div class="nav-menu">
             <div class="nav-highlight"></div>
             <div class="nav-menu-inner">
-              <button class="scene-navigation-btn" data-scene-name="amplifyit">
+              <button class="scene-navigation-btn" role="menuitem" data-scene-name="amplifyit">
                 <span class="heading-md">Verizon</span>
                 <span class="body-regular">AmplifyIt In-store Experience</span>
                 <span class="heading-xs">Role</span>
                 <span class="body-sm">Lead Developer</span>
               </button>
-              <button class="scene-navigation-btn" data-scene-name="samsung">
+              <button class="scene-navigation-btn" role="menuitem" data-scene-name="samsung">
                 <span class="heading-md">Samsung</span>
                 <span class="body-regular">Galaxy Share To Go Kiosk</span>
                 <span class="heading-xs">Role</span>
                 <span class="body-sm">Lead Developer</span>
               </button>
-              <button class="scene-navigation-btn" data-scene-name="graber">
+              <button class="scene-navigation-btn" role="menuitem" data-scene-name="graber">
                 <span class="heading-md">Graber</span>
                 <span class="body-regular">Graber Website + Dealer Portal</span>
                 <span class="heading-xs">Role</span>
                 <span class="body-sm">Creative Director<br />Javascript Developer</span>
               </button>
-              <button class="scene-navigation-btn" data-scene-name="oovoo">
+              <button class="scene-navigation-btn" role="menuitem" data-scene-name="oovoo">
                 <span class="heading-md">Oovoo</span>
                 <span class="body-regular">Product Website</span>
                 <span class="heading-xs">Role</span>
                 <span class="body-sm">Lead Designer<br />Front-end Developer</span>
               </button>
-              <button class="scene-navigation-btn" data-scene-name="swfcorp">
+              <button class="scene-navigation-btn" role="menuitem" data-scene-name="swfcorp">
                 <span class="heading-md">Springs</span>
                 <span class="body-regular">Corporate Website</span>
                 <span class="heading-xs">Role</span>
                 <span class="body-sm">Creative Director<br />Lead Developer</span>
               </button>
-              <button class="scene-navigation-btn" data-scene-name="trainspotted">
+              <button class="scene-navigation-btn" role="menuitem" data-scene-name="trainspotted">
                 <span class="heading-md">Trainspotted</span>
                 <span class="body-regular">React App</span>
                 <span class="heading-xs">Role</span>
                 <span class="body-sm">Javascript Developer</span>
               </button>
-              <button class="scene-navigation-btn" data-scene-name="tumblr">
+              <button class="scene-navigation-btn" role="menuitem" data-scene-name="tumblr">
                 <span class="heading-md">Personal Site</span>
                 <span class="body-regular">Tumblr Infographics</span>
                 <span class="heading-xs">Role</span>
                 <span class="body-sm">Javascript Developer</span>
               </button>
-              <button class="scene-navigation-btn" data-scene-name="about">
+              <button class="scene-navigation-btn" role="menuitem" data-scene-name="about">
                 <span class="heading-md">About</span>
                 <span class="body-regular">Skills & Clients</span>
               </button>
@@ -496,11 +496,11 @@
                     <div class="row-axis">
                       <div>
                         <button class="sighting-marker" type="button" style="background-color: rgb(195, 32, 50); left: 2.82738%;"><span>9833</span></button>
-                        <div class="sighting-connector" style="background-color: rgb(195, 32, 50);"></div>
+                        <div class="sighting-connector" style="background-color: rgb(195, 32, 50;"></div>
                       </div>
                       <div>
-                        <button class="sighting-marker" type="button" style="background-color: rgb(195, 32, 50); left: 3.57143%;"><span>9833</span></button>
-                        <div class="sighting-connector" style="background-color: rgb(195, 32, 50); left: 2.82738%; width: calc(0.744048%);"></div>
+                        <button class="sighting-marker hidden" type="button" style="background-color: rgb(195, 32, 50); left: 3.57143%;"><span>9833</span></button>
+                        <div class="sighting-connector" style="background-color: rgb(195, 32, 50); left: 2.82738%; width: 0.744048%;"></div>
                       </div>
                     </div>
                   </div>
@@ -509,15 +509,15 @@
                     <div class="row-axis">
                       <div>
                         <button class="sighting-marker" type="button" style="background-color: rgb(195, 32, 50); left: 2.97619%;"><span>8056</span></button>
-                        <div class="sighting-connector" style="background-color: rgb(195, 32, 50);"></div>
+                        <div class="sighting-connector" style="background-color: rgb(195, 32, 50;"></div>
                       </div>
                       <div>
-                        <button class="sighting-marker" type="button" style="background-color: rgb(195, 32, 50); left: 60.8631%;"><span>8056</span></button>
-                        <div class="sighting-connector" style="background-color: rgb(195, 32, 50); left: 2.97619%; width: calc(57.8869%);"></div>
+                        <button class="sighting-marker hidden" type="button" style="background-color: rgb(195, 32, 50); left: 60.8631%;"><span>8056</span></button>
+                        <div class="sighting-connector" style="background-color: rgb(195, 32, 50); left: 2.97619%; width: 57.8869%;"></div>
                       </div>
                       <div>
-                        <button class="sighting-marker" type="button" style="background-color: rgb(195, 32, 50); left: 69.1964%;"><span>8056</span></button>
-                        <div class="sighting-connector" style="background-color: rgb(195, 32, 50); left: 60.8631%; width: calc(8.33333%);"></div>
+                        <button id="active-marker-trigger" class="sighting-marker hidden" type="button" style="background-color: rgb(195, 32, 50); left: 69.1964%;"><span>8056</span></button>
+                        <div class="sighting-connector" style="background-color: rgb(195, 32, 50); left: 60.8631%; width: 8.33333%;"></div>
                       </div>
                     </div>
                   </div>
@@ -526,11 +526,11 @@
                     <div class="row-axis">
                       <div>
                         <button class="sighting-marker" type="button" style="background-color: rgb(195, 32, 50); left: 2.97619%;"><span>4452</span></button>
-                        <div class="sighting-connector" style="background-color: rgb(195, 32, 50);"></div>
+                        <div class="sighting-connector" style="background-color: rgb(195, 32, 50;"></div>
                       </div>
                       <div>
-                        <button class="sighting-marker" type="button" style="background-color: rgb(195, 32, 50); left: 49.5536%;"><span>4452</span></button>
-                        <div class="sighting-connector" style="background-color: rgb(195, 32, 50); left: 2.97619%; width: calc(46.5774%);"></div>
+                        <button class="sighting-marker hidden" type="button" style="background-color: rgb(195, 32, 50); left: 49.5536%;"><span>4452</span></button>
+                        <div class="sighting-connector" style="background-color: rgb(195, 32, 50); left: 2.97619%; width: 46.5774%;"></div>
                       </div>
                     </div>
                   </div>
@@ -539,11 +539,11 @@
                     <div class="row-axis">
                       <div>
                         <button class="sighting-marker" type="button" style="background-color: rgb(35, 31, 32); left: 3.125%;"><span>1132</span></button>
-                        <div class="sighting-connector" style="background-color: rgb(35, 31, 32);"></div>
+                        <div class="sighting-connector" style="background-color: rgb(35, 31, 32;"></div>
                       </div>
                       <div>
-                        <button class="sighting-marker" type="button" style="background-color: rgb(35, 31, 32); left: 3.42262%;"><span>1132</span></button>
-                        <div class="sighting-connector" style="background-color: rgb(35, 31, 32); left: 3.125%; width: calc(0.297619%);"></div>
+                        <button class="sighting-marker hidden" type="button" style="background-color: rgb(35, 31, 32); left: 3.42262%;"><span>1132</span></button>
+                        <div class="sighting-connector" style="background-color: rgb(35, 31, 32); left: 3.125%; width: 0.297619%;"></div>
                       </div>
                     </div>
                   </div>
@@ -552,11 +552,11 @@
                     <div class="row-axis">
                       <div>
                         <button class="sighting-marker" type="button" style="background-color: rgb(35, 31, 32); left: 3.125%;"><span>9714</span></button>
-                        <div class="sighting-connector" style="background-color: rgb(35, 31, 32);"></div>
+                        <div class="sighting-connector" style="background-color: rgb(35, 31, 32;"></div>
                       </div>
                       <div>
-                        <button class="sighting-marker" type="button" style="background-color: rgb(35, 31, 32); left: 3.42262%;"><span>9714</span></button>
-                        <div class="sighting-connector" style="background-color: rgb(35, 31, 32); left: 3.125%; width: calc(0.297619%);"></div>
+                        <button class="sighting-marker hidden" type="button" style="background-color: rgb(35, 31, 32); left: 3.42262%;"><span>9714</span></button>
+                        <div class="sighting-connector" style="background-color: rgb(35, 31, 32); left: 3.125%; width: 0.297619%;"></div>
                       </div>
                     </div>
                   </div>
@@ -565,11 +565,11 @@
                     <div class="row-axis">
                       <div>
                         <button class="sighting-marker" type="button" style="background-color: rgb(195, 32, 50); left: 3.42262%;"><span>8725</span></button>
-                        <div class="sighting-connector" style="background-color: rgb(195, 32, 50);"></div>
+                        <div class="sighting-connector" style="background-color: rgb(195, 32, 50;"></div>
                       </div>
                       <div>
-                        <button class="sighting-marker" type="button" style="background-color: rgb(195, 32, 50); left: 22.7679%;"><span>8725</span></button>
-                        <div class="sighting-connector" style="background-color: rgb(195, 32, 50); left: 3.42262%; width: calc(19.3452%);"></div>
+                        <button class="sighting-marker hidden" type="button" style="background-color: rgb(195, 32, 50); left: 22.7679%;"><span>8725</span></button>
+                        <div class="sighting-connector" style="background-color: rgb(195, 32, 50); left: 3.42262%; width: 19.3452%;"></div>
                       </div>
                     </div>
                   </div>
@@ -578,11 +578,11 @@
                     <div class="row-axis">
                       <div>
                         <button class="sighting-marker" type="button" style="background-color: rgb(136, 6, 13); left: 3.42262%;"><span>4412</span></button>
-                        <div class="sighting-connector" style="background-color: rgb(136, 6, 13);"></div>
+                        <div class="sighting-connector" style="background-color: rgb(136, 6, 13;"></div>
                       </div>
                       <div>
-                        <button class="sighting-marker" type="button" style="background-color: rgb(136, 6, 13); left: 58.631%;"><span>4412</span></button>
-                        <div class="sighting-connector" style="background-color: rgb(136, 6, 13); left: 3.42262%; width: calc(55.2083%);"></div>
+                        <button class="sighting-marker hidden" type="button" style="background-color: rgb(136, 6, 13); left: 58.631%;"><span>4412</span></button>
+                        <div class="sighting-connector" style="background-color: rgb(136, 6, 13); left: 3.42262%; width: 55.2083%;"></div>
                       </div>
                     </div>
                   </div>
@@ -591,27 +591,27 @@
                     <div class="row-axis">
                       <div>
                         <button class="sighting-marker" type="button" style="background-color: rgb(195, 32, 50); left: 3.57143%;"><span>8516</span></button>
-                        <div class="sighting-connector" style="background-color: rgb(195, 32, 50);"></div>
+                        <div class="sighting-connector" style="background-color: rgb(195, 32, 50;"></div>
                       </div>
                       <div>
-                        <button class="sighting-marker" type="button" style="background-color: rgb(195, 32, 50); left: 41.369%;"><span>8516</span></button>
-                        <div class="sighting-connector" style="background-color: rgb(195, 32, 50); left: 3.57143%; width: calc(37.7976%);"></div>
+                        <button class="sighting-marker hidden" type="button" style="background-color: rgb(195, 32, 50); left: 41.369%;"><span>8516</span></button>
+                        <div class="sighting-connector" style="background-color: rgb(195, 32, 50); left: 3.57143%; width: 37.7976%;"></div>
                       </div>
                       <div>
-                        <button class="sighting-marker" type="button" style="background-color: rgb(195, 32, 50); left: 44.1964%;"><span>8516</span></button>
-                        <div class="sighting-connector" style="background-color: rgb(195, 32, 50); left: 41.369%; width: calc(2.82738%);"></div>
+                        <button class="sighting-marker hidden" type="button" style="background-color: rgb(195, 32, 50); left: 44.1964%;"><span>8516</span></button>
+                        <div class="sighting-connector" style="background-color: rgb(195, 32, 50); left: 41.369%; width: 2.82738%;"></div>
                       </div>
                       <div>
-                        <button class="sighting-marker" type="button" style="background-color: rgb(195, 32, 50); left: 56.6964%;"><span>8516</span></button>
-                        <div class="sighting-connector" style="background-color: rgb(195, 32, 50); left: 44.1964%; width: calc(12.5%);"></div>
+                        <button class="sighting-marker hidden" type="button" style="background-color: rgb(195, 32, 50); left: 56.6964%;"><span>8516</span></button>
+                        <div class="sighting-connector" style="background-color: rgb(195, 32, 50); left: 44.1964%; width: 12.5%;"></div>
                       </div>
                       <div>
-                        <button class="sighting-marker" type="button" style="background-color: rgb(195, 32, 50); left: 61.9048%;"><span>8516</span></button>
-                        <div class="sighting-connector" style="background-color: rgb(195, 32, 50); left: 56.6964%; width: calc(5.20833%);"></div>
+                        <button class="sighting-marker hidden" type="button" style="background-color: rgb(195, 32, 50); left: 61.9048%;"><span>8516</span></button>
+                        <div class="sighting-connector" style="background-color: rgb(195, 32, 50); left: 56.6964%; width: 5.20833%;"></div>
                       </div>
                       <div>
-                        <button class="sighting-marker" type="button" style="background-color: rgb(195, 32, 50); left: 63.0952%;"><span>8516</span></button>
-                        <div class="sighting-connector" style="background-color: rgb(195, 32, 50); left: 61.9048%; width: calc(1.19048%);"></div>
+                        <button class="sighting-marker hidden" type="button" style="background-color: rgb(195, 32, 50); left: 63.0952%;"><span>8516</span></button>
+                        <div class="sighting-connector" style="background-color: rgb(195, 32, 50); left: 61.9048%; width: 1.19048%;"></div>
                       </div>
                     </div>
                   </div>
@@ -620,19 +620,19 @@
                     <div class="row-axis">
                       <div>
                         <button class="sighting-marker" type="button" style="background-color: rgb(195, 32, 50); left: 3.57143%;"><span>8546</span></button>
-                        <div class="sighting-connector" style="background-color: rgb(195, 32, 50);"></div>
+                        <div class="sighting-connector" style="background-color: rgb(195, 32, 50;"></div>
                       </div>
                       <div>
-                        <button class="sighting-marker" type="button" style="background-color: rgb(195, 32, 50); left: 4.91071%;"><span>8546</span></button>
-                        <div class="sighting-connector" style="background-color: rgb(195, 32, 50); left: 3.57143%; width: calc(1.33929%);"></div>
+                        <button class="sighting-marker hidden" type="button" style="background-color: rgb(195, 32, 50); left: 4.91071%;"><span>8546</span></button>
+                        <div class="sighting-connector" style="background-color: rgb(195, 32, 50); left: 3.57143%; width: 1.33929%;"></div>
                       </div>
                       <div>
-                        <button class="sighting-marker" type="button" style="background-color: rgb(195, 32, 50); left: 10.8631%;"><span>8546</span></button>
-                        <div class="sighting-connector" style="background-color: rgb(195, 32, 50); left: 4.91071%; width: calc(5.95238%);"></div>
+                        <button class="sighting-marker hidden" type="button" style="background-color: rgb(195, 32, 50); left: 10.8631%;"><span>8546</span></button>
+                        <div class="sighting-connector" style="background-color: rgb(195, 32, 50); left: 4.91071%; width: 5.95238%;"></div>
                       </div>
                       <div>
-                        <button class="sighting-marker" type="button" style="background-color: rgb(195, 32, 50); left: 68.1548%;"><span>8546</span></button>
-                        <div class="sighting-connector" style="background-color: rgb(195, 32, 50); left: 10.8631%; width: calc(57.2917%);"></div>
+                        <button class="sighting-marker hidden" type="button" style="background-color: rgb(195, 32, 50); left: 68.1548%;"><span>8546</span></button>
+                        <div class="sighting-connector" style="background-color: rgb(195, 32, 50); left: 10.8631%; width: 57.2917%;"></div>
                       </div>
                     </div>
                   </div>
@@ -641,11 +641,11 @@
                     <div class="row-axis">
                       <div>
                         <button class="sighting-marker" type="button" style="background-color: rgb(248, 93, 19); left: 3.57143%;"><span>5167</span></button>
-                        <div class="sighting-connector" style="background-color: rgb(248, 93, 19);"></div>
+                        <div class="sighting-connector" style="background-color: rgb(248, 93, 19;"></div>
                       </div>
                       <div>
-                        <button class="sighting-marker" type="button" style="background-color: rgb(248, 93, 19); left: 12.3512%;"><span>5167</span></button>
-                        <div class="sighting-connector" style="background-color: rgb(248, 93, 19); left: 3.57143%; width: calc(8.77976%);"></div>
+                        <button class="sighting-marker hidden" type="button" style="background-color: rgb(248, 93, 19); left: 12.3512%;"><span>5167</span></button>
+                        <div class="sighting-connector" style="background-color: rgb(248, 93, 19); left: 3.57143%; width: 8.77976%;"></div>
                       </div>
                     </div>
                   </div>
@@ -654,11 +654,11 @@
                     <div class="row-axis">
                       <div>
                         <button class="sighting-marker" type="button" style="background-color: rgb(195, 32, 50); left: 3.57143%;"><span>9836</span></button>
-                        <div class="sighting-connector" style="background-color: rgb(195, 32, 50);"></div>
+                        <div class="sighting-connector" style="background-color: rgb(195, 32, 50;"></div>
                       </div>
                       <div>
-                        <button class="sighting-marker" type="button" style="background-color: rgb(195, 32, 50); left: 67.1131%;"><span>9836</span></button>
-                        <div class="sighting-connector" style="background-color: rgb(195, 32, 50); left: 3.57143%; width: calc(63.5417%);"></div>
+                        <button class="sighting-marker hidden" type="button" style="background-color: rgb(195, 32, 50); left: 67.1131%;"><span>9836</span></button>
+                        <div class="sighting-connector" style="background-color: rgb(195, 32, 50); left: 3.57143%; width: 63.5417%;"></div>
                       </div>
                     </div>
                   </div>
@@ -667,16 +667,128 @@
                     <div class="row-axis">
                       <div>
                         <button class="sighting-marker" type="button" style="background-color: rgb(11, 118, 215); left: 3.72024%;"><span>1053</span></button>
-                        <div class="sighting-connector" style="background-color: rgb(11, 118, 215);"></div>
+                        <div class="sighting-connector" style="background-color: rgb(11, 118, 215;"></div>
                       </div>
                       <div>
-                        <button class="sighting-marker" type="button" style="background-color: rgb(11, 118, 215); left: 22.3214%;"><span>1053</span></button>
-                        <div class="sighting-connector" style="background-color: rgb(11, 118, 215); left: 3.72024%; width: calc(18.6012%);"></div>
+                        <button class="sighting-marker hidden" type="button" style="background-color: rgb(11, 118, 215); left: 22.3214%;"><span>1053</span></button>
+                        <div class="sighting-connector" style="background-color: rgb(11, 118, 215); left: 3.72024%; width: 18.6012%;"></div>
                       </div>
                       <div>
-                        <button class="sighting-marker" type="button" style="background-color: rgb(11, 118, 215); left: 25.2976%;"><span>1053</span></button>
-                        <div class="sighting-connector" style="background-color: rgb(11, 118, 215); left: 22.3214%; width: calc(2.97619%);"></div>
+                        <button class="sighting-marker hidden" type="button" style="background-color: rgb(11, 118, 215); left: 25.2976%;"><span>1053</span></button>
+                        <div class="sighting-connector" style="background-color: rgb(11, 118, 215); left: 22.3214%; width: 2.97619%;"></div>
                       </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="y-axis-row">
+                  <div class="row-label">CP, 8735</div>
+                  <div class="row-axis">
+                    <div>
+                      <button class="sighting-marker" type="button" style="background-color: rgb(195, 32, 50); left: 3.72024%;"><span>8735</span></button>
+                      <div class="sighting-connector" style="background-color: rgb(195, 32, 50;"></div>
+                    </div>
+                    <div>
+                      <button class="sighting-marker hidden" type="button" style="background-color: rgb(195, 32, 50); left: 9.97024%;"><span>8735</span></button>
+                      <div class="sighting-connector" style="background-color: rgb(195, 32, 50); left: 3.72024%; width: 6.25%;"></div>
+                    </div>
+                    <div>
+                      <button class="sighting-marker hidden" type="button" style="background-color: rgb(195, 32, 50); left: 28.2738%;"><span>8735</span></button>
+                      <div class="sighting-connector" style="background-color: rgb(195, 32, 50); left: 9.97024%; width: 18.3036%;"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="y-axis-row">
+                  <div class="row-label">CEFX, 1054</div>
+                  <div class="row-axis">
+                    <div>
+                      <button class="sighting-marker" type="button" style="background-color: rgb(11, 118, 215); left: 3.72024%;"><span>1054</span></button>
+                      <div class="sighting-connector" style="background-color: rgb(11, 118, 215;"></div>
+                    </div>
+                    <div>
+                      <button class="sighting-marker hidden" type="button" style="background-color: rgb(11, 118, 215); left: 42.5595%;"><span>1054</span></button>
+                      <div class="sighting-connector" style="background-color: rgb(11, 118, 215); left: 3.72024%; width: 38.8393%;"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="y-axis-row">
+                  <div class="row-label">CP, 8062</div>
+                  <div class="row-axis">
+                    <div>
+                      <button class="sighting-marker" type="button" style="background-color: rgb(195, 32, 50); left: 3.72024%;"><span>8062</span></button>
+                      <div class="sighting-connector" style="background-color: rgb(195, 32, 50;"></div>
+                    </div>
+                    <div>
+                      <button class="sighting-marker hidden" type="button" style="background-color: rgb(195, 32, 50); left: 48.3631%;"><span>8062</span></button>
+                      <div class="sighting-connector" style="background-color: rgb(195, 32, 50); left: 3.72024%; width: 44.6429%;"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="y-axis-row">
+                  <div class="row-label">CP, 8028</div>
+                  <div class="row-axis">
+                    <div>
+                      <button class="sighting-marker" type="button" style="background-color: rgb(195, 32, 50); left: 3.72024%;"><span>8028</span></button>
+                      <div class="sighting-connector" style="background-color: rgb(195, 32, 50;"></div>
+                    </div>
+                    <div>
+                      <button class="sighting-marker hidden" type="button" style="background-color: rgb(195, 32, 50); left: 4.91071%;"><span>8028</span></button>
+                      <div class="sighting-connector" style="background-color: rgb(195, 32, 50); left: 3.72024%; width: 1.19048%;"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="y-axis-row">
+                  <div class="row-label">CP, 8019</div>
+                  <div class="row-axis">
+                    <div>
+                      <button class="sighting-marker" type="button" style="background-color: rgb(195, 32, 50); left: 3.72024%;"><span>8019</span></button>
+                      <div class="sighting-connector" style="background-color: rgb(195, 32, 50;"></div>
+                    </div>
+                    <div>
+                      <button class="sighting-marker hidden" type="button" style="background-color: rgb(195, 32, 50); left: 4.91071%;"><span>8019</span></button>
+                      <div class="sighting-connector" style="background-color: rgb(195, 32, 50); left: 3.72024%; width: 1.19048%;"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="y-axis-row">
+                  <div class="row-label">CP, 8620</div>
+                  <div class="row-axis">
+                    <div>
+                      <button class="sighting-marker" type="button" style="background-color: rgb(195, 32, 50); left: 3.86905%;"><span>8620</span></button>
+                      <div class="sighting-connector" style="background-color: rgb(195, 32, 50;"></div>
+                    </div>
+                    <div>
+                      <button class="sighting-marker hidden" type="button" style="background-color: rgb(195, 32, 50); left: 5.95238%;"><span>8620</span></button>
+                      <div class="sighting-connector" style="background-color: rgb(195, 32, 50); left: 3.86905%; width: 2.08333%;"></div>
+                    </div>
+                    <div>
+                      <button class="sighting-marker hidden" type="button" style="background-color: rgb(195, 32, 50); left: 50.744%;"><span>8620</span></button>
+                      <div class="sighting-connector" style="background-color: rgb(195, 32, 50); left: 5.95238%; width: 44.7917%;"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="y-axis-row">
+                  <div class="row-label">CP, 8845</div>
+                  <div class="row-axis">
+                    <div>
+                      <button class="sighting-marker" type="button" style="background-color: rgb(195, 32, 50); left: 3.86905%;"><span>8845</span></button>
+                      <div class="sighting-connector" style="background-color: rgb(195, 32, 50;"></div>
+                    </div>
+                    <div>
+                      <button class="sighting-marker hidden" type="button" style="background-color: rgb(195, 32, 50); left: 9.82143%;"><span>8845</span></button>
+                      <div class="sighting-connector" style="background-color: rgb(195, 32, 50); left: 3.86905%; width: 5.95238%;"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="y-axis-row">
+                  <div class="row-label">NS, 9142</div>
+                  <div class="row-axis">
+                    <div>
+                      <button class="sighting-marker" type="button" style="background-color: rgb(35, 31, 32); left: 3.86905%;"><span>9142</span></button>
+                      <div class="sighting-connector" style="background-color: rgb(35, 31, 32;"></div>
+                    </div>
+                    <div>
+                      <button class="sighting-marker hidden" type="button" style="background-color: rgb(35, 31, 32); left: 5.50595%;"><span>9142</span></button>
+                      <div class="sighting-connector" style="background-color: rgb(35, 31, 32); left: 3.86905%; width: 1.6369%;"></div>
                     </div>
                   </div>
                 </div>
@@ -701,7 +813,9 @@
               </div>
             </div>
             <div class="visualization-overlay">
-              
+              <div class="visualization-overlay-inner">
+                <div class="add-site-img" data-src="images/trainspotted/resighting-modal.png" data-alt=""></div>
+              </div>
             </div>
             <!-- end trainspotted app code -->
           </div>
@@ -892,7 +1006,7 @@
           </div>
           <div class="project-solution">
             <h3 class="heading-sm inverted">Solution</h3>
-            <p class="body-regular inverted">I built a very sentimental site and hosted it on Tumblr. I created a series of datapoints with illustrations and motion graphics tied to each entry with some entires hooked into webservices (MLB, discogs) to generate the datapoint.</p>
+            <p class="body-regular inverted">I built a very sentimental site and hosted it on Tumblr. I created a series of datapoints with illustrations and motion graphics tied to each entry, some with dynamic content returned from webservices (MLB, Discogs).</p>
           </div>
         </div>
       </section>

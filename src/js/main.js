@@ -1,8 +1,6 @@
 /*
   TODO:
-  [ ] Host on amazon/heroku? Leaning amazon
-  [ ] Add modal image/container to trainspotted animation
-  [ ] Animate in the trainspotted chart
+  [ ] Set-up hosting on Heroku - https://devcenter.heroku.com/articles/custom-domains
   [ ] Check device/resolution and only load in images for mobile... might need solution on resize to load additional
 */
 

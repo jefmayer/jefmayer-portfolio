@@ -30,11 +30,19 @@ const menu = () => {
     }, 100);
   };
 
+  const onBodyClickHandler = (event) => {
+    if (!event.target.closest('.site-nav')) {
+      updateMenuState(); /* eslint-disable-line no-use-before-define */
+    }
+  };
+
   const updateMenuState = () => {
     if (body.classList.contains(menuActiveClass)) {
       removeActiveClass();
+      body.removeEventListener('click', onBodyClickHandler);
     } else {
       addActiveClass();
+      body.addEventListener('click', onBodyClickHandler);
     }
   };
 
@@ -125,6 +133,20 @@ const menu = () => {
       }, 1000);
     })
   ));
+  // Intro button event handler
+  const introButton = document.querySelector('.scroll-indicator-animation');
+  introButton.addEventListener('click', () => {
+    const sceneName = introButton.getAttribute('data-scene-name');
+    const pos = getSceneOffsetPos(sceneName);
+    scrollToPosition(pos);
+    activeMenuItem = sceneName;
+    navItemClicked = true;
+    const btn = document.querySelector(`.nav-menu [data-scene-name="${activeMenuItem}"]`);
+    setActiveMenuState(btn);
+    setTimeout(() => {
+      navItemClicked = false;
+    }, 1000);
+  });
 };
 
 export default menu;
