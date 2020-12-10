@@ -1,7 +1,12 @@
 /*
   TODO:
-  [ ] Set-up hosting on Heroku - https://devcenter.heroku.com/articles/custom-domains
+  [x] Set-up hosting on Heroku - https://devcenter.heroku.com/articles/custom-domains
   [ ] Check device/resolution and only load in images for mobile... might need solution on resize to load additional
+  [ ] Purchase SSL and set up
+  [ ] Correct url for og:image
+  [ ] scrollTo on osx/ios devices...
+  [ ] Dynamically create video grid timeline
+  [ ] Add in google analytics
 */
 
 /* eslint-disable no-console */
