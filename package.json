@@ -42,7 +42,7 @@
     "mocha": "^5.2.0",
     "node-sass": "^4.9.3",
     "path": "^0.12.7",
-    "postcss": "^7.0.2",
+    "postcss": "^8.2.10",
     "postcss-reporter": "^5.0.0",
     "postcss-scss": "^1.0.6",
     "replace-in-file": "^3.4.2",
