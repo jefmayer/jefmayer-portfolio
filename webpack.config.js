@@ -15,7 +15,10 @@ module.exports = {
             {
               loader: 'babel-loader',
               options: {
-                presets: ['env', 'minify'],
+                presets: [
+                  ['@babel/preset-env', { targets: "defaults" }],
+                  'minify'
+                ],
                 sourceMap: true,
               },
             },

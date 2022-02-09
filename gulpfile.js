@@ -1,6 +1,5 @@
 const gulp = require('gulp');
 const path = require('path');
-const chalk = require('chalk');
 const replace = require('replace-in-file');
 const stylelint = require('stylelint');
 const browserSync = require('browser-sync');
@@ -69,8 +68,8 @@ const buildCssTask = (taskName, fileName) => {
         to: `${filename}.min.css?cache=${new Date().getTime()}`,
       }).catch(error => console.log(error));
       console.log('Modified Files:', changedFiles.join(','));
-      console.log(chalk.green(path.join(__dirname, `${dest}/${filename}.min.css`)));
-      console.log(chalk.green(path.join(__dirname, `${dest}/${filename}.min.css.map`)));
+      console.log(path.join(__dirname, `${dest}/${filename}.min.css`));
+      console.log(path.join(__dirname, `${dest}/${filename}.min.css.map`));
       console.log('\n');
     } else {
       console.log(`There are CSS errors. Stylesheet did NOT build! Please fix your CSS errors. ${new Date().toLocaleTimeString()}`);
