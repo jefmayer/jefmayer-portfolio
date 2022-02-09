@@ -53,13 +53,13 @@
     padding-top: 74.39%;
     position: relative;
     width: 100%;
+    will-change: transform;
     z-index: 1;
   }
 
   .monitor-left-wrapper {
 
     .perspective-content {
-      // transform: rotateX(-2deg) rotateY(50deg) rotateZ(-2deg);
       transform: rotateX(-1deg) rotateY(33deg) rotateZ(-5deg);
     }
   }
@@ -73,7 +73,6 @@
     }
 
     .perspective-content {
-      // transform: rotateX(-2deg) rotateY(-50deg) rotateZ(2deg);
       transform: rotateX(1deg) rotateY(-33deg) rotateZ(5deg);
     }
 

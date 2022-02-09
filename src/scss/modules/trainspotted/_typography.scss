@@ -1,35 +1,5 @@
-@mixin trainspotted-display-type {
-  font-family: $trainspotted-display-font;
-  font-style: normal;
-  font-weight: 400;
-}
-
 @mixin trainspotted-san-serif-regular {
   font-family: $trainspotted-san-serif-font;
   font-style: normal;
   font-weight: 500;
-}
-
-@mixin trainspotted-san-serif-bold {
-  font-family: $trainspotted-san-serif-font;
-  font-style: normal;
-  font-weight: 700;
-}
-
-@mixin trainspotted-san-serif-bold {
-  font-family: $trainspotted-san-serif-font;
-  font-style: normal;
-  font-weight: 700;
-}
-
-@mixin trainspotted-san-serif-body {
-  font-family: $trainspotted-body-font;
-  font-style: normal;
-  font-weight: 400;
-}
-
-@mixin trainspotted-san-serif-light {
-  font-family: $trainspotted-body-font;
-  font-style: normal;
-  font-weight: 300;
 }

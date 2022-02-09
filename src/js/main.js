@@ -1,16 +1,13 @@
 /*
   TODO:
-  [x] Set-up hosting on Heroku - https://devcenter.heroku.com/articles/custom-domains
+  [x] Purchase SSL and set up
   [ ] Check device/resolution and only load in images for mobile... might need solution on resize to load additional
-  [ ] Purchase SSL and set up
-  [ ] Correct url for og:image
-  [ ] scrollTo on osx/ios devices...
-  [ ] Dynamically create video grid timeline
-  [ ] Add in google analytics
+  [x] Dynamically create video grid timeline
+  [x] Add in google analytics
 */
 
 /* eslint-disable no-console */
-import load from './modules/loader';
+import load from './modules/loaders/init-loader';
 import menu from './modules/menu';
 import tumblr from './modules/tumblr';
 

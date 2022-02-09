@@ -8,23 +8,41 @@ const tumblr = () => {
   };
 
   const cardWrapper = document.querySelector('.project-animation-tumblr .info-card-wrapper');
-  const getWhiteSoxLosses = () => {
-    const url = 'https://lookup-service-prod.mlb.com/json/named.team_seas_results.bam?team_id=145';
+  const date = new Date();
+  const currentYear = date.getFullYear();
+  let winTotal = 0;
+
+  const getWinsDataByTeam = (data) => {
+    let teamWins = 0;
+    data.records.forEach((record) => {
+      if (record.division.id === 202) {
+        record.teamRecords.forEach((teamData) => {
+          if (teamData.team.id === 145) {
+            const { wins } = teamData;
+            teamWins = wins;
+          }
+        });
+      }
+    });
+    return teamWins;
+  };
+
+  const getStandingsDatByYear = (year) => {
+    const url = `https://statsapi.mlb.com/api/v1/standings?leagueId=103&season=${year}&standingsTypes=regularSeason`;
     const cardTotal = cardWrapper.querySelector('.info-card-sox .card-total');
-    const fromYear = 2007;
     const request = new XMLHttpRequest();
     request.open('GET', url, true);
     request.onload = () => {
       if (request.status >= 200 && request.status < 400) {
         const response = JSON.parse(request.responseText);
-        const records = response.team_seas_results.queryResults.row;
-        const losses = records.reduce((acc, current) => {
-          if (current.season >= fromYear) {
-            return acc + parseInt(current.l, 10);
-          }
-          return acc;
-        }, 0);
-        cardTotal.textContent = createDisplayNumber(losses);
+        winTotal += getWinsDataByTeam(response);
+        // Check next year's data
+        const nextYear = year + 1;
+        if (nextYear <= currentYear) {
+          getStandingsDatByYear(nextYear);
+        } else {
+          cardTotal.textContent = createDisplayNumber(winTotal);
+        }
       }
     };
     request.onerror = () => {
@@ -33,8 +51,12 @@ const tumblr = () => {
     request.send();
   };
 
+  const getWhiteSoxLosses = () => {
+    getStandingsDatByYear(2020);
+  };
+
   const getDiscogsData = () => {
-    const url = 'https://api.discogs.com/users/mode78';
+    const url = 'https://api.discogs.com/users/jefmayer';
     const cardTotal = cardWrapper.querySelector('.info-card-vinyl .card-total');
     const recWgt = 0.264555;
     const request = new XMLHttpRequest();

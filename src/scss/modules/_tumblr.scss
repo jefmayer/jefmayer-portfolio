@@ -1,5 +1,5 @@
 .project-animation-tumblr {
-  height: 200rem;
+  height: 60rem;
 
   @include breakpoint(md) {
     height: 80rem;
@@ -102,7 +102,7 @@
     }
 
     .card-desc {
-      font-size: 1rem;
+      font-size: 1.1rem;
     }
   }
 }

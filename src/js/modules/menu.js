@@ -1,4 +1,8 @@
 /* eslint-disable no-console */
+import smoothscroll from 'smoothscroll-polyfill';
+
+smoothscroll.polyfill();
+
 const menu = () => {
   const menuBtn = document.querySelector('.nav-menu-btn');
   const body = document.querySelector('body');
@@ -86,7 +90,7 @@ const menu = () => {
     setTimeout(() => {
       if (body.classList.contains(menuActiveClass)) {
         onWindowScroll();
-        window.addEventListener('scroll', onWindowScroll);
+        window.addEventListener('scroll', onWindowScroll, { passive: true });
       } else {
         window.removeEventListener('scroll', onWindowScroll);
       }

@@ -37,7 +37,8 @@
 .nav-menu {
   height: calc(100vh - 7em);
   // overflow: hidden;
-  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
   position: fixed;
   right: 0;
   top: 7rem;
@@ -80,8 +81,7 @@
     background: transparent;
     border: 0;
     cursor: pointer;
-    display: flex;
-    flex-direction: column;
+    display: block;
     height: 12rem;
     margin: 0;
     outline: none;
@@ -90,6 +90,7 @@
     width: 100%;
 
     .heading-md {
+      position: relative;
 
       &::after {
         background-color: $white;
@@ -97,8 +98,8 @@
         content: '';
         height: .3rem;
         position: absolute;
-        right: 0;
-        top: 2.2rem;
+        right: -2.2rem;
+        top: 1.3rem;
         transform: translateX(.75rem);
         transition: transform .15s linear;
         width: 1.5rem;
