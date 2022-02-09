@@ -7,7 +7,7 @@
   "license": "MIT",
   "main": "gulpfile.js",
   "scripts": {
-    "dev": "gulp watch",
+    "dev": "gulp",
     "start": "node index.js"
   },
   "repository": {
@@ -24,16 +24,13 @@
     "babel-loader": "^8.2.3",
     "babel-preset-minify": "^0.5.1",
     "browser-sync": "^2.27.7",
-    "debug": "^3.1.0",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.1",
     "eslint-plugin-react-hooks": "^1.0.2",
-    "expose-loader": "^0.7.5",
     "gulp": "^4.0.2",
-    "jsdom": "^11.12.0",
     "node-sass": "^4.9.3",
     "path": "^0.12.7",
     "postcss": "^7.0.2",
@@ -43,11 +40,10 @@
     "stylelint": "^9.5.0",
     "stylelint-order": "^1.0.0",
     "stylelint-scss": "^3.3.0",
-    "webpack": "^4.17.1",
-    "webpack-sources": "1.1.0"
+    "webpack": "^4.17.1"
   },
   "dependencies": {
-    "feature-detect-es6": "^1.5.0",
+    "express": "^4.16.4",
     "gsap": "^3.9.1",
     "scrollmagic": "^2.0.7",
     "scrollmagic-plugin-gsap": "^1.0.4",
