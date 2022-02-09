@@ -2,20 +2,19 @@
 const path = require('path');
 const fs = require('fs');
 const { CLIEngine } = require('eslint');
-const Mocha = require('mocha');
 const webpack = require('webpack');
 const sass = require('node-sass');
 const postcss = require('postcss');
 const autoprefixer = require('autoprefixer');
 
-const buildJs = ({ source, dest, filename, version, build }, webpackConfig) => new Promise((resolve, reject) => {
+const buildJs = ({ source, dest, filename }, webpackConfig) => new Promise((resolve, reject) => {
   webpack(Object.assign({}, webpackConfig, {
     entry: {
       source,
     },
     output: {
       path: path.resolve(dest),
-      filename: `${filename}${webpackConfig.output.filename}.v${version}-${build}.min.js`,
+      filename: `${filename}${webpackConfig.output.filename}.min.js`,
     },
   }), (err, stats) => {
     if (err) {
@@ -42,19 +41,6 @@ const lintJs = src => new Promise((resolve, reject) => {
     });
   } catch (reason) {
     reject(new Error(`Linting error: ${reason}`));
-  }
-});
-
-const testJs = src => new Promise((resolve, reject) => {
-  try {
-    const mocha = new Mocha();
-    [...src].map((file) => {
-      delete require.cache[path.resolve(file)];
-      return mocha.addFile(file);
-    });
-    mocha.run(failures => resolve({ success: failures === 0 || false }));
-  } catch (reason) {
-    reject(new Error(`Tests failed: ${reason}`));
   }
 });
 
@@ -86,6 +72,5 @@ const buildSass = ({ file, includePaths, outputStyle, sourceMap, outFile }) => n
 module.exports = {
   buildJs,
   lintJs,
-  testJs,
   buildSass,
 };

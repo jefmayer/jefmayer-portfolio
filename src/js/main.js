@@ -1,11 +1,3 @@
-/*
-  TODO:
-  [x] Purchase SSL and set up
-  [ ] Check device/resolution and only load in images for mobile... might need solution on resize to load additional
-  [x] Dynamically create video grid timeline
-  [x] Add in google analytics
-*/
-
 /* eslint-disable no-console */
 import load from './modules/loaders/init-loader';
 import menu from './modules/menu';

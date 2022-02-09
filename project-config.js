@@ -1,4 +1,3 @@
-// Project Config for Task Runner
 module.exports = {
   paths: {
     sass: {
@@ -6,28 +5,19 @@ module.exports = {
         file: './src/scss/main.scss',
         outputStyle: 'compressed',
         sourceMap: true,
-        outFile: 'build/css/main.v1.0-1.min.css',
         watch: ['./src/scss/main.scss', './src/scss/**/*.scss'],
         dest: 'build/css',
         filename: 'main',
-        version: '1.0',
-        build: '1',
-        files: ['build/index.html'],
+        files: [],
       },
     },
     js: {
-      watch: './src/js/**/*.js',
       mainJs: {
-        source: [
-          './src/js/main.js',
-        ],
+        source: './src/js/main.js',
         watch: ['./src/js/main.js', './src/js/modules/**/*.js'],
         dest: 'build/js',
         filename: 'main',
-        version: '1.0',
-        build: '1',
-        files: ['build/index.html'],
-        tests: '',
+        files: [],
       },
     },
   },
