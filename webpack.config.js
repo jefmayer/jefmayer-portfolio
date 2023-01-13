@@ -17,7 +17,11 @@ module.exports = {
               options: {
                 presets: [
                   ['@babel/preset-env', { targets: "defaults" }],
-                  'minify'
+                  ['minify', {
+                    builtIns: false,
+                    evaluate: false,
+                    mangle: false,
+                  }],
                 ],
                 sourceMap: true,
               },

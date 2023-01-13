@@ -19,6 +19,13 @@ module.exports = {
         filename: 'main',
         files: [],
       },
+      scrollMagicJs: {
+        source: './node_modules/scrollmagic/scrollmagic/uncompressed/ScrollMagic.js',
+        watch: ['./node_modules/scrollmagic/scrollmagic/uncompressed/ScrollMagic.js'],
+        dest: './node_modules/scrollmagic/scrollmagic/minified',
+        filename: 'ScrollMagic',
+        files: [],
+      },
     },
   },
 };

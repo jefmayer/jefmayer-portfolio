@@ -11,6 +11,7 @@ browserSync.create();
 
 const {
   mainJs,
+  // scrollMagicJs,
 } = config.paths.js;
 
 const {
@@ -78,10 +79,12 @@ const buildCssTask = (taskName, fileName) => {
 };
 
 buildJsTask('buildMainJs', mainJs, webpackConfig.default);
+// buildJsTask('buildScrollMagicJs', scrollMagicJs, webpackConfig.default);
 buildCssTask('buildMainCss', mainSass);
 
 gulp.task('default', () => {
   gulp.watch(mainJs.watch, gulp.series('buildMainJs'));
+  // gulp.watch(mainJs.watch, gulp.series('buildScrollMagicJs'));
   gulp.watch(mainSass.watch, gulp.series('buildMainCss'));
   browserSync.init({
     server: './',
