@@ -3,7 +3,7 @@ import smoothscroll from 'smoothscroll-polyfill';
 
 smoothscroll.polyfill();
 
-const menu = () => {
+const menu = (data) => {
   const menuBtn = document.querySelector('.nav-menu-btn');
   const body = document.querySelector('body');
   const menuActiveClass = 'nav-menu-open';
@@ -126,6 +126,7 @@ const menu = () => {
   ));
   [].map.call(sectionNavItems, btn => (
     btn.addEventListener('click', () => {
+      console.log(data);
       const sceneName = btn.getAttribute('data-scene-name');
       const pos = getSceneOffsetPos(sceneName);
       scrollToPosition(pos);

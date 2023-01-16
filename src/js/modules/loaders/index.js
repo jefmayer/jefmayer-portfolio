@@ -1,26 +1,7 @@
 /* eslint-disable no-console */
 import { addIntroLoadAnimation, addSceneAnimations } from '../scenes';
-import backgroundLoad from './background-loader';
+import hiresAssetLoader from './hires-asset-loader';
 import breakpoints from './breakpoints';
-
-const addLoadAssetsToArray = () => {
-  const assetList = document.querySelectorAll('.add-site-img');
-  const assetArr = [...assetList];
-  return [...new Set(assetArr
-    .map(element => element.getAttribute('data-section')))]
-    .map(name => ({
-      allHiResAssetsLoaded: false,
-      allInitialAssetsLoaded: false,
-      assets: assetArr
-        .filter(asset => asset.getAttribute('data-section') === name)
-        .map(element => ({
-          element,
-          isLoaded: false,
-        })),
-      hiResAsssets: [],
-      name,
-    }));
-};
 
 const isSectionAssetLoadComplete = (data, name) => (
   data
@@ -36,7 +17,7 @@ const getNextAssetInQueue = data => (
     .find(asset => !asset.isLoaded)
 );
 
-const getLoadedAssets = data => (
+const getAssetsLoaded = data => (
   data
     .map(section => section.assets)
     .reduce((a, b) => a.concat(b), [])
@@ -44,10 +25,25 @@ const getLoadedAssets = data => (
     .length
 );
 
-const getTotalAssets = data => (
+const getAssetsTotal = data => (
   data
     .map(section => section.assets)
     .reduce((a, b) => a.concat(b), [])
+    .length
+);
+
+const getInitialAssetsLoaded = (data, sectionName) => (
+  data
+    .find(section => section.name === sectionName)
+    .assets
+    .filter(asset => asset.isLoaded)
+    .length
+);
+
+const getInitialAssetsTotal = (data, sectionName) => (
+  data
+    .find(section => section.name === sectionName)
+    .assets
     .length
 );
 
@@ -61,9 +57,46 @@ const addHiResAssets = (data) => {
     }));
 };
 
-const load = () => {
-  const loadingBars = document.querySelector('.project-animation-intro .intro-borders');
-  const data = addLoadAssetsToArray();
+const getBreakpointLabel = (div) => {
+  const { innerWidth } = window;
+  // Only those breakpoints under the window width
+  const arr = breakpoints.filter(item => item.value <= innerWidth);
+  arr.reverse();
+  // Then starting w/ the widest width, see what attributes that image has
+  let attrLabel = 'data-src';
+  arr.forEach((item) => {
+    const { label } = item;
+    if (div.getAttribute(`data-${label}-src`) !== null && attrLabel === 'data-src') {
+      attrLabel = `data-${label}-src`;
+    }
+  });
+  return attrLabel;
+};
+
+const createImg = (asset) => {
+  const div = asset.element;
+  const img = document.createElement('img');
+  const srcAttr = getBreakpointLabel(div);
+  const dataSection = div.getAttribute('data-section');
+  const hiResSrc = div.getAttribute('data-hires-src');
+  if (hiResSrc !== null) {
+    img.setAttribute('data-hires-src', hiResSrc);
+  }
+  img.setAttribute('data-section', dataSection);
+  img.src = div.getAttribute(srcAttr);
+  img.alt = div.getAttribute('data-alt');
+  img.className = 'site-asset';
+  div.parentNode.appendChild(img);
+  div.parentNode.removeChild(div);
+  return img;
+};
+
+const load = (data) => {
+  const initLoadingBars = document.querySelector('.project-animation-intro .intro-borders');
+  const bgLoadingBar = document.querySelector('.background-load-progress-bar');
+  const intialSectionName = data[0].name;
+  const initialAssetsTotal = getInitialAssetsTotal(data, intialSectionName);
+  const assetsTotal = getAssetsTotal(data);
   console.log(data);
   let prevImg = null;
   // [ ] If user clicks a nav item, and section is not loaded, jump to that sections assets
@@ -72,14 +105,16 @@ const load = () => {
   // [ ] After each section's assets are loaded, and if section is in view,
   //     check to see if there's additional hi-res assets to load before
   //     continuing on with other items in queue
-  // [ ] Start load of any hi-res assets once section's assets are complete
+  // [ ] Asset loader should only reflect loaded/total of initial assets,
+  //     however I still want to know when all assets are loaded
+  // [ ] Set up intersection observers for each section
   const onInitialLoadComplete = () => {
     console.log('onInitialLoadComplete');
     const body = document.querySelector('body');
     const scrollIndicator = document.querySelector('.scroll-indicator-animation');
 
     setTimeout(() => {
-      loadingBars.removeAttribute('style');
+      initLoadingBars.removeAttribute('style');
       body.classList.remove('site-loading');
       body.classList.add('site-loaded');
       scrollIndicator.classList.add('animate-in');
@@ -96,60 +131,31 @@ const load = () => {
     console.log('onLoadComplete');
   };
 
-  const getBreakpointLabel = (div) => {
-    const { innerWidth } = window;
-    // Only those breakpoints under the window width
-    const arr = breakpoints.filter(item => item.value <= innerWidth);
-    arr.reverse();
-    // Then starting w/ the widest width, see what attributes that image has
-    let attrLabel = 'data-src';
-    arr.forEach((item) => {
-      const { label } = item;
-      if (div.getAttribute(`data-${label}-src`) !== null && attrLabel === 'data-src') {
-        attrLabel = `data-${label}-src`;
-      }
-    });
-    return attrLabel;
-  };
-
   const update = () => {
     // Remove previous image load event handler
     if (prevImg !== null) {
       prevImg.removeEventListener('load', update);
     }
+    // Create image
     const asset = getNextAssetInQueue(data);
-    const div = asset.element;
-    const img = document.createElement('img');
-    const srcAttr = getBreakpointLabel(div);
-    const dataSection = div.getAttribute('data-section');
-    const hiResSrc = div.getAttribute('data-hires-src');
-    if (hiResSrc !== null) {
-      img.setAttribute('data-hires-src', hiResSrc);
-    }
-    img.setAttribute('data-section', dataSection);
-    img.src = div.getAttribute(srcAttr);
-    img.alt = div.getAttribute('data-alt');
-    img.className = 'site-asset';
-    div.parentNode.appendChild(img);
-    div.parentNode.removeChild(div);
+    const img = createImg(asset);
     // Update loader status
     asset.isLoaded = true;
-    const assetsLoaded = getLoadedAssets(data);
-    const assetsTotal = getTotalAssets(data);
+    const initialAssetsLoaded = getInitialAssetsLoaded(data, intialSectionName);
+    const assetsLoaded = getAssetsLoaded(data);
+    // console.log(`${initialAssetsLoaded} / ${initialAssetsTotal}`);
     // console.log(`${(assetsLoaded / assetsTotal) * 100}%`);
-    loadingBars.style.transform = `rotate(0) scaleX(${assetsLoaded / assetsTotal})`;
+    initLoadingBars.style.transform = `rotate(0) scaleX(${initialAssetsLoaded / initialAssetsTotal})`;
+    bgLoadingBar.style.transform = `scaleX(${assetsLoaded / assetsTotal})`;
     // Check if all a section's image loads are complete
-    // ...maybe move to a function
     data.forEach((section, index) => {
       const isComplete = isSectionAssetLoadComplete(data, section.name);
       if (isComplete && !section.allInitialAssetsLoaded) {
         section.allInitialAssetsLoaded = true;
         addHiResAssets(section);
-        // console.log(`Begin hi-res asset loader for ${section.name}`);
         // Start background load of hi-res image assets, if any
-        backgroundLoad(section.hiResAsssets, () => {
+        hiresAssetLoader(section.hiResAsssets, () => {
           section.allHiResAssetsLoaded = true;
-          // console.log(`End hi-res asset loader for ${section.name}`);
         });
         if (index === 0) {
           onInitialLoadComplete();
@@ -166,6 +172,7 @@ const load = () => {
     img.addEventListener('load', update);
     prevImg = img;
   };
+
   addIntroLoadAnimation();
   update();
   // Reset window to top

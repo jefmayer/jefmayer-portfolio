@@ -1,0 +1,18 @@
+.background-loader-wrapper {
+  background-color: $white;
+  height: .1rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+}
+
+.background-load-progress-bar {
+  background-color: $primary-color;
+  height: 100%;
+  position: absolute;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .25s ease-in-out;
+  width: 100%;
+}

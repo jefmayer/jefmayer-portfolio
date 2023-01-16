@@ -1,10 +1,13 @@
 /* eslint-disable no-console */
-import load from './modules/loaders/init-loader';
+import load from './modules/loaders/index';
+import { getLoadData } from './modules/loaders/state';
 import menu from './modules/menu';
 import tumblr from './modules/tumblr';
 
-load();
-menu();
+const loadData = getLoadData();
+load(loadData);
+menu(loadData);
+
 tumblr();
 // Fix for oovoo tablet scaling
 const oovooTabletWrapper = document.querySelector('.project-animation-oovoo .tablet-wrapper');

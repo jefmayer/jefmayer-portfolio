@@ -1,0 +1,32 @@
+.asset-loader {
+  display: inline-block;
+  height: 8rem;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 8rem;
+}
+
+.asset-loader::after {
+  animation: ldr-dual-ring .75s linear infinite;
+  border: .2rem solid $base-white;
+  border-color: $base-white transparent $base-white transparent;
+  border-radius: 50%;
+  content: '';
+  display: block;
+  height: 6.4rem;
+  margin: .8rem;
+  width: 6.4rem;
+}
+
+@keyframes ldr-dual-ring {
+
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
