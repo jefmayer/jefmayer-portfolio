@@ -1,14 +1,28 @@
 /* eslint-disable no-console */
-import load from './modules/loaders/index';
-import { getLoadData } from './modules/loaders/state';
-import menu from './modules/menu';
+import { getSiteData, updateSiteData } from './modules/loaders/state';
+import { initLoad, updateLoad } from './modules/loaders/index';
+import { initMenu, updateMenu } from './modules/menu';
+import scroll from './modules/scroll';
 import tumblr from './modules/tumblr';
 
-const loadData = getLoadData();
-load(loadData);
-menu(loadData);
+const siteData = getSiteData();
 
+initLoad(siteData);
+initMenu(siteData);
+scroll({
+  data: siteData,
+  onUpdate: (section, isActive) => {
+    const data = updateSiteData({
+      data: siteData,
+      isActive,
+      section,
+    });
+    updateMenu(data);
+    updateLoad(data);
+  },
+});
 tumblr();
+
 // Fix for oovoo tablet scaling
 const oovooTabletWrapper = document.querySelector('.project-animation-oovoo .tablet-wrapper');
 if (oovooTabletWrapper) {

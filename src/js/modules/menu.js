@@ -1,9 +1,25 @@
 /* eslint-disable no-console */
 import smoothscroll from 'smoothscroll-polyfill';
+import { getActiveSectionName } from '../modules/loaders/state';
 
 smoothscroll.polyfill();
 
-const menu = (data) => {
+/* const getSceneStartOffsetPos = sceneName => (
+  document.querySelector(`.project-animation-${sceneName}`).offsetTop - (window.innerHeight / 2)
+); */
+
+const setActiveMenuState = (btn) => {
+  const navHightlight = document.querySelector('.nav-highlight');
+  navHightlight.style.top = `${btn.offsetTop}px`;
+  navHightlight.classList.add('active');
+  const navBtn = document.querySelector('.scene-navigation-btn.active');
+  if (navBtn) {
+    navBtn.classList.remove('active');
+  }
+  btn.classList.add('active');
+};
+
+const initMenu = (data) => {
   const menuBtn = document.querySelector('.nav-menu-btn');
   const body = document.querySelector('body');
   const menuActiveClass = 'nav-menu-open';
@@ -11,14 +27,8 @@ const menu = (data) => {
   const navHightlight = document.querySelector('.nav-highlight');
   const sectionNavItems = document.querySelectorAll('.nav-menu button');
 
-  let navItemClicked = false;
+  // let navItemClicked = false;
   let activeMenuItem = '';
-
-  const sceneNames = [];
-  const sceneNavBtns = document.querySelectorAll('.nav-menu .scene-navigation-btn');
-  for (let i = 0; i < sceneNavBtns.length; i++) { /* eslint-disable-line no-plusplus */
-    sceneNames.push(sceneNavBtns[i].getAttribute('data-scene-name'));
-  }
 
   const removeActiveClass = () => {
     body.classList.remove(menuAnimatelass);
@@ -50,43 +60,28 @@ const menu = (data) => {
     }
   };
 
-  const setActiveMenuState = (btn) => {
-    navHightlight.style.top = `${btn.offsetTop}px`;
-    navHightlight.classList.add('active');
-    const navBtn = document.querySelector('.scene-navigation-btn.active');
-    if (navBtn) {
-      navBtn.classList.remove('active');
-    }
-    btn.classList.add('active');
-  };
-
-  const getSceneStartOffsetPos = sceneName => (
-    document.querySelector(`.project-animation-${sceneName}`).offsetTop - (window.innerHeight / 2)
-  );
-
   const getSceneOffsetPos = sceneName => (
     document.querySelector(`.project-details-${sceneName}`).offsetTop - (window.innerHeight - document.querySelector(`.project-details-${sceneName}`).offsetHeight)
   );
 
-  const onWindowScroll = () => {
+  /* const onWindowScroll = () => {
     if (navItemClicked) {
       return;
     }
     if (window.pageYOffset < 565 && body.classList.contains(menuActiveClass)) {
       removeActiveClass();
     }
-    for (let i = sceneNames.length - 1; i >= 0; i--) { /* eslint-disable-line no-plusplus */
-      if (getSceneStartOffsetPos(sceneNames[i]) <= window.pageYOffset) {
-        // console.log(`${window.pageYOffset}/${getSceneStartOffsetPos(sceneNames[i])}`);
-        activeMenuItem = sceneNames[i];
+    for (let i = data.length - 1; i >= 0; i--) {
+      if (getSceneStartOffsetPos(data[i].name) <= window.pageYOffset) {
+        activeMenuItem = data[i].name;
         const btn = document.querySelector(`.nav-menu [data-scene-name="${activeMenuItem}"]`);
         setActiveMenuState(btn);
         return;
       }
     }
-  };
+  }; */
 
-  const handleWindowScroll = () => {
+  /* const handleWindowScroll = () => {
     setTimeout(() => {
       if (body.classList.contains(menuActiveClass)) {
         onWindowScroll();
@@ -95,11 +90,11 @@ const menu = (data) => {
         window.removeEventListener('scroll', onWindowScroll);
       }
     }, 100);
-  };
+  }; */
 
   menuBtn.addEventListener('click', () => {
     updateMenuState();
-    handleWindowScroll();
+    // handleWindowScroll();
   });
 
   const scrollToPosition = (pos) => {
@@ -114,6 +109,7 @@ const menu = (data) => {
       setActiveMenuState(btn);
     })
   ));
+
   [].map.call(sectionNavItems, btn => (
     btn.addEventListener('mouseout', () => {
       if (activeMenuItem !== '') {
@@ -124,6 +120,7 @@ const menu = (data) => {
       }
     })
   ));
+
   [].map.call(sectionNavItems, btn => (
     btn.addEventListener('click', () => {
       console.log(data);
@@ -131,11 +128,11 @@ const menu = (data) => {
       const pos = getSceneOffsetPos(sceneName);
       scrollToPosition(pos);
       activeMenuItem = sceneName;
-      navItemClicked = true;
+      // navItemClicked = true;
       setActiveMenuState(btn);
-      setTimeout(() => {
+      /* setTimeout(() => {
         navItemClicked = false;
-      }, 1000);
+      }, 1000); */
     })
   ));
   // Intro button event handler
@@ -145,14 +142,26 @@ const menu = (data) => {
     const pos = getSceneOffsetPos(sceneName);
     scrollToPosition(pos);
     activeMenuItem = sceneName;
-    navItemClicked = true;
+    // navItemClicked = true;
     const btn = document.querySelector(`.nav-menu [data-scene-name="${activeMenuItem}"]`);
     setActiveMenuState(btn);
-    setTimeout(() => {
+    /* setTimeout(() => {
       navItemClicked = false;
-    }, 1000);
+    }, 1000); */
   });
 };
 
-export default menu;
+const updateMenu = (data) => {
+  const activeSection = getActiveSectionName(data);
+  if (activeSection) {
+    const selector = `.nav-menu [data-scene-name="${activeSection.name}"]`;
+    const btn = document.querySelector(selector);
+    setActiveMenuState(btn);
+  }
+};
+
+export {
+  initMenu,
+  updateMenu,
+};
 /* eslint-enable no-console */

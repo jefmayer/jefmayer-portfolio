@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import { addIntroLoadAnimation, addSceneAnimations } from '../scenes';
+import { getActiveSectionName } from './state';
 import hiresAssetLoader from './hires-asset-loader';
 import breakpoints from './breakpoints';
 
@@ -91,13 +92,12 @@ const createImg = (asset) => {
   return img;
 };
 
-const load = (data) => {
+const initLoad = (data) => {
   const initLoadingBars = document.querySelector('.project-animation-intro .intro-borders');
   const bgLoadingBar = document.querySelector('.background-load-progress-bar');
   const intialSectionName = data[0].name;
   const initialAssetsTotal = getInitialAssetsTotal(data, intialSectionName);
   const assetsTotal = getAssetsTotal(data);
-  console.log(data);
   let prevImg = null;
   // [ ] If user clicks a nav item, and section is not loaded, jump to that sections assets
   //     and make sure they're loaded before advancing to section, show spinner
@@ -181,5 +181,15 @@ const load = (data) => {
   }, 250);
 };
 
-export default load;
+const updateLoad = (data) => {
+  const activeSection = getActiveSectionName(data);
+  if (activeSection) {
+    console.log(activeSection.name);
+  }
+};
+
+export {
+  initLoad,
+  updateLoad,
+};
 /* eslint-enable no-console */

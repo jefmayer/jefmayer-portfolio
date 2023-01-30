@@ -1,5 +1,4 @@
-/* eslint-disable import/prefer-default-export */
-const getLoadData = () => {
+const getSiteData = () => {
   const assetList = document.querySelectorAll('.add-site-img');
   const assetArr = [...assetList];
   return [...new Set(assetArr
@@ -15,10 +14,34 @@ const getLoadData = () => {
         })),
       hiResAsssets: [],
       name,
-    }));
+    }))
+    .concat({
+      allHiResAssetsLoaded: false,
+      allInitialAssetsLoaded: false,
+      assets: [],
+      hiResAsssets: [],
+      name: 'about',
+    });
 };
 
-export {
-  getLoadData,
+const updateSiteData = (options) => {
+  const {
+    data,
+    isActive,
+    section,
+  } = options;
+  return data.map(item => ({
+    ...item,
+    isActive: item.name === section ? isActive : false,
+  }));
 };
-/* eslint-enable import/prefer-default-export */
+
+const getActiveSectionName = data => (
+  data.find(item => item.isActive)
+);
+
+export {
+  getActiveSectionName,
+  getSiteData,
+  updateSiteData,
+};
