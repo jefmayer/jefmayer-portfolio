@@ -1,24 +1,22 @@
 /* eslint-disable no-console */
-import { getSiteData, updateSiteData } from './modules/loaders/state';
+import { createSiteData, updateSiteData } from './modules/loaders/state';
 import { initLoad, updateLoad } from './modules/loaders/index';
 import { initMenu, updateMenu } from './modules/menu';
 import scroll from './modules/scroll';
 import tumblr from './modules/tumblr';
 
-const siteData = getSiteData();
+createSiteData();
 
-initLoad(siteData);
-initMenu(siteData);
+initLoad();
+initMenu();
 scroll({
-  data: siteData,
   onUpdate: (section, isActive) => {
-    const data = updateSiteData({
-      data: siteData,
+    updateSiteData({
       isActive,
       section,
     });
-    updateMenu(data);
-    updateLoad(data);
+    updateMenu();
+    updateLoad();
   },
 });
 tumblr();

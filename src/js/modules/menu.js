@@ -1,12 +1,8 @@
 /* eslint-disable no-console */
 import smoothscroll from 'smoothscroll-polyfill';
-import { getActiveSectionName } from '../modules/loaders/state';
+import { getActiveSectionName, updateSiteData } from '../modules/loaders/state';
 
 smoothscroll.polyfill();
-
-/* const getSceneStartOffsetPos = sceneName => (
-  document.querySelector(`.project-animation-${sceneName}`).offsetTop - (window.innerHeight / 2)
-); */
 
 const setActiveMenuState = (btn) => {
   const navHightlight = document.querySelector('.nav-highlight');
@@ -19,16 +15,13 @@ const setActiveMenuState = (btn) => {
   btn.classList.add('active');
 };
 
-const initMenu = (data) => {
+const initMenu = () => {
   const menuBtn = document.querySelector('.nav-menu-btn');
   const body = document.querySelector('body');
   const menuActiveClass = 'nav-menu-open';
   const menuAnimatelass = 'nav-menu-animate';
   const navHightlight = document.querySelector('.nav-highlight');
   const sectionNavItems = document.querySelectorAll('.nav-menu button');
-
-  // let navItemClicked = false;
-  let activeMenuItem = '';
 
   const removeActiveClass = () => {
     body.classList.remove(menuAnimatelass);
@@ -64,37 +57,8 @@ const initMenu = (data) => {
     document.querySelector(`.project-details-${sceneName}`).offsetTop - (window.innerHeight - document.querySelector(`.project-details-${sceneName}`).offsetHeight)
   );
 
-  /* const onWindowScroll = () => {
-    if (navItemClicked) {
-      return;
-    }
-    if (window.pageYOffset < 565 && body.classList.contains(menuActiveClass)) {
-      removeActiveClass();
-    }
-    for (let i = data.length - 1; i >= 0; i--) {
-      if (getSceneStartOffsetPos(data[i].name) <= window.pageYOffset) {
-        activeMenuItem = data[i].name;
-        const btn = document.querySelector(`.nav-menu [data-scene-name="${activeMenuItem}"]`);
-        setActiveMenuState(btn);
-        return;
-      }
-    }
-  }; */
-
-  /* const handleWindowScroll = () => {
-    setTimeout(() => {
-      if (body.classList.contains(menuActiveClass)) {
-        onWindowScroll();
-        window.addEventListener('scroll', onWindowScroll, { passive: true });
-      } else {
-        window.removeEventListener('scroll', onWindowScroll);
-      }
-    }, 100);
-  }; */
-
   menuBtn.addEventListener('click', () => {
     updateMenuState();
-    // handleWindowScroll();
   });
 
   const scrollToPosition = (pos) => {
@@ -112,8 +76,9 @@ const initMenu = (data) => {
 
   [].map.call(sectionNavItems, btn => (
     btn.addEventListener('mouseout', () => {
-      if (activeMenuItem !== '') {
-        const activeBtn = document.querySelector(`.nav-menu [data-scene-name="${activeMenuItem}"]`);
+      const activeMenuItem = getActiveSectionName();
+      if (activeMenuItem) {
+        const activeBtn = document.querySelector(`.nav-menu [data-scene-name="${activeMenuItem.name}"]`);
         setActiveMenuState(activeBtn);
       } else {
         navHightlight.classList.remove('active');
@@ -123,36 +88,33 @@ const initMenu = (data) => {
 
   [].map.call(sectionNavItems, btn => (
     btn.addEventListener('click', () => {
-      console.log(data);
       const sceneName = btn.getAttribute('data-scene-name');
+      updateSiteData({
+        isActive: true,
+        section: sceneName,
+      });
       const pos = getSceneOffsetPos(sceneName);
       scrollToPosition(pos);
-      activeMenuItem = sceneName;
-      // navItemClicked = true;
       setActiveMenuState(btn);
-      /* setTimeout(() => {
-        navItemClicked = false;
-      }, 1000); */
     })
   ));
   // Intro button event handler
   const introButton = document.querySelector('.scroll-indicator-animation');
   introButton.addEventListener('click', () => {
     const sceneName = introButton.getAttribute('data-scene-name');
+    updateSiteData({
+      isActive: true,
+      section: sceneName,
+    });
     const pos = getSceneOffsetPos(sceneName);
     scrollToPosition(pos);
-    activeMenuItem = sceneName;
-    // navItemClicked = true;
-    const btn = document.querySelector(`.nav-menu [data-scene-name="${activeMenuItem}"]`);
+    const btn = document.querySelector(`.nav-menu [data-scene-name="${sceneName}"]`);
     setActiveMenuState(btn);
-    /* setTimeout(() => {
-      navItemClicked = false;
-    }, 1000); */
   });
 };
 
-const updateMenu = (data) => {
-  const activeSection = getActiveSectionName(data);
+const updateMenu = () => {
+  const activeSection = getActiveSectionName();
   if (activeSection) {
     const selector = `.nav-menu [data-scene-name="${activeSection.name}"]`;
     const btn = document.querySelector(selector);

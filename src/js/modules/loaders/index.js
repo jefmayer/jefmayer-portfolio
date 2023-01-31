@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import { addIntroLoadAnimation, addSceneAnimations } from '../scenes';
-import { getActiveSectionName } from './state';
+import { getSiteData, getActiveSectionName } from './state';
 import hiresAssetLoader from './hires-asset-loader';
 import breakpoints from './breakpoints';
 
@@ -92,7 +92,8 @@ const createImg = (asset) => {
   return img;
 };
 
-const initLoad = (data) => {
+const initLoad = () => {
+  const data = getSiteData();
   const initLoadingBars = document.querySelector('.project-animation-intro .intro-borders');
   const bgLoadingBar = document.querySelector('.background-load-progress-bar');
   const intialSectionName = data[0].name;
@@ -181,10 +182,14 @@ const initLoad = (data) => {
   }, 250);
 };
 
-const updateLoad = (data) => {
-  const activeSection = getActiveSectionName(data);
-  if (activeSection) {
-    console.log(activeSection.name);
+const updateLoad = () => {
+  const activeSection = getActiveSectionName();
+  if (!activeSection) {
+    return;
+  }
+  console.log(`${activeSection.name}, isLoaded: ${activeSection.allInitialAssetsLoaded}`);
+  if (!activeSection.allInitialAssetsLoaded) {
+    console.log('prioritize section asset load');
   }
 };
 

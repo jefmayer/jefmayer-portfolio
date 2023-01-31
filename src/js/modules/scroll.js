@@ -1,8 +1,10 @@
+import { getSiteData } from '../modules/loaders/state';
+
 const scroll = (options) => {
   const {
-    data,
     onUpdate,
   } = options;
+  const data = getSiteData();
 
   const getSection = (className) => {
     let section = '';
