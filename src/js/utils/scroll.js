@@ -1,4 +1,4 @@
-import { getSiteData } from '../modules/loaders/state';
+import { getSiteData } from '../state/state';
 
 const scroll = (options) => {
   const {
@@ -6,7 +6,7 @@ const scroll = (options) => {
   } = options;
   const data = getSiteData();
 
-  const getSection = (className) => {
+  const getSectionName = (className) => {
     let section = '';
     data.forEach((item) => {
       const { name } = item;
@@ -22,8 +22,8 @@ const scroll = (options) => {
       if (onUpdate) {
         const { target } = entry;
         const { className } = target;
-        const section = getSection(className);
-        onUpdate(section, entry.isIntersecting);
+        const name = getSectionName(className);
+        onUpdate(name, entry.isIntersecting);
       }
     });
   };

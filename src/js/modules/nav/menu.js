@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import smoothscroll from 'smoothscroll-polyfill';
-import { getActiveSectionName, updateSiteData } from '../modules/loaders/state';
+import { getActiveSectionName, updateSiteData } from '../../state/state';
 
 smoothscroll.polyfill();
 
@@ -91,7 +91,7 @@ const initMenu = () => {
       const sceneName = btn.getAttribute('data-scene-name');
       updateSiteData({
         isActive: true,
-        section: sceneName,
+        name: sceneName,
       });
       const pos = getSceneOffsetPos(sceneName);
       scrollToPosition(pos);
@@ -104,7 +104,7 @@ const initMenu = () => {
     const sceneName = introButton.getAttribute('data-scene-name');
     updateSiteData({
       isActive: true,
-      section: sceneName,
+      name: sceneName,
     });
     const pos = getSceneOffsetPos(sceneName);
     scrollToPosition(pos);

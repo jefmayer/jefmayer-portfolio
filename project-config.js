@@ -14,7 +14,7 @@ module.exports = {
     js: {
       mainJs: {
         source: './src/js/main.js',
-        watch: ['./src/js/main.js', './src/js/modules/**/*.js'],
+        watch: ['./src/js/main.js', './src/js/**/*.js'],
         dest: 'build/js',
         filename: 'main',
         files: [],

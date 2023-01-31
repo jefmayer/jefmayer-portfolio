@@ -19,6 +19,7 @@ const createSiteData = () => {
           isLoaded: false,
         })),
       hiResAsssets: [],
+      isActive: false,
       name,
     }))
     .concat({
@@ -26,28 +27,42 @@ const createSiteData = () => {
       allInitialAssetsLoaded: false,
       assets: [],
       hiResAsssets: [],
+      isActive: false,
       name: 'about',
     });
 };
 
 const updateSiteData = (options) => {
   const {
+    allHiResAssetsLoaded,
+    allInitialAssetsLoaded,
+    hiResAsssets,
     isActive,
-    section,
+    name,
   } = options;
-  siteData = siteData.map(item => ({
-    ...item,
-    isActive: item.name === section ? isActive : false,
-  }));
+  siteData.forEach((section) => {
+    if (section.name === name) {
+      section.allHiResAssetsLoaded = allHiResAssetsLoaded !== undefined ? allHiResAssetsLoaded : section.allHiResAssetsLoaded;
+      section.allInitialAssetsLoaded = allInitialAssetsLoaded !== undefined ? allInitialAssetsLoaded : section.allInitialAssetsLoaded;
+      section.hiResAsssets = hiResAsssets !== undefined ? hiResAsssets : section.hiResAsssets;
+      section.isActive = isActive !== undefined ? isActive : section.isActive;
+    }
+  });
+  console.log(siteData);
 };
 
+const getSectionByName = name => (
+  siteData.find(section => section.name === name)
+);
+
 const getActiveSectionName = () => (
-  siteData.find(item => item.isActive)
+  siteData.find(section => section.isActive)
 );
 
 export {
   createSiteData,
   getActiveSectionName,
+  getSectionByName,
   getSiteData,
   updateSiteData,
 };

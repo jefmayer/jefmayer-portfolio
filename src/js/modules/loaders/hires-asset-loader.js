@@ -1,4 +1,5 @@
-import breakpoints from './breakpoints';
+import { getSectionByName, updateSiteData } from '../../state/state';
+import breakpoints from '../../utils/breakpoints';
 
 const getNextAssetInQueue = data => (
   data.find(asset => !asset.isLoaded)
@@ -10,8 +11,10 @@ const getAssetsLoaded = data => (
     .length
 );
 
-const hiresAssetLoader = (assets, onComplete) => {
-  if (assets.length === 0) {
+const hiresAssetLoader = (data, onComplete) => {
+  const sectionName = data.name;
+  const assetCt = data.hiResAsssets.length;
+  if (assetCt === 0) {
     onComplete();
     return;
   }
@@ -22,15 +25,21 @@ const hiresAssetLoader = (assets, onComplete) => {
   }
 
   const update = () => {
-    if (getAssetsLoaded(assets) === assets.length) {
+    const section = getSectionByName(sectionName);
+    const { hiResAsssets } = section;
+    if (getAssetsLoaded(hiResAsssets) === hiResAsssets.length) {
       onComplete();
       return;
     }
-    const asset = getNextAssetInQueue(assets);
+    const asset = getNextAssetInQueue(hiResAsssets);
     const img = asset.element;
     img.src = img.getAttribute('data-hires-src');
     img.addEventListener('load', () => {
       asset.isLoaded = true;
+      updateSiteData({
+        name: sectionName,
+        hiResAsssets,
+      });
       update();
     });
   };

@@ -1,19 +1,18 @@
 /* eslint-disable no-console */
-import { createSiteData, updateSiteData } from './modules/loaders/state';
-import { initLoad, updateLoad } from './modules/loaders/index';
-import { initMenu, updateMenu } from './modules/menu';
-import scroll from './modules/scroll';
-import tumblr from './modules/tumblr';
+import { createSiteData, updateSiteData } from './state/state';
+import { initLoad, updateLoad } from './modules/loaders/initial-asset-loader';
+import { initMenu, updateMenu } from './modules/nav/menu';
+import scroll from './utils/scroll';
+import tumblr from './modules/scenes/tumblr';
 
 createSiteData();
-
 initLoad();
 initMenu();
 scroll({
-  onUpdate: (section, isActive) => {
+  onUpdate: (name, isActive) => {
     updateSiteData({
       isActive,
-      section,
+      name,
     });
     updateMenu();
     updateLoad();
