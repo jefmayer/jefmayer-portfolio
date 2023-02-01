@@ -33,22 +33,15 @@ const createSiteData = () => {
 };
 
 const updateSiteData = (options) => {
-  const {
-    allHiResAssetsLoaded,
-    allInitialAssetsLoaded,
-    hiResAsssets,
-    isActive,
-    name,
-  } = options;
-  siteData.forEach((section) => {
-    if (section.name === name) {
-      section.allHiResAssetsLoaded = allHiResAssetsLoaded !== undefined ? allHiResAssetsLoaded : section.allHiResAssetsLoaded;
-      section.allInitialAssetsLoaded = allInitialAssetsLoaded !== undefined ? allInitialAssetsLoaded : section.allInitialAssetsLoaded;
-      section.hiResAsssets = hiResAsssets !== undefined ? hiResAsssets : section.hiResAsssets;
-      section.isActive = isActive !== undefined ? isActive : section.isActive;
-    }
-  });
-  console.log(siteData);
+  const { name } = options;
+  const section = siteData.find(s => s.name === name);
+  if (section) {
+    Object.entries(options).forEach((arr) => {
+      const [prop, value] = arr;
+      section[prop] = value;
+    });
+    // console.log(siteData);
+  }
 };
 
 const getSectionByName = name => (

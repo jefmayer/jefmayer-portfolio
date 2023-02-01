@@ -4,18 +4,12 @@ import { getActiveSectionName, getSiteData, updateSiteData } from '../../state/s
 import hiresAssetLoader from './hires-asset-loader';
 import breakpoints from '../../utils/breakpoints';
 
-// [ ] If user clicks a nav item, and section is not loaded, jump to that sections assets
-//     and make sure they're loaded before advancing to section, show spinner
-// [ ] Prevent scroll/show spinner if sections's assets are not loaded
-// [ ] After each section's assets are loaded, and if section is in view,
-//     check to see if there's additional hi-res assets to load before
-//     continuing on with other items in queue
-// [ ] Asset loader should only reflect loaded/total of initial assets,
-//     however I still want to know when all assets are loaded
+const html = document.querySelector('html');
 const body = document.querySelector('body');
 const scrollIndicator = document.querySelector('.scroll-indicator-animation');
 const initLoadingBars = document.querySelector('.project-animation-intro .intro-borders');
-const bgLoadingBar = document.querySelector('.background-load-progress-bar');
+const bgLoaderBar = document.querySelector('.background-loader-progress-bar');
+const bgLoaderWrapper = document.querySelector('.background-loader-wrapper');
 let prevImg = null;
 
 const isSectionAssetLoadComplete = (data, name) => (
@@ -111,12 +105,13 @@ const createImg = (asset) => {
 };
 
 const onLoadComplete = () => {
-  console.log('onLoadComplete');
+  // console.log('onLoadComplete');
+  // Hide background loader
+  bgLoaderWrapper.classList.remove('show');
 };
 
 const onInitialLoadComplete = () => {
-  console.log('onInitialLoadComplete');
-
+  // console.log('onInitialLoadComplete');
   setTimeout(() => {
     initLoadingBars.removeAttribute('style');
     body.classList.remove('site-loading');
@@ -129,6 +124,25 @@ const onInitialLoadComplete = () => {
     scrollIndicator.classList.add('animate-loop');
     addSceneAnimations();
   }, 2000);
+
+  setTimeout(() => {
+    // Show backround loader
+    bgLoaderWrapper.classList.add('show');
+  }, 3000);
+};
+
+const updateLoad = () => {
+  const activeSection = getActiveSectionName();
+  if (!activeSection) {
+    return;
+  }
+  // console.log(`${activeSection.name}: ${activeSection.allInitialAssetsLoaded}`);
+  if (!activeSection.allInitialAssetsLoaded) {
+    // console.log('prioritize section asset load');
+    html.classList.add('noscroll');
+  } else {
+    html.classList.remove('noscroll');
+  }
 };
 
 const update = () => {
@@ -149,8 +163,12 @@ const update = () => {
   const assetsLoaded = getAssetsLoaded(data);
   // console.log(`${initialAssetsLoaded} / ${initialAssetsTotal}`);
   // console.log(`${(assetsLoaded / assetsTotal) * 100}%`);
-  initLoadingBars.style.transform = `rotate(0) scaleX(${initialAssetsLoaded / initialAssetsTotal})`;
-  bgLoadingBar.style.transform = `scaleX(${assetsLoaded / assetsTotal})`;
+  // Only set if still loading initial assets
+  const initPercLoaded = initialAssetsLoaded / initialAssetsTotal;
+  if (initPercLoaded < 1) {
+    initLoadingBars.style.transform = `rotate(0) scaleX(${initPercLoaded})`;
+  }
+  bgLoaderBar.style.transform = `scaleX(${assetsLoaded / assetsTotal})`;
   // Check if all a section's image loads are complete
   data.forEach((section, index) => {
     const isComplete = isSectionAssetLoadComplete(data, section.name);
@@ -167,6 +185,7 @@ const update = () => {
           name: section.name,
         });
       });
+      updateLoad();
       if (index === 0) {
         onInitialLoadComplete();
       }
@@ -190,18 +209,6 @@ const initLoad = () => {
   setTimeout(() => {
     window.scroll(0, 0);
   }, 250);
-};
-
-const updateLoad = () => {
-  const activeSection = getActiveSectionName();
-  if (!activeSection) {
-    return;
-  }
-  console.log(getSiteData());
-  console.log(`${activeSection.name}, isLoaded: ${activeSection.allInitialAssetsLoaded}`);
-  if (!activeSection.allInitialAssetsLoaded) {
-    console.log('prioritize section asset load');
-  }
 };
 
 export {

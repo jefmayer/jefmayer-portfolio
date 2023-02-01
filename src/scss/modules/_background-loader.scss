@@ -3,11 +3,17 @@
   height: .1rem;
   position: fixed;
   top: 0;
+  transform: translateY(-.1rem);
+  transition: transform .25s ease-in-out;
   width: 100%;
-  z-index: 2;
+  z-index: 101;
+
+  &.show {
+    transform: translateY(0);
+  }
 }
 
-.background-load-progress-bar {
+.background-loader-progress-bar {
   background-color: $primary-color;
   height: 100%;
   position: absolute;

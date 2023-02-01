@@ -10,8 +10,8 @@
 
 .asset-loader::after {
   animation: ldr-dual-ring .75s linear infinite;
-  border: .2rem solid $base-white;
-  border-color: $base-white transparent $base-white transparent;
+  border: .2rem solid $light-gray;
+  border-color: $light-gray transparent $light-gray transparent;
   border-radius: 50%;
   content: '';
   display: block;
@@ -28,5 +28,29 @@
 
   100% {
     transform: rotate(360deg);
+  }
+}
+
+.section-loader-wrapper {
+  visibility: hidden;
+}
+
+.noscroll {
+
+  .section-loader-wrapper {
+    visibility: visible;
+
+    &::after {
+      background-color: $black;
+      content: '';
+      height: 100%;
+      left: 0;
+      opacity: .5;
+      position: fixed;
+      top: 0;
+      transition: opacity .25s ease-in-out;
+      width: 100%;
+      z-index: 100;
+    }
   }
 }
