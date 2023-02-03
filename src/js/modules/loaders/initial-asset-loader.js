@@ -19,6 +19,7 @@ const isSectionAssetLoadComplete = (data, name) => (
     .length === 0
 );
 
+// Add param to allow jumping the queue
 const getNextAssetInQueue = data => (
   data
     .map(section => section.assets)
@@ -133,20 +134,28 @@ const onInitialLoadComplete = () => {
 
 const updateLoad = () => {
   const activeSection = getActiveSectionName();
+  const data = getSiteData();
   if (!activeSection) {
     return;
   }
   // console.log(`${activeSection.name}: ${activeSection.allInitialAssetsLoaded}`);
-  if (!activeSection.allInitialAssetsLoaded) {
+  // console.log(`${activeSection.name}/${data.selectedSection}`);
+  if (
+    (!activeSection.allInitialAssetsLoaded && data.selectedSection === '') ||
+    (!activeSection.allInitialAssetsLoaded && data.selectedSection === activeSection.name)
+  ) {
     // console.log('prioritize section asset load');
     html.classList.add('noscroll');
+    /* updateSiteData({
+      selectedSection: '',
+    }); */
   } else {
     html.classList.remove('noscroll');
   }
 };
 
 const update = () => {
-  const data = getSiteData();
+  const data = getSiteData().sections;
   const intialSectionName = data[0].name;
   const initialAssetsTotal = getInitialAssetsTotal(data, intialSectionName);
   const assetsTotal = getAssetsTotal(data);

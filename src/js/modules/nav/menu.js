@@ -90,8 +90,7 @@ const initMenu = () => {
     btn.addEventListener('click', () => {
       const sceneName = btn.getAttribute('data-scene-name');
       updateSiteData({
-        isActive: true,
-        name: sceneName,
+        selectedSection: sceneName,
       });
       const pos = getSceneOffsetPos(sceneName);
       scrollToPosition(pos);
@@ -103,8 +102,7 @@ const initMenu = () => {
   introButton.addEventListener('click', () => {
     const sceneName = introButton.getAttribute('data-scene-name');
     updateSiteData({
-      isActive: true,
-      name: sceneName,
+      selectedSection: sceneName,
     });
     const pos = getSceneOffsetPos(sceneName);
     scrollToPosition(pos);

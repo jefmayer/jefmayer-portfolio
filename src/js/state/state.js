@@ -7,34 +7,42 @@ const getSiteData = () => (
 const createSiteData = () => {
   const assetList = document.querySelectorAll('.add-site-img');
   const assetArr = [...assetList];
-  siteData = [...new Set(assetArr
-    .map(element => element.getAttribute('data-section')))]
-    .map(name => ({
-      allHiResAssetsLoaded: false,
-      allInitialAssetsLoaded: false,
-      assets: assetArr
-        .filter(asset => asset.getAttribute('data-section') === name)
-        .map(element => ({
-          element,
-          isLoaded: false,
-        })),
-      hiResAsssets: [],
-      isActive: false,
-      name,
-    }))
-    .concat({
-      allHiResAssetsLoaded: false,
-      allInitialAssetsLoaded: false,
-      assets: [],
-      hiResAsssets: [],
-      isActive: false,
-      name: 'about',
-    });
+  siteData = {
+    sections: [...new Set(assetArr
+      .map(element => element.getAttribute('data-section')))]
+      .map(name => ({
+        allHiResAssetsLoaded: false,
+        allInitialAssetsLoaded: false,
+        assets: assetArr
+          .filter(asset => asset.getAttribute('data-section') === name)
+          .map(element => ({
+            element,
+            isLoaded: false,
+          })),
+        hiResAsssets: [],
+        isActive: false,
+        name,
+      }))
+      .concat({
+        allHiResAssetsLoaded: false,
+        allInitialAssetsLoaded: false,
+        assets: [],
+        hiResAsssets: [],
+        isActive: false,
+        name: 'about',
+      }),
+    selectedSection: '',
+    scrollDirection: null,
+  };
 };
 
 const updateSiteData = (options) => {
-  const { name } = options;
-  const section = siteData.find(s => s.name === name);
+  const { selectedSection, name } = options;
+  if (selectedSection) {
+    siteData.selectedSection = selectedSection;
+  }
+  // Update section data
+  const section = siteData.sections.find(s => s.name === name);
   if (section) {
     Object.entries(options).forEach((arr) => {
       const [prop, value] = arr;
@@ -45,11 +53,11 @@ const updateSiteData = (options) => {
 };
 
 const getSectionByName = name => (
-  siteData.find(section => section.name === name)
+  siteData.sections.find(section => section.name === name)
 );
 
 const getActiveSectionName = () => (
-  siteData.find(section => section.isActive)
+  siteData.sections.find(section => section.isActive)
 );
 
 export {

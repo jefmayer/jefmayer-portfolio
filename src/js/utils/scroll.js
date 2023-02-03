@@ -4,7 +4,7 @@ const scroll = (options) => {
   const {
     onUpdate,
   } = options;
-  const data = getSiteData();
+  const data = getSiteData().sections;
 
   const getSectionName = (className) => {
     let section = '';

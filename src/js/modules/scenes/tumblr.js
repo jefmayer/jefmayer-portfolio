@@ -76,7 +76,7 @@ const tumblr = () => {
 
   const getTransformers = () => {
     const cardTotal = cardWrapper.querySelector('.info-card-prime .card-total');
-    cardTotal.textContent = createDisplayNumber(30);
+    cardTotal.textContent = createDisplayNumber(37);
   };
 
   const getInterval = (time) => {
