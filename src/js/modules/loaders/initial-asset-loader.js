@@ -43,7 +43,6 @@ const isSectionAssetLoadComplete = (data, name) => (
 const getNextAssetInQueue = () => {
   const data = getSiteData();
   const { selectedSection, sections } = data;
-  // console.log(`selectedSection: "${selectedSection}"`);
   // If section specified, get that section's assets
   if (selectedSection !== '') {
     const nextAssetToLoad = sections.find(section => section.name === selectedSection)
@@ -124,6 +123,9 @@ const getBreakpointLabel = (div) => {
 };
 
 const createImg = (asset) => {
+  if (!asset) {
+    return null;
+  }
   const div = asset.element;
   const img = document.createElement('img');
   const srcAttr = getBreakpointLabel(div);
@@ -143,7 +145,6 @@ const createImg = (asset) => {
 
 const onLoadComplete = () => {
   updateSiteData({ isLoadComplete: true });
-  // Hide background loader
   bgLoaderWrapper.classList.remove('show');
 };
 
@@ -179,13 +180,10 @@ const updateLoad = () => {
   if (!activeSection) {
     return;
   }
-  // console.log(`${activeSection.name}: ${activeSection.allInitialAssetsLoaded}`);
-  // console.log(`${activeSection.name}/${selectedSection}`);
   if (
     (!activeSection.allInitialAssetsLoaded && selectedSection === '') ||
     (!activeSection.allInitialAssetsLoaded && selectedSection === activeSection.name)
   ) {
-    // Prioritize selected sections assets for loading
     disableScroll();
   } else {
     enableScroll();
@@ -200,11 +198,15 @@ const update = () => {
   const assetsTotal = getAssetsTotal(sections);
   // Remove previous image load event handler
   if (previousImgLoaded) {
-    previousImgLoaded.removeEventListener('load', update);
+    console.log();
+    // previousImgLoaded.removeEventListener('load', update);
   }
   // Create image
   const asset = getNextAssetInQueue();
   const img = createImg(asset);
+  if (!img) {
+    return;
+  }
   // Update loader status
   asset.isLoaded = true;
   const initialAssetsLoaded = getInitialAssetsLoaded(sections, intialSectionName);
@@ -253,6 +255,9 @@ const update = () => {
 
 const initLoad = () => {
   addIntroLoadAnimation();
+  // Multi-threaded loader
+  update();
+  update();
   update();
   // Reset window to top
   setTimeout(() => {
