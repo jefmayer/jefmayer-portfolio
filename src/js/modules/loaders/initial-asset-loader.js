@@ -62,6 +62,13 @@ const getNextAssetInQueue = () => {
     .find(asset => !asset.isLoaded);
 };
 
+const removeSectionEventHandlers = (assets) => {
+  assets.forEach((asset) => {
+    const { element } = asset;
+    element.removeEventListener('load', update); /* eslint-disable-line no-use-before-define */
+  });
+};
+
 const getAssetsLoaded = data => (
   data
     .map(section => section.assets)
@@ -123,9 +130,6 @@ const getBreakpointLabel = (div) => {
 };
 
 const createImg = (asset) => {
-  if (!asset) {
-    return null;
-  }
   const div = asset.element;
   const img = document.createElement('img');
   const srcAttr = getBreakpointLabel(div);
@@ -192,21 +196,16 @@ const updateLoad = () => {
 
 const update = () => {
   const data = getSiteData();
-  const { previousImgLoaded, sections } = data;
+  const { sections } = data;
   const intialSectionName = sections[0].name;
   const initialAssetsTotal = getInitialAssetsTotal(sections, intialSectionName);
   const assetsTotal = getAssetsTotal(sections);
-  // Remove previous image load event handler
-  if (previousImgLoaded) {
-    console.log();
-    // previousImgLoaded.removeEventListener('load', update);
-  }
   // Create image
   const asset = getNextAssetInQueue();
-  const img = createImg(asset);
-  if (!img) {
+  if (!asset) {
     return;
   }
+  const img = createImg(asset);
   // Update loader status
   asset.isLoaded = true;
   const initialAssetsLoaded = getInitialAssetsLoaded(sections, intialSectionName);
@@ -224,6 +223,7 @@ const update = () => {
     const isComplete = isSectionAssetLoadComplete(sections, section.name);
     if (isComplete && !section.allInitialAssetsLoaded) {
       // console.log(`${section.name}, isComplete: ${isComplete}`);
+      removeSectionEventHandlers(section.assets);
       updateSectionData({
         allInitialAssetsLoaded: true,
         name: section.name,
@@ -244,13 +244,10 @@ const update = () => {
   });
   // Load is complete
   if (assetsLoaded === assetsTotal) {
-    // Remove last image loaded's event handler
-    previousImgLoaded.removeEventListener('load', update);
     onLoadComplete();
     return;
   }
   img.addEventListener('load', update);
-  updateSiteData({ previousImgLoaded: img });
 };
 
 const initLoad = () => {

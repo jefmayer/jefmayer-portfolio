@@ -9,7 +9,6 @@ const createSiteData = () => {
   const assetArr = [...assetList];
   siteData = {
     isLoadComplete: false,
-    previousImgLoaded: null,
     sections: [...new Set(assetArr
       .map(element => element.getAttribute('data-section')))]
       .map(name => ({
