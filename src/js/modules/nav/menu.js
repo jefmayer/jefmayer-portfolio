@@ -4,6 +4,47 @@ import { getActiveSectionName, updateSiteData } from '../../state/state';
 
 smoothscroll.polyfill();
 
+const body = document.querySelector('body');
+const menuActiveClass = 'nav-menu-open';
+const menuAnimatelass = 'nav-menu-animate';
+
+const removeActiveClass = () => {
+  body.classList.remove(menuAnimatelass);
+  setTimeout(() => {
+    body.classList.remove(menuActiveClass);
+  }, 100);
+};
+
+const addActiveClass = () => {
+  body.classList.add(menuActiveClass);
+  setTimeout(() => {
+    body.classList.add(menuAnimatelass);
+  }, 100);
+};
+
+const onBodyClickHandler = (event) => {
+  if (!event.target.closest('.site-nav')) {
+    updateMenuState(); /* eslint-disable-line no-use-before-define */
+  }
+};
+
+const updateMenuState = () => {
+  if (body.classList.contains(menuActiveClass)) {
+    removeActiveClass();
+    body.removeEventListener('click', onBodyClickHandler);
+  } else {
+    addActiveClass();
+    body.addEventListener('click', onBodyClickHandler);
+  }
+};
+
+const hideMenu = () => {
+  if (body.classList.contains(menuActiveClass)) {
+    removeActiveClass();
+    body.removeEventListener('click', onBodyClickHandler);
+  }
+};
+
 const setActiveMenuState = (btn) => {
   const navHightlight = document.querySelector('.nav-highlight');
   navHightlight.style.top = `${btn.offsetTop}px`;
@@ -17,41 +58,9 @@ const setActiveMenuState = (btn) => {
 
 const initMenu = () => {
   const menuBtn = document.querySelector('.nav-menu-btn');
-  const body = document.querySelector('body');
-  const menuActiveClass = 'nav-menu-open';
-  const menuAnimatelass = 'nav-menu-animate';
   const navHightlight = document.querySelector('.nav-highlight');
   const sectionNavItems = document.querySelectorAll('.nav-menu button');
 
-  const removeActiveClass = () => {
-    body.classList.remove(menuAnimatelass);
-    setTimeout(() => {
-      body.classList.remove(menuActiveClass);
-    }, 100);
-  };
-
-  const addActiveClass = () => {
-    body.classList.add(menuActiveClass);
-    setTimeout(() => {
-      body.classList.add(menuAnimatelass);
-    }, 100);
-  };
-
-  const onBodyClickHandler = (event) => {
-    if (!event.target.closest('.site-nav')) {
-      updateMenuState(); /* eslint-disable-line no-use-before-define */
-    }
-  };
-
-  const updateMenuState = () => {
-    if (body.classList.contains(menuActiveClass)) {
-      removeActiveClass();
-      body.removeEventListener('click', onBodyClickHandler);
-    } else {
-      addActiveClass();
-      body.addEventListener('click', onBodyClickHandler);
-    }
-  };
 
   const getSceneOffsetPos = sceneName => (
     document.querySelector(`.project-details-${sceneName}`).offsetTop - (window.innerHeight - document.querySelector(`.project-details-${sceneName}`).offsetHeight)
@@ -121,7 +130,9 @@ const updateMenu = () => {
 };
 
 export {
+  hideMenu,
   initMenu,
   updateMenu,
+  updateMenuState,
 };
 /* eslint-enable no-console */

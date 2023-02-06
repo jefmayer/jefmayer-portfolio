@@ -1,4 +1,4 @@
-import { getSectionByName, updateSiteData } from '../../state/state';
+import { getSectionByName, updateSectionData } from '../../state/state';
 import breakpoints from '../../utils/breakpoints';
 
 const getNextAssetInQueue = data => (
@@ -36,7 +36,7 @@ const hiresAssetLoader = (data, onComplete) => {
     img.src = img.getAttribute('data-hires-src');
     img.addEventListener('load', () => {
       asset.isLoaded = true;
-      updateSiteData({
+      updateSectionData({
         name: sectionName,
         hiResAsssets,
       });

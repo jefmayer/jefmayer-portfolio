@@ -3,6 +3,7 @@ import ScrollMagic from 'scrollmagic';
 import { TweenLite, TimelineLite, gsap } from 'gsap';
 import { ScrollMagicPluginGsap } from 'scrollmagic-plugin-gsap';
 import { createTrainspottedTweens, createTumblrTweens } from './scene-helpers';
+import { hideMenu } from '../nav/menu';
 
 gsap.config({
   nullTargetWarn: false,
@@ -32,6 +33,9 @@ const addSceneAnimations = () => {
       .to('.project-animation-intro .intro-border-bottom', 1, { y: '50%' }, 0)
       .to('.project-animation-intro .intro-inner-content', 1, { scale: 0.75, opacity: 0 }, 0)
       .to('.project-animation-intro .intro-borders', 0.5, { scaleX: 0 }, 1)
+      .call(() => {
+        hideMenu();
+      }, null, null, 2)
       .to('.header', 1, { y: 0 }),
     verizonElements: new TimelineLite()
       .fromTo('.project-animation-amplifyit .tablet-sampler-wrapper', 1, { visibility: 'hidden', y: '106%' }, { visibility: 'visible', y: '0%' }, 0.25) // 200 (height: 188)

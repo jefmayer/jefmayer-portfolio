@@ -1,4 +1,4 @@
-import { createSiteData, updateSiteData } from './state/state';
+import { createSiteData, updateSectionData } from './state/state';
 import { initLoad, updateLoad } from './modules/loaders/initial-asset-loader';
 import { initMenu, updateMenu } from './modules/nav/menu';
 import oovoo from './modules/scenes/oovoo';
@@ -10,7 +10,7 @@ initLoad();
 initMenu();
 scroll({
   onUpdate: (name, isActive) => {
-    updateSiteData({ isActive, name });
+    updateSectionData({ isActive, name });
     updateMenu();
     updateLoad();
   },

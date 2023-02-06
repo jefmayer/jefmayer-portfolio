@@ -1,16 +1,36 @@
 /* eslint-disable no-console */
 import { addIntroLoadAnimation, addSceneAnimations } from '../scenes/scenes';
-import { getActiveSectionName, getSiteData, updateSiteData } from '../../state/state';
+import {
+  getActiveSectionName,
+  getSiteData,
+  updateSectionData,
+  updateSiteData,
+} from '../../state/state';
 import hiresAssetLoader from './hires-asset-loader';
 import breakpoints from '../../utils/breakpoints';
 
 const html = document.querySelector('html');
 const body = document.querySelector('body');
-const scrollIndicator = document.querySelector('.scroll-indicator-animation');
-const initLoadingBars = document.querySelector('.project-animation-intro .intro-borders');
 const bgLoaderBar = document.querySelector('.background-loader-progress-bar');
 const bgLoaderWrapper = document.querySelector('.background-loader-wrapper');
-let prevImg = null;
+const initLoadingBars = document.querySelector('.project-animation-intro .intro-borders');
+const sectionLoader = document.querySelector('.section-loader-animation');
+
+const disableScroll = () => {
+  // console.log('disableScroll');
+  html.classList.add('noscroll');
+  sectionLoader.classList.add('animate-in');
+  setTimeout(() => {
+    sectionLoader.classList.add('animate-loop');
+  }, 300);
+};
+
+const enableScroll = () => {
+  // console.log('enableScroll');
+  html.classList.remove('noscroll');
+  sectionLoader.classList.remove('animate-in');
+  sectionLoader.classList.remove('animate-loop');
+};
 
 const isSectionAssetLoadComplete = (data, name) => (
   data
@@ -20,12 +40,28 @@ const isSectionAssetLoadComplete = (data, name) => (
 );
 
 // Add param to allow jumping the queue
-const getNextAssetInQueue = data => (
-  data
+const getNextAssetInQueue = () => {
+  const data = getSiteData();
+  const { selectedSection, sections } = data;
+  // console.log(`selectedSection: "${selectedSection}"`);
+  // If section specified, get that section's assets
+  if (selectedSection !== '') {
+    const nextAssetToLoad = sections.find(section => section.name === selectedSection)
+      .assets.find(asset => !asset.isLoaded);
+    // If there are still assets to load in that section, load,
+    // otherwise return to load queue
+    if (nextAssetToLoad) {
+      return nextAssetToLoad;
+    }
+    // Reset selected section var
+    updateSiteData({ selectedSection: '' });
+    enableScroll();
+  }
+  return sections
     .map(section => section.assets)
     .reduce((a, b) => a.concat(b), [])
-    .find(asset => !asset.isLoaded)
-);
+    .find(asset => !asset.isLoaded);
+};
 
 const getAssetsLoaded = data => (
   data
@@ -65,7 +101,7 @@ const addHiResAssets = (data) => {
       element,
       isLoaded: false,
     }));
-  updateSiteData({
+  updateSectionData({
     name: data.name,
     hiResAsssets,
   });
@@ -106,13 +142,13 @@ const createImg = (asset) => {
 };
 
 const onLoadComplete = () => {
-  // console.log('onLoadComplete');
+  updateSiteData({ isLoadComplete: true });
   // Hide background loader
   bgLoaderWrapper.classList.remove('show');
 };
 
 const onInitialLoadComplete = () => {
-  // console.log('onInitialLoadComplete');
+  const scrollIndicator = document.querySelector('.scroll-indicator-animation');
   setTimeout(() => {
     initLoadingBars.removeAttribute('style');
     body.classList.remove('site-loading');
@@ -127,49 +163,52 @@ const onInitialLoadComplete = () => {
   }, 2000);
 
   setTimeout(() => {
-    // Show backround loader
-    bgLoaderWrapper.classList.add('show');
+    const data = getSiteData();
+    const { isLoadComplete } = data;
+    if (!isLoadComplete) {
+      // Show backround loader
+      bgLoaderWrapper.classList.add('show');
+    }
   }, 3000);
 };
 
 const updateLoad = () => {
   const activeSection = getActiveSectionName();
   const data = getSiteData();
+  const { selectedSection } = data;
   if (!activeSection) {
     return;
   }
   // console.log(`${activeSection.name}: ${activeSection.allInitialAssetsLoaded}`);
-  // console.log(`${activeSection.name}/${data.selectedSection}`);
+  // console.log(`${activeSection.name}/${selectedSection}`);
   if (
-    (!activeSection.allInitialAssetsLoaded && data.selectedSection === '') ||
-    (!activeSection.allInitialAssetsLoaded && data.selectedSection === activeSection.name)
+    (!activeSection.allInitialAssetsLoaded && selectedSection === '') ||
+    (!activeSection.allInitialAssetsLoaded && selectedSection === activeSection.name)
   ) {
-    // console.log('prioritize section asset load');
-    html.classList.add('noscroll');
-    /* updateSiteData({
-      selectedSection: '',
-    }); */
+    // Prioritize selected sections assets for loading
+    disableScroll();
   } else {
-    html.classList.remove('noscroll');
+    enableScroll();
   }
 };
 
 const update = () => {
-  const data = getSiteData().sections;
-  const intialSectionName = data[0].name;
-  const initialAssetsTotal = getInitialAssetsTotal(data, intialSectionName);
-  const assetsTotal = getAssetsTotal(data);
+  const data = getSiteData();
+  const { previousImgLoaded, sections } = data;
+  const intialSectionName = sections[0].name;
+  const initialAssetsTotal = getInitialAssetsTotal(sections, intialSectionName);
+  const assetsTotal = getAssetsTotal(sections);
   // Remove previous image load event handler
-  if (prevImg !== null) {
-    prevImg.removeEventListener('load', update);
+  if (previousImgLoaded) {
+    previousImgLoaded.removeEventListener('load', update);
   }
   // Create image
-  const asset = getNextAssetInQueue(data);
+  const asset = getNextAssetInQueue();
   const img = createImg(asset);
   // Update loader status
   asset.isLoaded = true;
-  const initialAssetsLoaded = getInitialAssetsLoaded(data, intialSectionName);
-  const assetsLoaded = getAssetsLoaded(data);
+  const initialAssetsLoaded = getInitialAssetsLoaded(sections, intialSectionName);
+  const assetsLoaded = getAssetsLoaded(sections);
   // console.log(`${initialAssetsLoaded} / ${initialAssetsTotal}`);
   // console.log(`${(assetsLoaded / assetsTotal) * 100}%`);
   // Only set if still loading initial assets
@@ -179,17 +218,18 @@ const update = () => {
   }
   bgLoaderBar.style.transform = `scaleX(${assetsLoaded / assetsTotal})`;
   // Check if all a section's image loads are complete
-  data.forEach((section, index) => {
-    const isComplete = isSectionAssetLoadComplete(data, section.name);
+  sections.forEach((section, index) => {
+    const isComplete = isSectionAssetLoadComplete(sections, section.name);
     if (isComplete && !section.allInitialAssetsLoaded) {
-      updateSiteData({
+      // console.log(`${section.name}, isComplete: ${isComplete}`);
+      updateSectionData({
         allInitialAssetsLoaded: true,
         name: section.name,
       });
       addHiResAssets(section);
       // Start background load of hi-res image assets, if any
       hiresAssetLoader(section, () => {
-        updateSiteData({
+        updateSectionData({
           allHiResAssetsLoaded: true,
           name: section.name,
         });
@@ -203,12 +243,12 @@ const update = () => {
   // Load is complete
   if (assetsLoaded === assetsTotal) {
     // Remove last image loaded's event handler
-    prevImg.removeEventListener('load', update);
+    previousImgLoaded.removeEventListener('load', update);
     onLoadComplete();
     return;
   }
   img.addEventListener('load', update);
-  prevImg = img;
+  updateSiteData({ previousImgLoaded: img });
 };
 
 const initLoad = () => {

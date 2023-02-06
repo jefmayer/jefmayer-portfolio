@@ -8,6 +8,8 @@ const createSiteData = () => {
   const assetList = document.querySelectorAll('.add-site-img');
   const assetArr = [...assetList];
   siteData = {
+    isLoadComplete: false,
+    previousImgLoaded: null,
     sections: [...new Set(assetArr
       .map(element => element.getAttribute('data-section')))]
       .map(name => ({
@@ -37,11 +39,16 @@ const createSiteData = () => {
 };
 
 const updateSiteData = (options) => {
-  const { selectedSection, name } = options;
-  if (selectedSection) {
-    siteData.selectedSection = selectedSection;
-  }
-  // Update section data
+  Object.entries(options).forEach((arr) => {
+    const [prop, value] = arr;
+    siteData[prop] = value;
+  });
+  // console.log(siteData);
+};
+
+const updateSectionData = (options) => {
+  const { name } = options;
+  // Updates only selected section data
   const section = siteData.sections.find(s => s.name === name);
   if (section) {
     Object.entries(options).forEach((arr) => {
@@ -65,5 +72,6 @@ export {
   getActiveSectionName,
   getSectionByName,
   getSiteData,
+  updateSectionData,
   updateSiteData,
 };
