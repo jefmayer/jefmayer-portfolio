@@ -1,3 +1,5 @@
+import SiteImage from '../components/site-image';
+
 let siteData = [];
 
 const getSiteData = () => (
@@ -16,10 +18,11 @@ const createSiteData = () => {
         allInitialAssetsLoaded: false,
         assets: assetArr
           .filter(asset => asset.getAttribute('data-section') === name)
-          .map(element => ({
+          .map(element => (new SiteImage({
             element,
             isLoaded: false,
-          })),
+            loadStarted: false,
+          }))),
         hiResAsssets: [],
         isActive: false,
         name,
@@ -33,8 +36,8 @@ const createSiteData = () => {
         name: 'about',
       }),
     selectedSection: '',
-    scrollDirection: null,
   };
+  // console.log(siteData);
 };
 
 const updateSiteData = (options) => {

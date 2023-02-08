@@ -1,9 +1,7 @@
 import { createSiteData, updateSectionData } from './state/state';
 import { initLoad, updateLoad } from './modules/loaders/initial-asset-loader';
 import { initMenu, updateMenu } from './modules/nav/menu';
-import oovoo from './modules/scenes/oovoo';
 import scroll from './utils/scroll';
-import tumblr from './modules/scenes/tumblr';
 
 createSiteData();
 initLoad();
@@ -15,5 +13,3 @@ scroll({
     updateLoad();
   },
 });
-oovoo();
-tumblr();

@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { addIntroLoadAnimation, addSceneAnimations } from '../scenes/scenes';
 import {
   getActiveSectionName,
@@ -7,7 +6,6 @@ import {
   updateSiteData,
 } from '../../state/state';
 import hiresAssetLoader from './hires-asset-loader';
-import breakpoints from '../../utils/breakpoints';
 
 const html = document.querySelector('html');
 const body = document.querySelector('body');
@@ -46,7 +44,7 @@ const getNextAssetInQueue = () => {
   // If section specified, get that section's assets
   if (selectedSection !== '') {
     const nextAssetToLoad = sections.find(section => section.name === selectedSection)
-      .assets.find(asset => !asset.isLoaded);
+      .assets.find(asset => !asset.isLoaded && !asset.loadStarted);
     // If there are still assets to load in that section, load,
     // otherwise return to load queue
     if (nextAssetToLoad) {
@@ -59,7 +57,7 @@ const getNextAssetInQueue = () => {
   return sections
     .map(section => section.assets)
     .reduce((a, b) => a.concat(b), [])
-    .find(asset => !asset.isLoaded);
+    .find(asset => !asset.isLoaded && !asset.loadStarted);
 };
 
 const removeSectionEventHandlers = (assets) => {
@@ -113,41 +111,8 @@ const addHiResAssets = (data) => {
   });
 };
 
-const getBreakpointLabel = (div) => {
-  const { innerWidth } = window;
-  // Only those breakpoints under the window width
-  const arr = breakpoints.filter(item => item.value <= innerWidth);
-  arr.reverse();
-  // Then starting w/ the widest width, see what attributes that image has
-  let attrLabel = 'data-src';
-  arr.forEach((item) => {
-    const { label } = item;
-    if (div.getAttribute(`data-${label}-src`) !== null && attrLabel === 'data-src') {
-      attrLabel = `data-${label}-src`;
-    }
-  });
-  return attrLabel;
-};
-
-const createImg = (asset) => {
-  const div = asset.element;
-  const img = document.createElement('img');
-  const srcAttr = getBreakpointLabel(div);
-  const dataSection = div.getAttribute('data-section');
-  const hiResSrc = div.getAttribute('data-hires-src');
-  if (hiResSrc !== null) {
-    img.setAttribute('data-hires-src', hiResSrc);
-  }
-  img.setAttribute('data-section', dataSection);
-  img.src = div.getAttribute(srcAttr);
-  img.alt = div.getAttribute('data-alt');
-  img.className = 'site-asset';
-  div.parentNode.appendChild(img);
-  div.parentNode.removeChild(div);
-  return img;
-};
-
 const onLoadComplete = () => {
+  // console.log('onLoadComplete');
   updateSiteData({ isLoadComplete: true });
   bgLoaderWrapper.classList.remove('show');
 };
@@ -202,15 +167,13 @@ const update = () => {
   const assetsTotal = getAssetsTotal(sections);
   // Create image
   const asset = getNextAssetInQueue();
-  if (!asset) {
-    return;
+  if (asset) {
+    asset.loadImg(update);
   }
-  const img = createImg(asset);
-  // Update loader status
-  asset.isLoaded = true;
   const initialAssetsLoaded = getInitialAssetsLoaded(sections, intialSectionName);
   const assetsLoaded = getAssetsLoaded(sections);
   // console.log(`${initialAssetsLoaded} / ${initialAssetsTotal}`);
+  // console.log(`${assetsLoaded} / ${assetsTotal}`);
   // console.log(`${(assetsLoaded / assetsTotal) * 100}%`);
   // Only set if still loading initial assets
   const initPercLoaded = initialAssetsLoaded / initialAssetsTotal;
@@ -245,9 +208,7 @@ const update = () => {
   // Load is complete
   if (assetsLoaded === assetsTotal) {
     onLoadComplete();
-    return;
   }
-  img.addEventListener('load', update);
 };
 
 const initLoad = () => {
@@ -266,4 +227,3 @@ export {
   initLoad,
   updateLoad,
 };
-/* eslint-enable no-console */

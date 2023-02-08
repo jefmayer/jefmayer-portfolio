@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import smoothscroll from 'smoothscroll-polyfill';
 import { getActiveSectionName, updateSiteData } from '../../state/state';
 
@@ -135,4 +134,3 @@ export {
   updateMenu,
   updateMenuState,
 };
-/* eslint-enable no-console */
