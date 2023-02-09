@@ -10,13 +10,10 @@ const webpackConfig = require('./webpack.config');
 browserSync.create();
 
 const {
-  mainJs,
-  // scrollMagicJs,
-} = config.paths.js;
-
-const {
-  mainSass,
-} = config.paths.sass;
+  js,
+  sass,
+  server,
+} = config.paths;
 
 const buildJsTask = (taskName, fileName, configFile) => {
   gulp.task(taskName, async () => {
@@ -38,7 +35,7 @@ const buildJsTask = (taskName, fileName, configFile) => {
       console.log('\n');
     } else {
       console.log(linterResults.formatted);
-      console.log(linterResults ? '' : `Linter Failed, ${filename}.min.js was not built`);
+      console.log(linterResults ? '' : `Linter Failed, ${filename}.min.js was not built.  ${new Date().toLocaleTimeString()}`);
     }
   });
 };
@@ -61,7 +58,6 @@ const buildCssTask = (taskName, fileName) => {
     }).catch(error => console.log(error));
     console.log(linterResults.output);
     if (!linterResults.errored) {
-      fileName.outFile = `${dest}/${filename}.min.css`;
       await buildSass(fileName).catch(error => console.log(error));
       const changedFiles = await replace({
         files,
@@ -73,27 +69,36 @@ const buildCssTask = (taskName, fileName) => {
       console.log(path.join(__dirname, `${dest}/${filename}.min.css.map`));
       console.log('\n');
     } else {
-      console.log(`There are CSS errors. Stylesheet did NOT build! Please fix your CSS errors. ${new Date().toLocaleTimeString()}`);
+      console.log(`Linter Failed, ${filename}.min.css was not built. ${new Date().toLocaleTimeString()}`);
     }
   });
 };
 
-buildJsTask('buildMainJs', mainJs, webpackConfig.default);
-// buildJsTask('buildScrollMagicJs', scrollMagicJs, webpackConfig.default);
-buildCssTask('buildMainCss', mainSass);
-
-gulp.task('default', () => {
-  gulp.watch(mainJs.watch, gulp.series('buildMainJs'));
-  // gulp.watch(mainJs.watch, gulp.series('buildScrollMagicJs'));
-  gulp.watch(mainSass.watch, gulp.series('buildMainCss'));
-  browserSync.init({
-    server: './',
-    logLevel: 'debug',
-    online: true,
-    open: false,
-    port: 8080,
-    ui: false,
-  });
+Object.keys(js).forEach((key) => {
+  buildJsTask(`${js[key].filename}.min.js`, js[key], webpackConfig[js[key].webpackConfig]);
 });
 
-module.exports = gulp;
+Object.keys(sass).forEach((key) => {
+  buildCssTask(`${sass[key].filename}.min.css`, sass[key]);
+});
+
+const watch = () => {
+  Object.keys(js).forEach((key) => {
+    gulp.watch(js[key].watch, gulp.series(`${js[key].filename}.min.js`));
+  });
+  Object.keys(sass).forEach((key) => {
+    gulp.watch(sass[key].watch, gulp.series(`${sass[key].filename}.min.css`));
+  });
+};
+
+browserSync.init({
+  files: server.watch,
+  server: './',
+  logLevel: 'debug',
+  online: true,
+  open: false,
+  port: 8080,
+  ui: false,
+});
+
+exports.watch = watch;

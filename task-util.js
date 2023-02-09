@@ -44,7 +44,8 @@ const lintJs = src => new Promise((resolve, reject) => {
   }
 });
 
-const buildSass = ({ file, includePaths, outputStyle, sourceMap, outFile }) => new Promise((resolve, reject) => {
+const buildSass = ({ file, filename, dest, includePaths, outputStyle, sourceMap }) => new Promise((resolve, reject) => {
+  const outFile = `${dest}/${filename}.min.css`;
   sass.render({
     file,
     includePaths,

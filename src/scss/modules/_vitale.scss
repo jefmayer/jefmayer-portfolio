@@ -1,0 +1,182 @@
+.project-animation-vitale {
+  height: 50rem;
+
+  @include breakpoint(sm) {
+    height: 78rem;
+  }
+
+  @include breakpoint(md) {
+    height: 80rem;
+  }
+
+  .fixed-bg {
+    background: rgb(148, 161, 135);
+    background: linear-gradient(0deg, rgba(136, 190, 199, 1) 0%, rgba(148, 161, 135, 1) 100%);
+  }
+
+  .devices {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    left: 0;
+    padding: 0 2rem;
+    position: absolute;
+    width: 100%;
+  }
+
+  .laptop-wrapper {
+    margin-top: 22%;
+    position: relative;
+    will-change: transform;
+
+    /* @include breakpoint(sm) {
+      margin-top: 16%;
+    } */
+
+    @include breakpoint(md) {
+      margin-top: 8%;
+    }
+  }
+
+  .laptop {
+    height: auto;
+    max-width: 63.3rem;
+    position: relative;
+    width: 100%;
+    z-index: 2;
+
+    .screen-content-wrapper {
+      height: 100%;
+      left: 50%;
+      max-width: 51.6rem;
+      position: absolute;
+      top: 3.55%;
+      transform: translateX(-50%);
+      width: 81.52%;
+    }
+
+    .screen-content-wrapper-inner {
+      // background: $black;
+      height: 0;
+      left: 0;
+      overflow: hidden;
+      padding-top: 63.95%;
+      position: absolute;
+      top: 0;
+      width: 100%;
+
+      .screen-content {
+        height: auto;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+      }
+    }
+  }
+
+  .laptop-shadow {
+    bottom: -2.5%;
+    height: auto;
+    left: 0;
+    opacity: .5;
+    position: absolute;
+    width: 100%;
+    will-change: transform;
+    z-index: 1;
+
+    img {
+      bottom: 0;
+      left: 50%;
+      max-width: 60.4rem;
+      position: absolute;
+      transform: translateX(-50%);
+      width: 100%;
+    }
+  }
+
+  .tablet-wrapper {
+    display: none;
+    position: relative;
+    will-change: transform;
+
+    @include breakpoint(sm) {
+      display: block;
+      margin-top: 19%;
+    }
+
+    @include breakpoint(md) {
+      margin-top: 10.5%;
+    }
+  }
+
+  .tablet {
+    height: auto;
+    max-width: 21.9rem;
+    position: relative;
+    width: 100%;
+    z-index: 2;
+
+    .tablet-content-wrapper {
+      height: 100%;
+      left: 50%;
+      max-width: 19.7rem;
+      position: absolute;
+      top: 10.78%;
+      transform: translateX(-50%);
+      width: 89.95%;
+    }
+
+    .tablet-content-wrapper-inner {
+      // background: $black;
+      height: 0;
+      left: 0;
+      overflow: hidden;
+      padding-top: 133%;
+      position: absolute;
+      top: 0;
+      width: 100%;
+
+      .screen-content {
+        height: auto;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+      }
+    }
+  }
+
+  .tablet-shadow {
+    bottom: 2.5%;
+    height: auto;
+    left: 0;
+    opacity: .5;
+    position: absolute;
+    width: 100%;
+    will-change: transform;
+    z-index: 1;
+
+    img {
+      bottom: 0;
+      left: 50%;
+      max-width: 23.6rem;
+      position: absolute;
+      transform: translateX(-50%);
+      width: 100%;
+    }
+  }
+}
+
+.project-details-graber {
+  background: rgba(148, 161, 135, .75);
+  background: linear-gradient(0deg, rgba(136, 190, 199, .75) 0%, rgba(148, 161, 135, .75) 100%);
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+
+.graber-logo {
+  background-image: url('../images/graber/graber-logo.svg');
+  height: 2.5rem;
+  width: 14.9rem;
+}

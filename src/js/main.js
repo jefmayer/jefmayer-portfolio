@@ -1,9 +1,9 @@
-import { createSiteData, updateSectionData } from './state/state';
+import { initSiteData, updateSectionData } from './api/state';
 import { initLoad, updateLoad } from './modules/loaders/initial-asset-loader';
 import { initMenu, updateMenu } from './modules/nav/menu';
 import scroll from './utils/scroll';
 
-createSiteData();
+initSiteData();
 initLoad();
 initMenu();
 scroll({

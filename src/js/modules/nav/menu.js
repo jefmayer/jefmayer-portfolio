@@ -1,5 +1,5 @@
 import smoothscroll from 'smoothscroll-polyfill';
-import { getActiveSectionName, updateSiteData } from '../../state/state';
+import { getActiveSectionName, updateSiteData } from '../../api/state';
 
 smoothscroll.polyfill();
 

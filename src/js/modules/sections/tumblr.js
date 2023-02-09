@@ -1,6 +1,8 @@
 import ScrollMagic from 'scrollmagic';
 import { TimelineLite } from 'gsap';
 
+const triggerElement = '.project-animation-tumblr';
+
 const init = () => {
   const createDisplayNumber = (num) => {
     if (num.toString().length > 3) {
@@ -9,7 +11,7 @@ const init = () => {
     return num;
   };
 
-  const cardWrapper = document.querySelector('.project-animation-tumblr .info-card-wrapper');
+  const cardWrapper = document.querySelector(`${triggerElement} .info-card-wrapper`);
   const date = new Date();
   const currentYear = date.getFullYear();
   let winTotal = 0;
@@ -119,7 +121,7 @@ const init = () => {
 };
 
 const createTumblrTweens = () => {
-  const cards = document.querySelectorAll('.project-animation-tumblr .info-card');
+  const cards = document.querySelectorAll(`${triggerElement} .info-card`);
   const tweens = [];
   const interval = 0.125;
   let offset = 0;
@@ -135,42 +137,42 @@ const createTumblrTweens = () => {
   return tweens;
 };
 
-const tumblrScene = (controller) => {
+const tumblr = (controller) => {
   const timelines = {
-    tumblrElements: new TimelineLite()
-      .fromTo('.project-animation-tumblr .info-card-wrapper', 0.5, { visibility: 'hidden', y: '40%' }, { visibility: 'visible', y: '0%' })
+    elements: new TimelineLite()
+      .fromTo(`${triggerElement} .info-card-wrapper`, 0.5, { visibility: 'hidden', y: '40%' }, { visibility: 'visible', y: '0%' })
       .add('cardAnimations'),
   };
 
-  const { tumblrElements } = timelines;
-  tumblrElements.add(createTumblrTweens(), 'cardAnimations-=0', 'sequence', 0);
+  const { elements } = timelines;
+  elements.add(createTumblrTweens(), 'cardAnimations-=0', 'sequence', 0);
 
   new ScrollMagic.Scene({
-    triggerElement: '.project-animation-tumblr',
+    triggerElement,
     duration: 3000, // Make duration extremely long for last project, so that bg stays fixed as footer appears
-  }).setClassToggle('.project-animation-tumblr', 'in-focus')
+  }).setClassToggle(triggerElement, 'in-focus')
     .addTo(controller);
 
   new ScrollMagic.Scene({
-    triggerElement: '.project-animation-tumblr',
+    triggerElement,
     duration: 3000,
   }).setClassToggle('body', 'project-tumblr')
     .addTo(controller);
 
   new ScrollMagic.Scene({
-    triggerElement: '.project-animation-tumblr',
+    triggerElement,
     duration: 700,
     triggerHook: 0,
-  }).setPin('.project-animation-tumblr .section-content')
+  }).setPin(`${triggerElement} .section-content`)
     .addTo(controller);
 
   new ScrollMagic.Scene({
-    triggerElement: '.project-animation-tumblr',
+    triggerElement,
     duration: 600,
-  }).setTween(timelines.tumblrElements)
+  }).setTween(timelines.elements)
     .addTo(controller);
 
   init();
 };
 
-export default tumblrScene;
+export default tumblr;

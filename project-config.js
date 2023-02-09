@@ -18,14 +18,14 @@ module.exports = {
         dest: 'build/js',
         filename: 'main',
         files: [],
+        webpackConfig: 'default',
       },
-      scrollMagicJs: {
-        source: './node_modules/scrollmagic/scrollmagic/uncompressed/ScrollMagic.js',
-        watch: ['./node_modules/scrollmagic/scrollmagic/uncompressed/ScrollMagic.js'],
-        dest: './node_modules/scrollmagic/scrollmagic/minified',
-        filename: 'ScrollMagic',
-        files: [],
-      },
+    },
+    server: {
+      watch: [
+        './build/css/*.css',
+        './build/js/*.js',
+      ],
     },
   },
 };

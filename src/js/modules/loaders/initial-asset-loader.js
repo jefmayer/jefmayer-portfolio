@@ -1,10 +1,10 @@
-import { addIntroLoadAnimation, addSceneAnimations } from '../scenes/scenes';
+import { addIntroLoadAnimation, addSectionAnimations } from '../sections/index';
 import {
   getActiveSectionName,
   getSiteData,
   updateSectionData,
   updateSiteData,
-} from '../../state/state';
+} from '../../api/state';
 import hiresAssetLoader from './hires-asset-loader';
 
 const html = document.querySelector('html');
@@ -129,7 +129,7 @@ const onInitialLoadComplete = () => {
   setTimeout(() => {
     body.classList.remove('site-loaded');
     scrollIndicator.classList.add('animate-loop');
-    addSceneAnimations();
+    addSectionAnimations();
   }, 2000);
 
   setTimeout(() => {

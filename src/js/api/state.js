@@ -6,18 +6,22 @@ const getSiteData = () => (
   siteData
 );
 
-const createSiteData = () => {
+const getSectionAttribute = element => (
+  element.getAttribute('data-section')
+);
+
+const initSiteData = () => {
   const assetList = document.querySelectorAll('.add-site-img');
   const assetArr = [...assetList];
   siteData = {
     isLoadComplete: false,
     sections: [...new Set(assetArr
-      .map(element => element.getAttribute('data-section')))]
+      .map(element => getSectionAttribute(element)))]
       .map(name => ({
         allHiResAssetsLoaded: false,
         allInitialAssetsLoaded: false,
         assets: assetArr
-          .filter(asset => asset.getAttribute('data-section') === name)
+          .filter(asset => getSectionAttribute(asset) === name)
           .map(element => (new SiteImage({
             element,
             isLoaded: false,
@@ -70,10 +74,10 @@ const getActiveSectionName = () => (
 );
 
 export {
-  createSiteData,
   getActiveSectionName,
   getSectionByName,
   getSiteData,
+  initSiteData,
   updateSectionData,
   updateSiteData,
 };

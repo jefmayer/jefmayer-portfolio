@@ -1,4 +1,4 @@
-import { getSiteData } from '../state/state';
+import { getSiteData } from '../api/state';
 
 const scroll = (options) => {
   const {

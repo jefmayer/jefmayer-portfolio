@@ -1,4 +1,4 @@
-import { getSectionByName, updateSectionData } from '../../state/state';
+import { getSectionByName, updateSectionData } from '../../api/state';
 import breakpoints from '../../utils/breakpoints';
 
 const getNextAssetInQueue = data => (
